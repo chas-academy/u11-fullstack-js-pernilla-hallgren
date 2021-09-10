@@ -1,0 +1,28 @@
+GET http://localhost:5000/api/users
+
+### POST - Register User
+POST http://localhost:5000/api/users
+Content-Type: application/json
+
+{
+  "username": "pernilla",
+  "email": "pernilla@test.com",
+  "password": "pernilla"
+}
+
+### POST login user
+POST http://localhost:5000/api/auth
+Content-Type: application/json
+
+{
+  "email": "pernilla@test.com",
+  "password": "pernilla"
+}
+
+### GET auth user
+GET http://localhost:5000/api/auth/user
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxM2IyOTk3MWFiNDljOTY3YWRmNTllZCIsImlhdCI6MTYzMTI3NDkxOCwiZXhwIjoxNjMxMjc4NTE4fQ.iYTcFwKyPSE27GV_kogZw-6qcUx69maDvZjIalxzZp4
+### GET logout user token
+
+GET http://localhost:5000/api/auth/logout
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxM2IyOTk3MWFiNDljOTY3YWRmNTllZCIsImlhdCI6MTYzMTI3NDkxOCwiZXhwIjoxNjMxMjc4NTE4fQ.iYTcFwKyPSE27GV_kogZw-6qcUx69maDvZjIalxzZp4

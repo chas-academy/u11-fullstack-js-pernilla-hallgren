@@ -1,4 +1,4 @@
-![Mockup](/assets/Mockup.png?raw=true)
+<!-- ![Mockup](/assets/Mockup.png?raw=true) -->
 
 <!-- TABLE OF CONTENTS -->
 
