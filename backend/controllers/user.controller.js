@@ -2,9 +2,8 @@ require("dotenv").config();
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
 const User = require("../models/User.model");
-const router = require("../routes/api/users");
+// const router = require("../routes/api/users");
 
 const jwtSecret = process.env.JWT_SECRET;
 
@@ -31,7 +30,7 @@ const register = (req, res) => {
         newUser.save().then((user) => {
           jwt.sign(
             { id: user.id },
-            config.get(jwtSecret),
+            jwtSecret,
             { expiresIn: 3600 },
             // callback
             (err, token) => {
@@ -51,17 +50,17 @@ const register = (req, res) => {
     });
   });
 };
-
-const getAllUsers = async (req, res) => {
-  try {
-    const users = await User.find();
-    res.json(users);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
+// Add this to auth instead
+// const getAllUsers = async (req, res) => {
+//   try {
+//     const users = await User.find();
+//     res.json(users);
+//   } catch (err) {
+//     res.status(500).json({ message: err.message });
+//   }
+// };
 
 module.exports = {
   register,
-  getAllUsers,
+  // getAllUsers,
 };

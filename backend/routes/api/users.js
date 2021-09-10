@@ -9,6 +9,7 @@ const router = express.Router();
 // POST api/users - register new user
 router.post("/", register);
 
-router.get("/", getAllUsers);
+// GET api/users - get all users - add auth with role admin
+// router.get("/", getAllUsers);
 
 module.exports = router;

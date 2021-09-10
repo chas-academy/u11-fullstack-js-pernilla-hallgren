@@ -7,6 +7,8 @@ const cors = require("cors");
 
 const app = express();
 
+app.use(cors());
+
 app.use(express.json());
 
 const db = process.env.DATABASE_URL;
@@ -22,6 +24,7 @@ mongoose
 
 // Routes
 app.use("/api/users", require("./routes/api/users"));
+app.use("/api/auth", require("./routes/api/auth"));
 
 const port = process.env.PORT || 5000;
 
