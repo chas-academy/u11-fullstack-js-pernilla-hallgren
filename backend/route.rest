@@ -21,4 +21,8 @@ Content-Type: application/json
 
 ### GET auth user
 GET http://localhost:5000/api/auth/user
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxM2IyOTk3MWFiNDljOTY3YWRmNTllZCIsImlhdCI6MTYzMTI3MzU4NSwiZXhwIjoxNjMxMjc3MTg1fQ.qVBQSIMGH5sFYzpB4c25hOQZH5y-UiSbCl9mBoXSCBI
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxM2IyOTk3MWFiNDljOTY3YWRmNTllZCIsImlhdCI6MTYzMTI3NDkxOCwiZXhwIjoxNjMxMjc4NTE4fQ.iYTcFwKyPSE27GV_kogZw-6qcUx69maDvZjIalxzZp4
+### GET logout user token
+
+GET http://localhost:5000/api/auth/logout
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxM2IyOTk3MWFiNDljOTY3YWRmNTllZCIsImlhdCI6MTYzMTI3NDkxOCwiZXhwIjoxNjMxMjc4NTE4fQ.iYTcFwKyPSE27GV_kogZw-6qcUx69maDvZjIalxzZp4
