@@ -1,6 +1,6 @@
 GET http://localhost:5000/api/users
 
-### Register User
+### POST - Register User
 POST http://localhost:5000/api/users
 Content-Type: application/json
 
@@ -10,7 +10,7 @@ Content-Type: application/json
   "password": "pernilla"
 }
 
-### Login POST
+### POST login user
 POST http://localhost:5000/api/auth
 Content-Type: application/json
 
@@ -18,3 +18,7 @@ Content-Type: application/json
   "email": "pernilla@test.com",
   "password": "pernilla"
 }
+
+### GET auth user
+GET http://localhost:5000/api/auth/user
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxM2IyOTk3MWFiNDljOTY3YWRmNTllZCIsImlhdCI6MTYzMTI3MzU4NSwiZXhwIjoxNjMxMjc3MTg1fQ.qVBQSIMGH5sFYzpB4c25hOQZH5y-UiSbCl9mBoXSCBI
