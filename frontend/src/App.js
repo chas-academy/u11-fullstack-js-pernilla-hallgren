@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import "./App.css";
+import Home from "./shared/components/home/home";
 import Register from "./shared/components/register/register";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <Router>
         <main>
           <Switch>
+            <Route path="/" exact component={Home} />
             <Route path="/register" component={Register} />
           </Switch>
         </main>

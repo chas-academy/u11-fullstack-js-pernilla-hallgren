@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { POST } from "../../services/requests";
+import { Redirect } from "react-router-dom";
 
 const Register = () => {
   const [username, setUsername] = useState(""),
     [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [newUser, setNewUser] = useState({}),
-    [error, setError] = useState(null);
+    [error, setError] = useState(null),
+    [redirect, setRedirect] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,6 +21,7 @@ const Register = () => {
 
     POST("users", data)
       .then((data) => {
+        setRedirect(true);
         setNewUser(data.data);
         console.log(data.data);
       })
@@ -29,6 +32,10 @@ const Register = () => {
     setEmail("");
     setPassword("");
   };
+
+  if (redirect) return <Redirect to="/" />;
+
+  console.log(newUser);
 
   return (
     <>
