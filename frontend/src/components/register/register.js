@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { POST } from "../../shared/services/requests";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import ButtonSubmit from "../../shared/components/button_submit";
 import ErrorMessage from "../../shared/components/error_message";
-// import { ButtonSubmit, ErrorMessage } from "../../shared/components";
 
 const Register = () => {
   const [username, setUsername] = useState(""),
@@ -34,16 +33,21 @@ const Register = () => {
         setRedirect(true);
         setNewUser(data.data);
         console.log(data.data);
+        localStorage.setItem("user", JSON.stringify(data.data.token));
       })
       .catch((error) => {
         setLoading(false);
         setError(error.response.data.msg);
       });
 
-    setUsername("");
-    setEmail("");
-    setPassword("");
+    // setUsername("");
+    // setEmail("");
+    // setPassword("");
   };
+
+  // useEffect(() => {
+  //   handleSubmit();
+  // }, []);
 
   if (redirect) return <Redirect to="/" />;
 
@@ -66,6 +70,7 @@ const Register = () => {
             <label htmlFor="register-username"></label>
 
             {error && <ErrorMessage message={error} />}
+
             <input
               className="input-field"
               type="text"
