@@ -3,7 +3,9 @@ import { POST } from "../../shared/services/requests";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
-import ButtonSubmit from "../../shared/components/button_submit/buttonSubmit";
+import ButtonSubmit from "../../shared/components/button_submit";
+import ErrorMessage from "../../shared/components/error_message";
+// import { ButtonSubmit, ErrorMessage } from "../../shared/components";
 
 const Register = () => {
   const [username, setUsername] = useState(""),
@@ -11,7 +13,10 @@ const Register = () => {
     [password, setPassword] = useState(""),
     [newUser, setNewUser] = useState({}),
     [error, setError] = useState(null),
-    [redirect, setRedirect] = useState(false);
+    // [errorEmail, setErrorEmail] = useState(null),
+    // [errorPassword, setErrorPassword] = useState(null),
+    [redirect, setRedirect] = useState(false),
+    [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,15 +27,19 @@ const Register = () => {
       password: password,
     };
 
+    setLoading(true);
     POST("users", data)
       .then((data) => {
+        setLoading(false);
         setRedirect(true);
         setNewUser(data.data);
         console.log(data.data);
       })
       .catch((error) => {
-        setError(error.response.data.error);
+        setLoading(false);
+        setError(error.response.data.msg);
       });
+
     setUsername("");
     setEmail("");
     setPassword("");
@@ -42,6 +51,8 @@ const Register = () => {
 
   return (
     <>
+      {loading && <h4>Your are being registered...</h4>}
+
       <div className="container justify-content-center text-center">
         <div className="mb-5">
           <h1 className="header-one">REGISTER HERE</h1>
@@ -52,38 +63,40 @@ const Register = () => {
 
         <form onSubmit={handleSubmit} className="mb-5 mt-4">
           <div className="form-group">
-            <label htmlFor="username"></label>
+            <label htmlFor="register-username"></label>
+
+            {error && <ErrorMessage message={error} />}
             <input
               className="input-field"
               type="text"
               placeholder="Add Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              id="username"
+              id="register-username"
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="email"></label>
+            <label htmlFor="register-email"></label>
             <input
               className="input-field"
               type="email"
               placeholder="Add Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              id="email"
+              id="register-email"
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="password"></label>
+            <label htmlFor="register-password"></label>
             <input
               className="input-field"
               type="password"
               placeholder="Add Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              id="password"
+              id="register-password"
             />
 
             <div className="form-group mt-5">
@@ -98,9 +111,6 @@ const Register = () => {
                   <ButtonSubmit name="Register" id="register-btn" />
                 </Col>
               </Row>
-              {/* <button type="submit" className="btn">
-                Create User
-              </button> */}
             </div>
           </div>
         </form>
