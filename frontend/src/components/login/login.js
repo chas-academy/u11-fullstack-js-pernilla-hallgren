@@ -23,7 +23,8 @@ const Login = () => {
       .then((data) => {
         setLoading(false);
         setRedirect(true);
-        localStorage.setItem("token", JSON.stringify(data.data.token));
+        localStorage.setItem("token", data.data.token);
+        // localStorage.setItem("user", JSON.stringify(data.data.user));
         console.log(data.data);
       })
       .catch((error) => {

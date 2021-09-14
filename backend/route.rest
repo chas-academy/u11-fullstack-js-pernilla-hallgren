@@ -15,13 +15,13 @@ POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "pernilla@test.com",
-  "password": "pernilla"
+  "email": "anne@hotmail.com",
+  "password": "123456"
 }
 
 ### GET auth user
-GET http://localhost:5000/api/auth/user
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxM2IyOTk3MWFiNDljOTY3YWRmNTllZCIsImlhdCI6MTYzMTI3NDkxOCwiZXhwIjoxNjMxMjc4NTE4fQ.iYTcFwKyPSE27GV_kogZw-6qcUx69maDvZjIalxzZp4
+GET http://localhost:5000/api/auth/profile
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDA1N2VlNGNiZGIxMTdjNDBjNjNiMiIsImlhdCI6MTYzMTYyMTYzMywiZXhwIjoxNjMxNjI1MjMzfQ.t4kap43SoLlzK7IwY2B5E3pm-u2m_XzyrHPrgKnOoV0
 ### GET logout user token
 
 GET http://localhost:5000/api/auth/logout

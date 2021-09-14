@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { GET } from "../../shared/services/requests";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 // import { Card, Col, Row } from "react-bootstrap";
 // import { PATCH, GET } from "../services/requests";
 
-const Profile = () => {
+const Profile = ({ logoutHandler }) => {
   // let { id } = useParams();
+
+  // const user = JSON.parse(localStorage.getItem("user"));
+  // console.log(user.username);
 
   const [authUser, setAuthUser] = useState([]),
     [error, setError] = useState(null);
@@ -13,11 +16,12 @@ const Profile = () => {
   useEffect(() => {
     GET("auth/profile")
       .then((response) => {
-        setAuthUser(response.data.data);
-        console.log(response.data.data);
+        console.log(response.data);
+        setAuthUser(response.data);
       })
       .catch((error) => {
-        setError(error.response.data.message);
+        setError(error.response.data.msg);
+        console.log(error.response);
       });
   }, []);
 
@@ -26,6 +30,7 @@ const Profile = () => {
   return (
     <>
       <h1>Profile Page</h1>
+      {authUser.username}
     </>
   );
 };
