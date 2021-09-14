@@ -1,37 +1,29 @@
 import React, { useState } from "react";
 import { POST } from "../../shared/services/requests";
 import { Redirect } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { Row, Col } from "react-bootstrap";
-import ButtonSubmit from "../../shared/components/button_submit";
 import ErrorMessage from "../../shared/components/error_message";
 
-const Register = () => {
-  const [username, setUsername] = useState(""),
-    [email, setEmail] = useState(""),
+const Login = () => {
+  const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
-    [newUser, setNewUser] = useState({}),
     [error, setError] = useState(null),
-    // [errorEmail, setErrorEmail] = useState(null),
-    // [errorPassword, setErrorPassword] = useState(null),
-    [redirect, setRedirect] = useState(false),
-    [loading, setLoading] = useState(false);
+    [loading, setLoading] = useState(false),
+    [redirect, setRedirect] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const data = {
-      username: username,
       email: email,
       password: password,
     };
 
     setLoading(true);
-    POST("register", data)
+    POST("auth/login", data)
       .then((data) => {
         setLoading(false);
         setRedirect(true);
-        setNewUser(data.data);
+        localStorage.setItem("token", JSON.stringify(data.data.token));
         console.log(data.data);
       })
       .catch((error) => {
@@ -39,7 +31,6 @@ const Register = () => {
         setError(error.response.data.msg);
       });
 
-    setUsername("");
     setEmail("");
     setPassword("");
   };
@@ -49,9 +40,13 @@ const Register = () => {
   //   })
   // }, []);
 
-  if (redirect) return <Redirect to="/login" />;
+  if (redirect) return <Redirect to="/" />;
 
-  console.log(newUser);
+  const btnStyle = {
+    borderRadius: "20px",
+    border: "0",
+    color: "white",
+  };
 
   return (
     <>
@@ -59,27 +54,12 @@ const Register = () => {
 
       <div className="container justify-content-center text-center">
         <div className="mb-5">
-          <h1 className="header-one">REGISTER HERE</h1>
-          <h3 className="header-three">
-            Please fill in your details to register an account
-          </h3>
+          <h2>LOGIN NOW</h2>
+          <p>Please login to continue</p>
         </div>
 
         <form onSubmit={handleSubmit} className="mb-5 mt-4">
-          <div className="form-group">
-            <label htmlFor="register-username"></label>
-
-            {error && <ErrorMessage message={error} />}
-
-            <input
-              className="input-field"
-              type="text"
-              placeholder="Add Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              id="register-username"
-            />
-          </div>
+          {error && <ErrorMessage message={error} />}
 
           <div className="form-group">
             <label htmlFor="register-email"></label>
@@ -103,19 +83,10 @@ const Register = () => {
               onChange={(e) => setPassword(e.target.value)}
               id="register-password"
             />
-
-            <div className="form-group mt-5">
-              <Row>
-                <Col>
-                  <Link to="/login" className="link">
-                    <h3 className="header-three">
-                      Do you have an account? Login
-                    </h3>
-                  </Link>
-
-                  <ButtonSubmit name="Register" id="register-btn" />
-                </Col>
-              </Row>
+            <div className="form-group m-5">
+              <button type="submit" className="btn" style={btnStyle}>
+                Login
+              </button>
             </div>
           </div>
         </form>
@@ -124,4 +95,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

@@ -7,6 +7,7 @@ export const GET = (url) => {
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Content-Type": "application/json",
+      // "x-access-token": localStorage.getItem("token")
     },
   });
 };

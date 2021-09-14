@@ -1,17 +1,17 @@
 GET http://localhost:5000/api/users
 
 ### POST - Register User
-POST http://localhost:5000/api/users
+POST http://localhost:5000/api/register
 Content-Type: application/json
 
 {
-  "username": "pernilla",
-  "email": "pernilla@test.com",
-  "password": "pernilla"
+  "username": "p",
+  "email": "per@test.com",
+  "password": "perni"
 }
 
 ### POST login user
-POST http://localhost:5000/api/auth
+POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
