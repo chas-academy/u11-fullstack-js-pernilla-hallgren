@@ -14,6 +14,23 @@ const register = (req, res) => {
   if (!username || !email || !password) {
     return res.status(400).json({ msg: "Please enter all fields" });
   }
+  // if (!username) {
+  //   return res.status(400).json({
+  //     error: { type: "username", message: "Please enter a username" },
+  //   });
+  // }
+
+  // if (!email) {
+  //   return res.status(400).json({
+  //     error: { type: "email", message: "Please enter a valid email" },
+  //   });
+  // }
+
+  // if (!password) {
+  //   return res.status(400).json({
+  //     error: { type: "password", message: "Please enter a password" },
+  //   });
+  // }
 
   User.findOne({ email }).then((user) => {
     if (user) return res.status(400).json({ msg: "User already exists" });
