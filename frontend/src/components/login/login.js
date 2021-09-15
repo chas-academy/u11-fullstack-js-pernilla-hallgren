@@ -3,7 +3,7 @@ import { POST } from "../../shared/services/requests";
 import { Redirect } from "react-router-dom";
 import ErrorMessage from "../../shared/components/error_message";
 
-const Login = () => {
+const Login = ({ getToken }) => {
   const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [error, setError] = useState(null),
@@ -24,7 +24,7 @@ const Login = () => {
         setLoading(false);
         setRedirect(true);
         localStorage.setItem("token", data.data.token);
-        // localStorage.setItem("user", JSON.stringify(data.data.user));
+        getToken(localStorage.getItem("token"));
         console.log(data.data);
       })
       .catch((error) => {

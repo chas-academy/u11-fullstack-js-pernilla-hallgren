@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { GET } from "../../shared/services/requests";
-// import { useParams } from "react-router-dom";
-// import { Card, Col, Row } from "react-bootstrap";
-// import { PATCH, GET } from "../services/requests";
+// import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Profile = ({ logoutHandler }) => {
-  // let { id } = useParams();
-
-  // const user = JSON.parse(localStorage.getItem("user"));
-  // console.log(user.username);
-
   const [authUser, setAuthUser] = useState([]),
     [error, setError] = useState(null);
 
   useEffect(() => {
     GET("auth/profile")
       .then((response) => {
-        console.log(response.data);
         setAuthUser(response.data);
       })
       .catch((error) => {
@@ -29,8 +22,16 @@ const Profile = ({ logoutHandler }) => {
 
   return (
     <>
-      <h1>Profile Page</h1>
-      {authUser.username}
+      {authUser && (
+        <div>
+          <h1>Profile Page</h1>
+          <p>Username: {authUser.username}</p>
+          <p>Email: {authUser.email}</p>
+          <Link to="/login">
+            <button onClick={logoutHandler}>Logout</button>
+          </Link>
+        </div>
+      )}
     </>
   );
 };

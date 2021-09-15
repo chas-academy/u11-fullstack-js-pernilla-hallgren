@@ -31,20 +31,49 @@ function App() {
       });
   };
 
+  const getUserToken = (e) => setUserToken(e);
+
   console.log(userToken);
   return (
     <>
       <Router>
         <main>
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/register" component={Register} />
-            <Route path="/login" component={Login} />
-            <Route
-              path="/profile"
-              render={(props) => <Profile {...props} logoutHandler={logout} />}
-            />
-          </Switch>
+          {!userToken && (
+            <>
+              <Switch>
+                {/* <Route path="/" exact render={(props) => <LandingPage {...props} />}
+                /> */}
+                <Route
+                  path="/register"
+                  render={(props) => (
+                    <Register {...props} getToken={getUserToken} />
+                  )}
+                />
+                <Route
+                  path="/login"
+                  render={(props) => (
+                    <Login {...props} getToken={getUserToken} />
+                  )}
+                />
+              </Switch>
+            </>
+          )}
+
+          {userToken && (
+            <>
+              <Switch>
+                <Route path="/home" exact component={Home} />
+                <Route
+                  path="/profile"
+                  render={(props) => (
+                    <Profile {...props} logoutHandler={logout} />
+                  )}
+                />
+              </Switch>
+            </>
+          )}
+
+          {/* <nav>{userToken && <Navbar />}</nav> */}
         </main>
       </Router>
     </>
