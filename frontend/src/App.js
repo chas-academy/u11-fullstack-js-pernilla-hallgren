@@ -33,7 +33,6 @@ function App() {
 
   const getUserToken = (e) => setUserToken(e);
 
-  console.log(userToken);
   return (
     <>
       <Router>

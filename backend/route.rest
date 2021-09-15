@@ -5,13 +5,13 @@ POST http://localhost:5000/api/register
 Content-Type: application/json
 
 {
-  "username": "p",
-  "email": "per@test.com",
-  "password": "perni"
+  "username": "anne",
+  "email": "anne@hotmail.com",
+  "password": "123456"
 }
 
 ### POST login user
-POST http://localhost:5000/api/auth/login
+POST http://localhost:5000/api/login
 Content-Type: application/json
 
 {
@@ -21,7 +21,7 @@ Content-Type: application/json
 
 ### GET auth user
 GET http://localhost:5000/api/auth/profile
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDA1N2VlNGNiZGIxMTdjNDBjNjNiMiIsImlhdCI6MTYzMTYyNDU0MywiZXhwIjoxNjMxNjI4MTQzfQ.BktjcFIdviBgA_FKlM0C4f-J4GBDet8KmtEQMXa6kio
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDFiZWE1MTYwYzQyOWRkYWQwOGE4ZSIsImlhdCI6MTYzMTY5ODc4MCwiZXhwIjoxNjMxNzAyMzgwfQ.YpOStYjVgjZsBv-UAiYNyvX-lSVfUK4Tu5RzR_Zujm4
 ### GET logout user token
 
 GET http://localhost:5000/api/auth/logout

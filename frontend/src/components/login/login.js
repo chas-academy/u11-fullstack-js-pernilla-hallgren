@@ -19,7 +19,7 @@ const Login = ({ getToken }) => {
     };
 
     setLoading(true);
-    POST("auth/login", data)
+    POST("login", data)
       .then((data) => {
         setLoading(false);
         setRedirect(true);

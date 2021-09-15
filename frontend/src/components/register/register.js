@@ -46,12 +46,7 @@ const Register = ({ getToken }) => {
     setPassword("");
   };
 
-  // useEffect(() => {
-  //   GET("/user").then(response => {
-  //   })
-  // }, []);
-
-  if (redirect) return <Redirect to="/login" />;
+  if (redirect) return <Redirect to="/profile" />;
 
   console.log(newUser);
 
