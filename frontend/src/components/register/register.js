@@ -6,7 +6,7 @@ import { Row, Col } from "react-bootstrap";
 import ButtonSubmit from "../../shared/components/button_submit";
 import ErrorMessage from "../../shared/components/error_message";
 
-const Register = () => {
+const Register = ({ getToken }) => {
   const [username, setUsername] = useState(""),
     [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
@@ -32,6 +32,8 @@ const Register = () => {
         setLoading(false);
         setRedirect(true);
         setNewUser(data.data);
+        localStorage.setItem("token", data.data.token);
+        getToken(localStorage.getItem("token"));
         console.log(data.data);
       })
       .catch((error) => {

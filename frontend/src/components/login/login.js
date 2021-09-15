@@ -3,7 +3,7 @@ import { POST } from "../../shared/services/requests";
 import { Redirect } from "react-router-dom";
 import ErrorMessage from "../../shared/components/error_message";
 
-const Login = () => {
+const Login = ({ getToken }) => {
   const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [error, setError] = useState(null),
@@ -23,7 +23,8 @@ const Login = () => {
       .then((data) => {
         setLoading(false);
         setRedirect(true);
-        localStorage.setItem("token", JSON.stringify(data.data.token));
+        localStorage.setItem("token", data.data.token);
+        getToken(localStorage.getItem("token"));
         console.log(data.data);
       })
       .catch((error) => {
@@ -40,7 +41,7 @@ const Login = () => {
   //   })
   // }, []);
 
-  if (redirect) return <Redirect to="/" />;
+  if (redirect) return <Redirect to="/profile" />;
 
   const btnStyle = {
     borderRadius: "20px",

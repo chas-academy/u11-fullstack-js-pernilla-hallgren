@@ -10,7 +10,7 @@ const router = express.Router();
 
 // POST api/users - login auth user - use middleware here
 router.post("/", login);
-router.get("/user", auth, getUserById);
-router.get("/logout", auth, logout);
+router.get("/", auth, getUserById);
+router.get("/", auth, logout);
 
 module.exports = router;

@@ -2,12 +2,24 @@ import axios from "axios";
 
 const API_URL = "http://localhost:5000/api";
 
+// axios.defaults.withCredentials = true;
+
+// axios.interceptors.request.use(
+//   (config) => {
+//     config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
+//     return config;
+//   },
+//   (error) => {
+//     return Promise.reject(error);
+//   }
+// );
+
 export const GET = (url) => {
   return axios.get(`${API_URL}/${url}`, {
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Content-Type": "application/json",
-      // "x-access-token": localStorage.getItem("token")
+      "x-auth-token": localStorage.getItem("token"),
     },
   });
 };
