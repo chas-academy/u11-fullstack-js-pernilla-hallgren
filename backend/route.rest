@@ -26,3 +26,7 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDFiZWE1MTYwYzQyO
 
 GET http://localhost:5000/api/auth/logout
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxM2IyOTk3MWFiNDljOTY3YWRmNTllZCIsImlhdCI6MTYzMTI3NDkxOCwiZXhwIjoxNjMxMjc4NTE4fQ.iYTcFwKyPSE27GV_kogZw-6qcUx69maDvZjIalxzZp4
+
+### GET admin user
+GET http://localhost:5000/api/admin
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDFiZWE1MTYwYzQyOWRkYWQwOGE4ZSIsImlhdCI6MTYzMTcwNzIwNSwiZXhwIjoxNjMxNzEwODA1fQ.rARtXKnm4CiEO_TOedESrEhbPJa9iK5Mymy1ZGFTdDY
