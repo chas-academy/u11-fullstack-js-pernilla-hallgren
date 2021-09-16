@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { GET, DELETE } from "../../shared/services/requests";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const AdminDashboard = ({ logoutHandler }) => {
   const [adminUser, setAdminUser] = useState([]),
@@ -28,16 +28,17 @@ const AdminDashboard = ({ logoutHandler }) => {
   }, []);
 
   const deleteUserHandler = (id) => {
-    DELETE("admin/delete", id);
-    console.log(id);
-    // GET("admin/delete")
-    //   .then((data) => {})
-    //   .catch((err) => {
-    //     setError(error.response.data.msg);
-    //     console.log(error.response);
-    //   });
+    DELETE("admin/delete-user", id)
+      .then((response) => {
+        console.log(response.data);
+        setAllUsers((currentState) => [
+          ...currentState.filter((user) => user.id !== id),
+        ]);
+      })
+      .catch((error) => {
+        console.log(error.response.data.msg);
+      });
   };
-
   console.log(allUsers);
 
   return (

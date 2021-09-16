@@ -8,8 +8,7 @@ const User = require("../models/User.model");
 const jwtSecret = process.env.JWT_SECRET;
 
 const register = (req, res) => {
-  // res.send("register");
-  const { username, email, password } = req.body;
+  const { username, email, password, role } = req.body;
 
   if (!username || !email || !password) {
     return res.status(400).json({ msg: "Please enter all fields" });
@@ -39,6 +38,7 @@ const register = (req, res) => {
       username,
       email,
       password,
+      role,
     });
     bcrypt.genSalt(10, (err, salt) => {
       bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -58,6 +58,7 @@ const register = (req, res) => {
                   id: user.id,
                   username: user.username,
                   email: user.email,
+                  role: user.role,
                 },
               });
             }
@@ -92,6 +93,7 @@ const login = (req, res) => {
               id: user.id,
               username: user.username,
               email: user.email,
+              role: user.role,
             },
           });
         }

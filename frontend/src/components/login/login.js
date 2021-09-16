@@ -3,7 +3,7 @@ import { POST } from "../../shared/services/requests";
 import { Redirect } from "react-router-dom";
 import ErrorMessage from "../../shared/components/error_message";
 
-const Login = ({ getToken }) => {
+const Login = ({ getToken, setAdmin }) => {
   const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [error, setError] = useState(null),
@@ -21,11 +21,15 @@ const Login = ({ getToken }) => {
     setLoading(true);
     POST("login", data)
       .then((data) => {
+        console.log(data);
         setLoading(false);
         setRedirect(true);
         localStorage.setItem("token", data.data.token);
         getToken(localStorage.getItem("token"));
-        console.log(data.data);
+        if (data.data.user.role === "admin") {
+          setAdmin(data.data.user.role);
+          localStorage.setItem("admin", data.data.user.role);
+        }
       })
       .catch((error) => {
         setLoading(false);
@@ -36,11 +40,7 @@ const Login = ({ getToken }) => {
     setPassword("");
   };
 
-  // useEffect(() => {
-  //   GET("/user").then(response => {
-  //   })
-  // }, []);
-
+  // redirect later to homepage
   if (redirect) return <Redirect to="/profile" />;
 
   const btnStyle = {

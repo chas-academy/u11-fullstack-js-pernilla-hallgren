@@ -11,6 +11,7 @@ import { GET } from "./shared/services/requests";
 
 function App() {
   const [userToken, setUserToken] = useState(localStorage.getItem("token")),
+    [isAdmin, setIsAdmin] = useState(localStorage.getItem("admin")),
     [loading, setLoading] = useState(false);
 
   const logout = () => {
@@ -19,20 +20,25 @@ function App() {
       .then((data) => {
         setLoading(false);
         setUserToken(null);
+        setIsAdmin(null);
 
         localStorage.removeItem("token");
+        localStorage.removeItem("admin");
         window.location.reload();
       })
       .catch((err) => {
         setLoading(false);
         setUserToken(null);
+        setIsAdmin(null);
 
         localStorage.removeItem("token");
+        localStorage.removeItem("admin");
         window.location.reload();
       });
   };
 
   const getUserToken = (e) => setUserToken(e);
+  console.log(isAdmin);
 
   return (
     <>
@@ -52,7 +58,11 @@ function App() {
                 <Route
                   path="/login"
                   render={(props) => (
-                    <Login {...props} getToken={getUserToken} />
+                    <Login
+                      {...props}
+                      getToken={getUserToken}
+                      setAdmin={setIsAdmin}
+                    />
                   )}
                 />
               </Switch>
@@ -69,6 +79,13 @@ function App() {
                     <Profile {...props} logoutHandler={logout} />
                   )}
                 />
+              </Switch>
+            </>
+          )}
+
+          {isAdmin && (
+            <>
+              <Switch>
                 <Route
                   path="/admin-dashboard"
                   render={(props) => (
