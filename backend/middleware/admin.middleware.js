@@ -12,13 +12,6 @@ const authAdmin = (req, res, next) => {
       msg: "No token, authorization denied",
     });
 
-  // if (user.role !== "admin") {
-  //   res.status(401).json({
-  //     isLoggedIn: false,
-  //     msg: "Sorry, you are not authorized ",
-  //   });
-  // }
-
   try {
     const decoded = jwt.verify(token, jwtSecret);
     req.user = decoded;

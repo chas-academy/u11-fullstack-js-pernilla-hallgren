@@ -15,18 +15,18 @@ POST http://localhost:5000/api/login
 Content-Type: application/json
 
 {
-  "email": "anne@hotmail.com",
+  "email": "admin@admin.com",
   "password": "123456"
 }
 
 ### GET auth user
 GET http://localhost:5000/api/auth/profile
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDFiZWE1MTYwYzQyOWRkYWQwOGE4ZSIsImlhdCI6MTYzMTY5ODc4MCwiZXhwIjoxNjMxNzAyMzgwfQ.YpOStYjVgjZsBv-UAiYNyvX-lSVfUK4Tu5RzR_Zujm4
-### GET logout user token
 
+### GET logout user token
 GET http://localhost:5000/api/auth/logout
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxM2IyOTk3MWFiNDljOTY3YWRmNTllZCIsImlhdCI6MTYzMTI3NDkxOCwiZXhwIjoxNjMxMjc4NTE4fQ.iYTcFwKyPSE27GV_kogZw-6qcUx69maDvZjIalxzZp4
 
 ### GET admin user
 GET http://localhost:5000/api/admin
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDFiZWE1MTYwYzQyOWRkYWQwOGE4ZSIsImlhdCI6MTYzMTcwNzIwNSwiZXhwIjoxNjMxNzEwODA1fQ.rARtXKnm4CiEO_TOedESrEhbPJa9iK5Mymy1ZGFTdDY
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDFiOWYyMzEwMjNiOWM1MDU4YTc5MyIsImlhdCI6MTYzMTcwNzczNiwiZXhwIjoxNjMxNzExMzM2fQ.c3tguidcuOEtnd0IAg4RYMwDF1nBuHtIeGXTAI1-ua8
