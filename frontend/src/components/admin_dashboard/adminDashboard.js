@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { GET } from "../../shared/services/requests";
+import { GET, DELETE } from "../../shared/services/requests";
 import { Link } from "react-router-dom";
 
 const AdminDashboard = ({ logoutHandler }) => {
@@ -27,6 +27,17 @@ const AdminDashboard = ({ logoutHandler }) => {
       });
   }, []);
 
+  const deleteUserHandler = (id) => {
+    DELETE("admin/delete", id);
+    console.log(id);
+    // GET("admin/delete")
+    //   .then((data) => {})
+    //   .catch((err) => {
+    //     setError(error.response.data.msg);
+    //     console.log(error.response);
+    //   });
+  };
+
   console.log(allUsers);
 
   return (
@@ -43,12 +54,12 @@ const AdminDashboard = ({ logoutHandler }) => {
       )}
       {allUsers ? (
         allUsers.map((user) => (
-          <ul>
+          <ul key={user.id}>
             <li>{user.username}</li>
             <li>{user.email}</li>
             <li>{user.role}</li>
             <button>Edit</button>
-            <button>Update</button>
+            <button onClick={() => deleteUserHandler(user.id)}>Delete</button>
           </ul>
         ))
       ) : (

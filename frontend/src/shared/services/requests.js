@@ -28,3 +28,9 @@ export const PATCH = async (url, data) => {
     data,
   });
 };
+
+export const DELETE = async (url, id) => {
+  return axios(`${API_URL}/${url}/${id}`, {
+    method: "DELETE",
+  });
+};

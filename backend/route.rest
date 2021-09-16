@@ -5,12 +5,13 @@ POST http://localhost:5000/api/register
 Content-Type: application/json
 
 {
-  "username": "anne",
-  "email": "anne@hotmail.com",
-  "password": "123456"
+  "username": "admin",
+  "email": "admin@admin.com",
+  "password": "123456",
+  "role": "admin"
 }
 
-### POST login user
+### POST ADMIN login admin user
 POST http://localhost:5000/api/login
 Content-Type: application/json
 
@@ -21,12 +22,17 @@ Content-Type: application/json
 
 ### GET auth user
 GET http://localhost:5000/api/auth/profile
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDFiZWE1MTYwYzQyOWRkYWQwOGE4ZSIsImlhdCI6MTYzMTY5ODc4MCwiZXhwIjoxNjMxNzAyMzgwfQ.YpOStYjVgjZsBv-UAiYNyvX-lSVfUK4Tu5RzR_Zujm4
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTc4MjQyNywiZXhwIjoxNjMxNzg2MDI3fQ.BS_PCkneH9AfVb0MEwsk_U8pYQgsvIeonAPb_BvaPSc
+
 
 ### GET logout user token
 GET http://localhost:5000/api/auth/logout
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxM2IyOTk3MWFiNDljOTY3YWRmNTllZCIsImlhdCI6MTYzMTI3NDkxOCwiZXhwIjoxNjMxMjc4NTE4fQ.iYTcFwKyPSE27GV_kogZw-6qcUx69maDvZjIalxzZp4
 
-### GET admin user
+### GET all user
 GET http://localhost:5000/api/admin
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDFiOWYyMzEwMjNiOWM1MDU4YTc5MyIsImlhdCI6MTYzMTcwNzczNiwiZXhwIjoxNjMxNzExMzM2fQ.c3tguidcuOEtnd0IAg4RYMwDF1nBuHtIeGXTAI1-ua8
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTc4NTkxNiwiZXhwIjoxNjMxNzg5NTE2fQ.Q9JIdfynrbSJI1Mq1jV-iyhqfcRB3GpG1w9gs2WDKbI
+### DELETE user :id
+
+GET http://localhost:5000/api/admin/delete/6141bc6b0fa9604f6bb76331
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTc4NTkxNiwiZXhwIjoxNjMxNzg5NTE2fQ.Q9JIdfynrbSJI1Mq1jV-iyhqfcRB3GpG1w9gs2WDKbI
