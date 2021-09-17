@@ -7,6 +7,7 @@ import Home from "./components/home/home";
 import Login from "./components/login/login";
 import Profile from "./components/profile/profile";
 import Register from "./components/register/register";
+import UpdateUser from "./components/update-user/update-user";
 import { GET } from "./shared/services/requests";
 
 function App() {
@@ -91,6 +92,12 @@ function App() {
                   path="/admin-dashboard"
                   render={(props) => (
                     <AdminDashboard {...props} logoutHandler={logout} />
+                  )}
+                />
+                <Route
+                  path="/update-user"
+                  render={(props) => (
+                    <UpdateUser {...props} logoutHandler={logout} />
                   )}
                 />
               </Switch>

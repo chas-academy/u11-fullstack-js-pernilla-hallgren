@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { GET, DELETE } from "../../shared/services/requests";
-import { Link, Redirect } from "react-router-dom";
+import { GET, DELETE, PATCH } from "../../shared/services/requests";
+import { Link } from "react-router-dom";
 
 const AdminDashboard = ({ logoutHandler }) => {
   const [adminUser, setAdminUser] = useState([]),
@@ -51,6 +51,9 @@ const AdminDashboard = ({ logoutHandler }) => {
           <Link to="/login">
             <button onClick={logoutHandler}>Logout</button>
           </Link>
+          <Link to="/login">
+            <button>Create User</button>
+          </Link>
         </div>
       )}
       {allUsers ? (
@@ -59,7 +62,11 @@ const AdminDashboard = ({ logoutHandler }) => {
             <li>{user.username}</li>
             <li>{user.email}</li>
             <li>{user.role}</li>
-            <button>Edit</button>
+
+            <Link to={{ pathname: "/update-user", state: { ...user } }}>
+              <button>Edit</button>
+            </Link>
+
             <button onClick={() => deleteUserHandler(user.id)}>Delete</button>
           </ul>
         ))

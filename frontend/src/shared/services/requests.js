@@ -22,10 +22,14 @@ export const POST = async (url, data) => {
   });
 };
 
-export const PATCH = async (url, data) => {
-  return axios(`${API_URL}/${url}`, {
+export const PATCH = async (url, id, data) => {
+  return axios(`${API_URL}/${url}/${id}`, {
     method: "PATCH",
     data,
+    headers: {
+      "Content-Type": "application/json",
+      "x-auth-token": localStorage.getItem("token"),
+    },
   });
 };
 
