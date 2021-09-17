@@ -37,7 +37,8 @@ function App() {
       });
   };
 
-  const getUserToken = (e) => setUserToken(e);
+  // const getUserToken = (e) => setUserToken(e);
+
   console.log(isAdmin);
 
   return (
@@ -52,7 +53,7 @@ function App() {
                 <Route
                   path="/register"
                   render={(props) => (
-                    <Register {...props} getToken={getUserToken} />
+                    <Register {...props} getToken={setUserToken} />
                   )}
                 />
                 <Route
@@ -60,7 +61,7 @@ function App() {
                   render={(props) => (
                     <Login
                       {...props}
-                      getToken={getUserToken}
+                      getToken={setUserToken}
                       setAdmin={setIsAdmin}
                     />
                   )}

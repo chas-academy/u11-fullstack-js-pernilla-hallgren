@@ -12,8 +12,6 @@ const Register = ({ getToken }) => {
     [password, setPassword] = useState(""),
     [newUser, setNewUser] = useState({}),
     [error, setError] = useState(null),
-    // [errorEmail, setErrorEmail] = useState(null),
-    // [errorPassword, setErrorPassword] = useState(null),
     [redirect, setRedirect] = useState(false),
     [loading, setLoading] = useState(false);
 

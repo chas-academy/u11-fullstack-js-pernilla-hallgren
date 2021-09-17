@@ -5,8 +5,8 @@ POST http://localhost:5000/api/register
 Content-Type: application/json
 
 {
-  "username": "bella",
-  "email": "bella@test.com",
+  "username": "alva",
+  "email": "alva@test.com",
   "password": "123456",
   "role": "user"
 }
@@ -28,10 +28,21 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1N
 GET http://localhost:5000/api/auth/logout
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTc4NzQ0NSwiZXhwIjoxNjMxNzkxMDQ1fQ.6rAezo5LeLPS2Q2Ea4X4oG9O_P7yBawMies0BkFVcOI
 
-### GET all user
+### GET ADMIN all user
 GET http://localhost:5000/api/admin
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTc5NDUyNywiZXhwIjoxNjMxNzk4MTI3fQ.ZxglMRuX8QrnFqheKeypf3_mlUMhbfKx1_kwVM2xDuY
-### DELETE user :id
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTg2MTQ4MiwiZXhwIjoxNjMxODY1MDgyfQ.TP6nw8VNqN9raurRtgXI0Q9hBIaOFzoGsIUH6n01EQY
+### DELETE ADMIN user :id
 DELETE http://localhost:5000/api/admin/delete-user/614319b1886b9067814c21aa
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTc4NzQ0NSwiZXhwIjoxNjMxNzkxMDQ1fQ.6rAezo5LeLPS2Q2Ea4X4oG9O_P7yBawMies0BkFVcOI
 
+### PATCH ADMIN user update
+PATCH http://localhost:5000/api/admin/edit-user/61442f8887461b8d1bbd65c1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTg2MTQ4MiwiZXhwIjoxNjMxODY1MDgyfQ.TP6nw8VNqN9raurRtgXI0Q9hBIaOFzoGsIUH6n01EQY
+Content-Type: application/json
+
+{
+  "username": "alva",
+  "email": "alva@test.com",
+  "password": "123456",
+  "role": "user"
+}
