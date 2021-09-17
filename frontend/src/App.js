@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import "./App.css";
 import AdminDashboard from "./components/admin_dashboard/adminDashboard";
+import CreateUser from "./components/create-user/create-user";
 import Home from "./components/home/home";
 import Login from "./components/login/login";
 import Profile from "./components/profile/profile";
@@ -98,6 +99,12 @@ function App() {
                   path="/update-user"
                   render={(props) => (
                     <UpdateUser {...props} logoutHandler={logout} />
+                  )}
+                />
+                <Route
+                  path="/create-user"
+                  render={(props) => (
+                    <CreateUser {...props} logoutHandler={logout} />
                   )}
                 />
               </Switch>

@@ -51,7 +51,7 @@ const AdminDashboard = ({ logoutHandler }) => {
           <Link to="/login">
             <button onClick={logoutHandler}>Logout</button>
           </Link>
-          <Link to="/login">
+          <Link to="/create-user">
             <button>Create User</button>
           </Link>
         </div>
@@ -63,7 +63,19 @@ const AdminDashboard = ({ logoutHandler }) => {
             <li>{user.email}</li>
             <li>{user.role}</li>
 
-            <Link to={{ pathname: "/update-user", state: { ...user } }}>
+            <Link
+              to={{
+                pathname: "/update-user",
+                state: {
+                  user: {
+                    username: user.username,
+                    email: user.email,
+                    role: user.role,
+                  },
+                  id: user.id,
+                },
+              }}
+            >
               <button>Edit</button>
             </Link>
 

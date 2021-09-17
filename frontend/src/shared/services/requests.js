@@ -18,6 +18,7 @@ export const POST = async (url, data) => {
     data,
     headers: {
       "Content-Type": "application/json",
+      "x-auth-token": localStorage.getItem("token"),
     },
   });
 };

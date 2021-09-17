@@ -7,22 +7,18 @@ import ButtonSubmit from "../../shared/components/button_submit";
 const UpdateUser = () => {
   const location = useLocation();
 
-  const [user, setUser] = useState({ ...location.state }),
+  const [user, setUser] = useState(location.state.user),
     [redirect, setRedirect] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const id = user.id;
+    const id = location.state.id;
 
     PATCH("admin/update-user", id, { ...user })
       .then((response) => {
         console.log(response.data);
         setRedirect(true);
-
-        // setAllUsers((currentState) => [
-        //   ...currentState.filter((user) => user.id !== id),
-        // ]);
       })
       .catch((error) => {
         console.log(error.response.data.msg);
