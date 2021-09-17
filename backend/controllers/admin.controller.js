@@ -1,5 +1,10 @@
 require("dotenv").config();
+
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const User = require("../models/User.model");
+
+const jwtSecret = process.env.JWT_SECRET;
 
 // Add this to auth instead
 const getAllUsers = async (req, res) => {
@@ -11,6 +16,50 @@ const getAllUsers = async (req, res) => {
   }
 };
 
+const createUser = (req, res) => {
+  const { username, email, password, role } = req.body;
+
+  if (!username || !email || !password) {
+    return res.status(400).json({ msg: "Please enter all fields" });
+  }
+  User.findOne({ email }).then((user) => {
+    if (user) return res.status(400).json({ msg: "User already exists" });
+
+    const newUser = new User({
+      username,
+      email,
+      password,
+      role,
+    });
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(newUser.password, salt, (err, hash) => {
+        if (err) throw err;
+        newUser.password = hash;
+        newUser.save().then((user) => {
+          jwt.sign(
+            { id: user.id },
+            jwtSecret,
+            { expiresIn: 3600 },
+            // callback
+            (err, token) => {
+              if (err) throw err;
+              res.json({
+                token,
+                user: {
+                  id: user.id,
+                  username: user.username,
+                  email: user.email,
+                  role: user.role,
+                },
+              });
+            }
+          );
+        });
+      });
+    });
+  });
+};
+
 const editUser = async (req, res) => {
   const id = req.params.id;
   User.findByIdAndUpdate(id, req.body)
@@ -19,7 +68,7 @@ const editUser = async (req, res) => {
         res.status(404).send({
           message: `Cannot update user with id=${id}. User cannot be found`,
         });
-        res.json(data);
+        // res.json(data);
       } else {
         res.send({
           message: "User was updated successfully!",
@@ -56,6 +105,7 @@ const deleteUser = async (req, res) => {
 
 module.exports = {
   getAllUsers,
+  createUser,
   editUser,
   deleteUser,
 };

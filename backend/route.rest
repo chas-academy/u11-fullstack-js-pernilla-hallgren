@@ -46,3 +46,15 @@ Content-Type: application/json
   "password": "123456",
   "role": "user"
 }
+
+### POST ADMIN create new user
+POST http://localhost:5000/api/admin/create-user
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTg2MTQ4MiwiZXhwIjoxNjMxODY1MDgyfQ.TP6nw8VNqN9raurRtgXI0Q9hBIaOFzoGsIUH6n01EQY
+Content-Type: application/json
+
+{
+  "username": "tommy",
+  "email": "tommy@test.com",
+  "password": "123456",
+  "role": "user"
+}
