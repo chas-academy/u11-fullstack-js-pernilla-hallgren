@@ -15,10 +15,10 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  // role: {
-  //   type: String,
-  //   default: user
-  // },
+  role: {
+    type: String,
+    default: "user",
+  },
   register_date: {
     type: Date,
     default: Date.now,

@@ -5,24 +5,56 @@ POST http://localhost:5000/api/register
 Content-Type: application/json
 
 {
-  "username": "p",
-  "email": "per@test.com",
-  "password": "perni"
+  "username": "alva",
+  "email": "alva@test.com",
+  "password": "123456",
+  "role": "user"
 }
 
-### POST login user
-POST http://localhost:5000/api/auth/login
+### POST ADMIN login admin user
+POST http://localhost:5000/api/login
 Content-Type: application/json
 
 {
-  "email": "anne@hotmail.com",
+  "email": "admin@admin.com",
   "password": "123456"
 }
 
 ### GET auth user
 GET http://localhost:5000/api/auth/profile
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDA1N2VlNGNiZGIxMTdjNDBjNjNiMiIsImlhdCI6MTYzMTYyNDU0MywiZXhwIjoxNjMxNjI4MTQzfQ.BktjcFIdviBgA_FKlM0C4f-J4GBDet8KmtEQMXa6kio
-### GET logout user token
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTc5NDUyNywiZXhwIjoxNjMxNzk4MTI3fQ.ZxglMRuX8QrnFqheKeypf3_mlUMhbfKx1_kwVM2xDuY
 
+### GET logout user token
 GET http://localhost:5000/api/auth/logout
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxM2IyOTk3MWFiNDljOTY3YWRmNTllZCIsImlhdCI6MTYzMTI3NDkxOCwiZXhwIjoxNjMxMjc4NTE4fQ.iYTcFwKyPSE27GV_kogZw-6qcUx69maDvZjIalxzZp4
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTc4NzQ0NSwiZXhwIjoxNjMxNzkxMDQ1fQ.6rAezo5LeLPS2Q2Ea4X4oG9O_P7yBawMies0BkFVcOI
+
+### GET ADMIN all user
+GET http://localhost:5000/api/admin
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTg2MTQ4MiwiZXhwIjoxNjMxODY1MDgyfQ.TP6nw8VNqN9raurRtgXI0Q9hBIaOFzoGsIUH6n01EQY
+### DELETE ADMIN user :id
+DELETE http://localhost:5000/api/admin/delete-user/614319b1886b9067814c21aa
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTc4NzQ0NSwiZXhwIjoxNjMxNzkxMDQ1fQ.6rAezo5LeLPS2Q2Ea4X4oG9O_P7yBawMies0BkFVcOI
+
+### PATCH ADMIN user update
+PATCH http://localhost:5000/api/admin/update-user/61442f8887461b8d1bbd65c1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTg2MTQ4MiwiZXhwIjoxNjMxODY1MDgyfQ.TP6nw8VNqN9raurRtgXI0Q9hBIaOFzoGsIUH6n01EQY
+Content-Type: application/json
+
+{
+  "username": "alva",
+  "email": "alva@test.com",
+  "password": "123456",
+  "role": "user"
+}
+
+### POST ADMIN create new user
+POST http://localhost:5000/api/admin/create-user
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTg2MTQ4MiwiZXhwIjoxNjMxODY1MDgyfQ.TP6nw8VNqN9raurRtgXI0Q9hBIaOFzoGsIUH6n01EQY
+Content-Type: application/json
+
+{
+  "username": "tommy",
+  "email": "tommy@test.com",
+  "password": "123456",
+  "role": "user"
+}
