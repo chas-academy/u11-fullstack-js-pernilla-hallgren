@@ -6,6 +6,7 @@ import AdminDashboard from "./components/admin_dashboard/adminDashboard";
 import CreateUser from "./components/create-user/create-user";
 import Home from "./components/home/home";
 import Login from "./components/login/login";
+import Navbar from "./components/navbar/navbar";
 import Profile from "./components/profile/profile";
 import Register from "./components/register/register";
 import UpdateUser from "./components/update-user/update-user";
@@ -74,13 +75,12 @@ function App() {
 
           {userToken && (
             <>
+              <Navbar isAdmin={isAdmin} logoutHandler={logout} />
               <Switch>
                 <Route path="/home" exact component={Home} />
                 <Route
                   path="/profile"
-                  render={(props) => (
-                    <Profile {...props} logoutHandler={logout} />
-                  )}
+                  render={(props) => <Profile {...props} />}
                 />
               </Switch>
             </>
@@ -91,27 +91,19 @@ function App() {
               <Switch>
                 <Route
                   path="/admin-dashboard"
-                  render={(props) => (
-                    <AdminDashboard {...props} logoutHandler={logout} />
-                  )}
+                  render={(props) => <AdminDashboard {...props} />}
                 />
                 <Route
                   path="/update-user"
-                  render={(props) => (
-                    <UpdateUser {...props} logoutHandler={logout} />
-                  )}
+                  render={(props) => <UpdateUser {...props} />}
                 />
                 <Route
                   path="/create-user"
-                  render={(props) => (
-                    <CreateUser {...props} logoutHandler={logout} />
-                  )}
+                  render={(props) => <CreateUser {...props} />}
                 />
               </Switch>
             </>
           )}
-
-          {/* <nav>{userToken && <Navbar />}</nav> */}
         </main>
       </Router>
     </>
