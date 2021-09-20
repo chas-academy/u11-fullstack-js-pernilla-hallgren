@@ -12,15 +12,15 @@ const TrainerSchema = new Schema({
     required: true,
     unique: true,
   },
-  password: {
-    type: String,
-    required: true,
-  },
   firstName: {
     type: String,
   },
   lastName: {
     type: String,
+  },
+  role: {
+    type: String,
+    default: "user",
   },
   avatar: {
     type: String,
@@ -30,10 +30,15 @@ const TrainerSchema = new Schema({
   },
   skills: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Skill",
+      type: String,
     },
   ],
+  // skills: [
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: "Skill",
+  //   },
+  // ],
   register_date: {
     type: Date,
     default: Date.now,

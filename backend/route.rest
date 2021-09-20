@@ -1,7 +1,7 @@
 GET http://localhost:5000/api/users
 
 ### POST - Register User
-POST http://localhost:5000/api/register
+POST http://localhost:5000/api/users/register
 Content-Type: application/json
 
 {
@@ -12,7 +12,7 @@ Content-Type: application/json
 }
 
 ### POST ADMIN login admin user
-POST http://localhost:5000/api/login
+POST http://localhost:5000/api/users/login
 Content-Type: application/json
 
 {
@@ -22,7 +22,7 @@ Content-Type: application/json
 
 ### GET auth user
 GET http://localhost:5000/api/auth/profile
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTc5NDUyNywiZXhwIjoxNjMxNzk4MTI3fQ.ZxglMRuX8QrnFqheKeypf3_mlUMhbfKx1_kwVM2xDuY
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMjEzNTUxMSwiZXhwIjoxNjMyMTM5MTExfQ.v5nSVOecDdrBzdJ4NPXZ15rqlyMVS7_UWRP_dfuFy78
 
 ### GET logout user token
 GET http://localhost:5000/api/auth/logout
@@ -30,7 +30,7 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1N
 
 ### GET ADMIN all user
 GET http://localhost:5000/api/admin
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTg2MTQ4MiwiZXhwIjoxNjMxODY1MDgyfQ.TP6nw8VNqN9raurRtgXI0Q9hBIaOFzoGsIUH6n01EQY
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMjEzNTUxMSwiZXhwIjoxNjMyMTM5MTExfQ.v5nSVOecDdrBzdJ4NPXZ15rqlyMVS7_UWRP_dfuFy78
 ### DELETE ADMIN user :id
 DELETE http://localhost:5000/api/admin/delete-user/614319b1886b9067814c21aa
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTc4NzQ0NSwiZXhwIjoxNjMxNzkxMDQ1fQ.6rAezo5LeLPS2Q2Ea4X4oG9O_P7yBawMies0BkFVcOI
@@ -48,13 +48,36 @@ Content-Type: application/json
 }
 
 ### POST ADMIN create new user
-POST http://localhost:5000/api/admin/create-user
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTg2MTQ4MiwiZXhwIjoxNjMxODY1MDgyfQ.TP6nw8VNqN9raurRtgXI0Q9hBIaOFzoGsIUH6n01EQY
+POST http://localhost:5000/api/admin/users
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMjEzNTUxMSwiZXhwIjoxNjMyMTM5MTExfQ.v5nSVOecDdrBzdJ4NPXZ15rqlyMVS7_UWRP_dfuFy78
 Content-Type: application/json
 
 {
-  "username": "tommy",
-  "email": "tommy@test.com",
+  "username": "emma",
+  "email": "emma@test.com",
   "password": "123456",
   "role": "user"
 }
+
+### POST trainer
+POST http://localhost:5000/api/trainers
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMjEzODAzMCwiZXhwIjoxNjMyMTQxNjMwfQ.NZ8oHbVbrgSn8-cPPJf0WRFGIQxhHZTHjyM5HvERlSw
+Content-Type: application/json
+
+{
+  "username": "sara4",
+  "email": "sara4@test.com",
+  "firstName": "sara4",
+  "lastName": "andersson",
+  "role": "user",
+  "avatar": "bild",
+  "description": "Hej jag är PT nr 4",
+  "skills": ["HIIT", "cardio", "flex"]
+}
+
+### GET all trainers
+GET http://localhost:5000/api/trainers
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMjEzODAzMCwiZXhwIjoxNjMyMTQxNjMwfQ.NZ8oHbVbrgSn8-cPPJf0WRFGIQxhHZTHjyM5HvERlSw
+
+
+
