@@ -28,7 +28,7 @@ const AdminDashboard = ({ logoutHandler }) => {
   }, []);
 
   const deleteUserHandler = (id) => {
-    DELETE("admin/delete-user", id)
+    DELETE("admin/users", id)
       .then((response) => {
         console.log(response.data);
         setAllUsers((currentState) => [

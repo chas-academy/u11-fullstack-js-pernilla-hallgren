@@ -10,9 +10,10 @@ const authAdmin = require("../../middleware/admin.middleware.js");
 const router = express.Router();
 
 // POST  - login auth user - use middleware here
-router.get("/admin", authAdmin, getAllUsers);
-router.post("/admin/create-user", authAdmin, createUser);
-router.patch("/admin/update-user/:id", authAdmin, editUser);
-router.delete("/admin/delete-user/:id", authAdmin, deleteUser);
+
+router.get("/", authAdmin, getAllUsers);
+router.post("/users", authAdmin, createUser);
+router.patch("/users/:id", authAdmin, editUser);
+router.delete("/users/:id", authAdmin, deleteUser);
 
 module.exports = router;

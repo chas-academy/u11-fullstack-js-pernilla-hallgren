@@ -25,7 +25,7 @@ const Register = ({ getToken }) => {
     };
 
     setLoading(true);
-    POST("register", data)
+    POST("users/register", data)
       .then((data) => {
         setLoading(false);
         setRedirect(true);
