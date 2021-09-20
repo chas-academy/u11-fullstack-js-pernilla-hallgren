@@ -19,7 +19,7 @@ const Login = ({ getToken, setAdmin }) => {
     };
 
     setLoading(true);
-    POST("login", data)
+    POST("users/login", data)
       .then((data) => {
         console.log(data);
         setLoading(false);

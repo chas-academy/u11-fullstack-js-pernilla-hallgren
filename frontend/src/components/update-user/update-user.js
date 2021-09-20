@@ -15,9 +15,9 @@ const UpdateUser = () => {
 
     const id = location.state.id;
 
-    PATCH("admin/update-user", id, { ...user })
+    PATCH("admin/users", id, { ...user })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setRedirect(true);
       })
       .catch((error) => {
@@ -30,10 +30,9 @@ const UpdateUser = () => {
   const handleChange = (e) => {
     const identifier = e.target.id;
     setUser((currentUser) => {
-      console.log([currentUser[identifier]]);
       return { ...currentUser, [identifier]: e.target.value };
     });
-    console.log(user);
+    // console.log(user);
   };
 
   return (

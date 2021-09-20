@@ -27,7 +27,7 @@ const CreateUser = () => {
     };
 
     setLoading(true);
-    POST("admin/create-user", data)
+    POST("admin/users", data)
       .then((data) => {
         setLoading(false);
         setRedirect(true);
