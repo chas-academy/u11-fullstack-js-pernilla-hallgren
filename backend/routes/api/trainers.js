@@ -1,5 +1,5 @@
 const express = require("express");
-const auth = require("../../middleware/auth.middleware.js");
+const authAdmin = require("../../middleware/admin.middleware.js");
 const {
   createTrainer,
   getAllTrainers,
@@ -7,7 +7,7 @@ const {
 
 const router = express.Router();
 
-router.get("/", auth, getAllTrainers);
-router.post("/", auth, createTrainer);
+router.get("/", authAdmin, getAllTrainers);
+router.post("/", authAdmin, createTrainer);
 
 module.exports = router;
