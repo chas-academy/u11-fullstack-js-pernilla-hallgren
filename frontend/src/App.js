@@ -75,14 +75,12 @@ function App() {
 
           {userToken && (
             <>
-              <Navbar isAdmin={isAdmin} />
+              <Navbar isAdmin={isAdmin} logoutHandler={logout} />
               <Switch>
                 <Route path="/home" exact component={Home} />
                 <Route
                   path="/profile"
-                  render={(props) => (
-                    <Profile {...props} logoutHandler={logout} />
-                  )}
+                  render={(props) => <Profile {...props} />}
                 />
               </Switch>
             </>
@@ -93,21 +91,15 @@ function App() {
               <Switch>
                 <Route
                   path="/admin-dashboard"
-                  render={(props) => (
-                    <AdminDashboard {...props} logoutHandler={logout} />
-                  )}
+                  render={(props) => <AdminDashboard {...props} />}
                 />
                 <Route
                   path="/update-user"
-                  render={(props) => (
-                    <UpdateUser {...props} logoutHandler={logout} />
-                  )}
+                  render={(props) => <UpdateUser {...props} />}
                 />
                 <Route
                   path="/create-user"
-                  render={(props) => (
-                    <CreateUser {...props} logoutHandler={logout} />
-                  )}
+                  render={(props) => <CreateUser {...props} />}
                 />
               </Switch>
             </>
