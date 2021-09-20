@@ -14,13 +14,6 @@ const createTrainer = (req, res) => {
     skills,
   } = req.body;
 
-  // if (!username || !email) {
-  //   return res.status(400).json({ msg: "Please enter all fields" });
-  // }
-
-  // Trainer.findOne({ email }).then((user) => {
-  //   if (user) return res.status(400).json({ msg: "Trainer already exists" });
-
   const newTrainer = new Trainer({
     username,
     email,
@@ -32,7 +25,6 @@ const createTrainer = (req, res) => {
     skills,
   });
   newTrainer.save().then((trainer) => res.json(trainer));
-  // });
 };
 
 const getAllTrainers = async (req, res) => {
@@ -44,7 +36,26 @@ const getAllTrainers = async (req, res) => {
   }
 };
 
+// const searchTrainers = async (req, res) => {
+//   const { skills } = req.query;
+
+//   try {
+//     const trainerSkills = await Trainer.find({
+//       skills: { $regex: skills, $options: "i", $exists: true, $ne: null },
+//     }).sort({ createdAt: "desc" });
+
+//     if (trainerSkills.length === 0) {
+//       res.status(404).json({ message: "No skills found" });
+//     }
+//     res.status(200).json({ skills });
+//     console.log();
+//   } catch (err) {
+//     res.status(400).json({ error: error.message });
+//   }
+// };
+
 module.exports = {
   createTrainer,
   getAllTrainers,
+  // searchTrainers,
 };

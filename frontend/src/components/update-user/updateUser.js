@@ -3,7 +3,7 @@ import { Redirect, useLocation } from "react-router-dom";
 import { PATCH } from "../../shared/services/requests";
 import { Row, Col } from "react-bootstrap";
 import ButtonSubmit from "../../shared/components/button_submit";
-import { handleFormData } from "../../shared/helpers/helpers";
+import { handleFormData } from "../../shared/helpers/formData";
 
 const UpdateUser = () => {
   const location = useLocation();

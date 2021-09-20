@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import "./App.css";
-import AdminDashboard from "./components/admin_dashboard/adminDashboard";
-import CreateUser from "./components/create-user/create-user";
-import CreateTrainer from "./components/create_trainer/create-trainer";
+import AdminDashboard from "./components/admin-dashboard/adminDashboard";
+import CreateUser from "./components/create-user/createUser";
+import CreateTrainer from "./components/create-trainer/createTrainer";
 import Home from "./components/home/home";
 import Login from "./components/login/login";
 import Navbar from "./components/navbar/navbar";
 import Profile from "./components/profile/profile";
 import Register from "./components/register/register";
-import UpdateUser from "./components/update-user/update-user";
+import UpdateUser from "./components/update-user/updateUser";
 import { GET } from "./shared/services/requests";
 
 function App() {

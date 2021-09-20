@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { GET, DELETE, PATCH } from "../../shared/services/requests";
+import { GET, DELETE } from "../../shared/services/requests";
 import { Link } from "react-router-dom";
 
 const AdminDashboard = ({ logoutHandler }) => {

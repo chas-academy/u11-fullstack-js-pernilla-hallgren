@@ -4,7 +4,8 @@ import { POST } from "../../shared/services/requests";
 import { Row, Col } from "react-bootstrap";
 import ButtonSubmit from "../../shared/components/button_submit";
 import ErrorMessage from "../../shared/components/error_message";
-import { handleFormData } from "../../shared/helpers/helpers";
+import { handleFormData } from "../../shared/helpers/formData";
+import skills from "../../shared/helpers/skills";
 
 const CreateTrainer = () => {
   const [newTrainer, setNewTrainer] = useState({
@@ -15,7 +16,7 @@ const CreateTrainer = () => {
       role: "",
       avatar: "",
       description: "",
-      // skills: "",
+      skills: "",
     }),
     [error, setError] = useState(null),
     [redirect, setRedirect] = useState(false),
@@ -137,17 +138,37 @@ const CreateTrainer = () => {
             />
           </div>
 
-          {/* <div className="form-group">
+          <div className="form-group">
             <label htmlFor="skills"></label>
             <input
               className="input-field"
               type="text"
-              placeholder="Add Skills"
+              placeholder="Choose Skills"
               value={newTrainer.skills}
               onChange={(e) => handleFormData(e, setNewTrainer)}
               id="skills"
             />
-          </div> */}
+
+            {/* <select
+              className="input-field"
+              // type="text"
+              // multiple={true}
+              // placeholder="Choose Skills"
+              options={skills}
+              value={newTrainer.skills}
+              onChange={(e) => handleFormData(e, setNewTrainer)}
+              id="skills"
+            >
+              <option disabled={true} value="">
+                Choose Skills
+              </option>
+              {skills.map((skill) => (
+                <option key={skill} value={skill}>
+                  {skill}
+                </option>
+              ))}
+            </select> */}
+          </div>
 
           <div className="form-group">
             <div className="form-group mt-5">
