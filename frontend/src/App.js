@@ -6,6 +6,7 @@ import AdminDashboard from "./components/admin_dashboard/adminDashboard";
 import CreateUser from "./components/create-user/create-user";
 import Home from "./components/home/home";
 import Login from "./components/login/login";
+import Navbar from "./components/navbar/navbar";
 import Profile from "./components/profile/profile";
 import Register from "./components/register/register";
 import UpdateUser from "./components/update-user/update-user";
@@ -74,6 +75,7 @@ function App() {
 
           {userToken && (
             <>
+              <Navbar isAdmin={isAdmin} />
               <Switch>
                 <Route path="/home" exact component={Home} />
                 <Route
@@ -110,8 +112,6 @@ function App() {
               </Switch>
             </>
           )}
-
-          {/* <nav>{userToken && <Navbar />}</nav> */}
         </main>
       </Router>
     </>
