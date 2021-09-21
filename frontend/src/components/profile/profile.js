@@ -24,7 +24,7 @@ const Profile = ({ logoutHandler }) => {
     <>
       {authUser && (
         <div>
-          <h1>Profile Page</h1>
+          <h1>{authUser.username} Profile Page</h1>
           <p>Username: {authUser.username}</p>
           <p>Email: {authUser.email}</p>
           <Link to="/login">

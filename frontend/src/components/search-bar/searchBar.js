@@ -6,24 +6,27 @@ const SearchBar = ({ setIsSearching }) => {
   const [query, setQuery] = useState(""),
     [searchResult, setSearchResult] = useState([]),
     [error, setError] = useState(null),
-    [redirect, setRedirect] = useState(false),
     [loading, setLoading] = useState(false);
 
   const handleSearch = (e) => {
     e.preventDefault();
-
+    console.log(query);
     setLoading(true);
     GET(`/trainers/search?skills=${query}`)
       .then((response) => {
-        setQuery(response.data);
+        console.log(response);
+        setLoading(false);
         setSearchResult(response.data.searchResult);
         setIsSearching(true);
       })
       .catch((error) => {
+        setLoading(false);
         setError(error.response.data.msg);
         console.log(error.response);
       });
   };
+  // console.log(query);
+  // console.log(searchResult);
 
   return (
     <>
@@ -32,13 +35,15 @@ const SearchBar = ({ setIsSearching }) => {
           className="input-field"
           type="text"
           placeholder="Search"
-          // value={query}
+          // value={searchResult}
           onChange={(e) => setQuery(e.target.value)}
           id={query}
         />
-        <button onClick={handleSearch}>
+
+        <button onClick={handleSearch} style={{ border: "none" }}>
           <Search />
         </button>
+
         {searchResult && (
           <ul>
             {searchResult.map((trainer) => (

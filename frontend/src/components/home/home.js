@@ -38,7 +38,7 @@ const Home = () => {
           </ul>
         ))
       ) : (
-        <div></div>
+        <div>There are no trainers in database</div>
       )}
     </>
   );
