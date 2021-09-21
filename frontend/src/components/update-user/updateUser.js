@@ -3,6 +3,7 @@ import { Redirect, useLocation } from "react-router-dom";
 import { PATCH } from "../../shared/services/requests";
 import { Row, Col } from "react-bootstrap";
 import ButtonSubmit from "../../shared/components/button_submit";
+import { handleFormData } from "../../shared/helpers/formData";
 
 const UpdateUser = () => {
   const location = useLocation();
@@ -27,14 +28,6 @@ const UpdateUser = () => {
 
   if (redirect) return <Redirect to="/admin-dashboard" />;
 
-  const handleChange = (e) => {
-    const identifier = e.target.id;
-    setUser((currentUser) => {
-      return { ...currentUser, [identifier]: e.target.value };
-    });
-    // console.log(user);
-  };
-
   return (
     <>
       <h1>Update User</h1>
@@ -48,8 +41,8 @@ const UpdateUser = () => {
             type="text"
             autoComplete="off"
             // placeholder={user.username}
-            defaultValue={user.username}
-            onChange={handleChange}
+            value={user.username}
+            onChange={(e) => handleFormData(e, setUser)}
             id="username"
           />
         </div>
@@ -61,7 +54,7 @@ const UpdateUser = () => {
             type="email"
             // placeholder={user.email}
             value={user.email}
-            onChange={handleChange}
+            onChange={(e) => handleFormData(e, setUser)}
             id="email"
           />
         </div>
@@ -73,7 +66,7 @@ const UpdateUser = () => {
             type="text"
             // placeholder={user.role}
             value={user.role}
-            onChange={handleChange}
+            onChange={(e) => handleFormData(e, setUser)}
             id="role"
           />
         </div>

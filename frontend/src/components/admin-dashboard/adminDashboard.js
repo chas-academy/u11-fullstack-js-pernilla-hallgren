@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { GET, DELETE, PATCH } from "../../shared/services/requests";
+import { GET, DELETE } from "../../shared/services/requests";
 import { Link } from "react-router-dom";
 
 const AdminDashboard = ({ logoutHandler }) => {
@@ -53,6 +53,9 @@ const AdminDashboard = ({ logoutHandler }) => {
           </Link>
           <Link to="/create-user">
             <button>Create User</button>
+          </Link>
+          <Link to="/create-trainer">
+            <button>Create Trainer</button>
           </Link>
         </div>
       )}
