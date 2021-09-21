@@ -1,5 +1,9 @@
 const express = require("express");
-const { getUserById, logout } = require("../../controllers/auth.controller.js");
+const {
+  getUserById,
+  logout,
+  editUser,
+} = require("../../controllers/auth.controller.js");
 const auth = require("../../middleware/auth.middleware.js");
 
 const router = express.Router();
@@ -8,5 +12,6 @@ const router = express.Router();
 // router.post("/", login);
 router.get("/profile", auth, getUserById);
 router.get("/logout", auth, logout);
+router.patch("/profile/edit/:id", auth, editUser);
 
 module.exports = router;

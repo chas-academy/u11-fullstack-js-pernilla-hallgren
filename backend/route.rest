@@ -5,24 +5,37 @@ POST http://localhost:5000/api/users/register
 Content-Type: application/json
 
 {
-  "username": "alva",
-  "email": "alva@test.com",
+  "username": "chris",
+  "email": "chris@chris.com",
   "password": "123456",
   "role": "user"
 }
 
-### POST ADMIN login admin user
+### POST login user
 POST http://localhost:5000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "admin@admin.com",
+  "email": "chris@chris.com",
   "password": "123456"
 }
 
 ### GET auth user
 GET http://localhost:5000/api/auth/profile
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMjEzNTUxMSwiZXhwIjoxNjMyMTM5MTExfQ.v5nSVOecDdrBzdJ4NPXZ15rqlyMVS7_UWRP_dfuFy78
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDljNjhkMjkxZGYwYWE2YWE5Njk2YSIsImlhdCI6MTYzMjIyNDkwOSwiZXhwIjoxNjMyMjI4NTA5fQ.ZN4yY1Nb5bRJ5AmQmwYpADd22JsPo057vGUmbRnQ2Qc
+
+### UPATE auth user
+PATCH http://localhost:5000/api/auth/profile/edit/6149c68d291df0aa6aa9696a
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDljNjhkMjkxZGYwYWE2YWE5Njk2YSIsImlhdCI6MTYzMjIyNTMyNSwiZXhwIjoxNjMyMjI4OTI1fQ.9PCl91sz-9sZrh-tt8oQDoSH26IQOrmsHMc7eJ6nGjA
+Content-Type: application/json
+
+{
+  "username": "chris2",
+  "email": "chris2@chris.com",
+  "password": "123456",
+  "role": "user"
+}
+
 
 ### GET logout user token
 GET http://localhost:5000/api/auth/logout
