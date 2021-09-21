@@ -51,7 +51,6 @@ const searchTrainerBySkills = async (req, res) => {
       res.status(400).json({ message: "No skills found" });
     }
     res.status(200).json({ searchResult });
-    console.log();
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
