@@ -54,6 +54,9 @@ const AdminDashboard = ({ logoutHandler }) => {
           <Link to="/create-user">
             <button>Create User</button>
           </Link>
+          <Link to="/create-trainer">
+            <button>Create Trainer</button>
+          </Link>
         </div>
       )}
       {allUsers ? (

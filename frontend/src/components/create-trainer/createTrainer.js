@@ -5,7 +5,7 @@ import { Row, Col } from "react-bootstrap";
 import ButtonSubmit from "../../shared/components/button_submit";
 import ErrorMessage from "../../shared/components/error_message";
 import { handleFormData } from "../../shared/helpers/formData";
-import skills from "../../shared/helpers/skills";
+// import skills from "../../shared/helpers/skills";
 
 const CreateTrainer = () => {
   const [newTrainer, setNewTrainer] = useState({

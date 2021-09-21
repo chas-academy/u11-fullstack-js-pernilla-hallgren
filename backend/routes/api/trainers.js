@@ -12,6 +12,8 @@ const router = express.Router();
 
 router.get("/", authAdmin, getAllTrainers);
 // router.get("/search", auth, searchTrainers);
+// router.get("/review", auth, getReviewByTrainerId);
 router.post("/", authAdmin, createTrainer);
+// router.delete("/:id", authAdmin, deleteTrainer);
 
 module.exports = router;

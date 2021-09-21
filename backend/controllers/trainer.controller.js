@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const Trainer = require("../models/Trainer.model");
+// const User = require("../models/User.model");
 
 const createTrainer = (req, res) => {
   const {
@@ -25,6 +26,8 @@ const createTrainer = (req, res) => {
     skills,
   });
   newTrainer.save().then((trainer) => res.json(trainer));
+  // newTrainer.save().then((trainer) => { req.trainer.review.push(trainer.id)
+  //   res.json(trainer) });
 };
 
 const getAllTrainers = async (req, res) => {
@@ -51,6 +54,15 @@ const getAllTrainers = async (req, res) => {
 //     console.log();
 //   } catch (err) {
 //     res.status(400).json({ error: error.message });
+//   }
+// };
+
+// const getReviewByTrainerId = async (req, res) => {
+//   try {
+//     const review = await Review.findById(req.trainer.id).select("-password");
+//     res.json(review);
+//   } catch (err) {
+//     res.status(500).json({ message: err.message });
 //   }
 // };
 

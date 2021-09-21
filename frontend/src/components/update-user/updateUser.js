@@ -41,7 +41,7 @@ const UpdateUser = () => {
             type="text"
             autoComplete="off"
             // placeholder={user.username}
-            defaultValue={user.username}
+            value={user.username}
             onChange={(e) => handleFormData(e, setUser)}
             id="username"
           />

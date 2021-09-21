@@ -31,24 +31,6 @@ const Home = () => {
             <li>{trainer.role}</li>
             <li>{trainer.description}</li>
             <li>{trainer.skills.join(", ")}</li>
-            {/* 
-            <Link
-              to={{
-                pathname: "/update-user",
-                state: {
-                  user: {
-                    username: trainer.username,
-                    email: trainer.email,
-                    role: trainer.role,
-                  },
-                  id: trainer.id,
-                },
-              }}
-            >
-              <button>Edit</button>
-            </Link>
-
-            <button onClick={() => deleteUserHandler(user.id)}>Delete</button> */}
           </ul>
         ))
       ) : (

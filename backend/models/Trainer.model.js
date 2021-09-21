@@ -33,6 +33,12 @@ const TrainerSchema = new Schema({
       type: String,
     },
   ],
+  // reviews: [
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: "Review",
+  //   },
+  // ],
   // skills: [
   //   {
   //     type: mongoose.Schema.Types.ObjectId,
