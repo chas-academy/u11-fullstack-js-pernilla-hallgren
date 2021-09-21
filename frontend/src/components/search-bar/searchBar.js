@@ -21,10 +21,11 @@ const SearchBar = ({ setIsSearching }) => {
       })
       .catch((error) => {
         setLoading(false);
-        setError(error.response.data.msg);
-        console.log(error.response);
+        setError(error.response.data.message);
       });
+    setError(null);
   };
+
   // console.log(query);
   // console.log(searchResult);
 
@@ -43,6 +44,8 @@ const SearchBar = ({ setIsSearching }) => {
         <button onClick={handleSearch} style={{ border: "none" }}>
           <Search />
         </button>
+
+        {error && <div>{error}</div>}
 
         {searchResult && (
           <ul>

@@ -48,11 +48,11 @@ const searchTrainerBySkills = async (req, res) => {
     });
 
     if (!searchResult || searchResult.length === 0) {
-      res.status(400).json({ message: "No skills found" });
+      res.status(400).send({ message: "No skills found" });
     }
     res.status(200).json({ searchResult });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).send({ message: "Server issues" });
   }
 };
 
