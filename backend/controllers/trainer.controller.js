@@ -39,23 +39,22 @@ const getAllTrainers = async (req, res) => {
   }
 };
 
-// const searchTrainers = async (req, res) => {
-//   const { skills } = req.query;
+const searchTrainerBySkills = async (req, res) => {
+  const { skills } = req.query;
 
-//   try {
-//     const trainerSkills = await Trainer.find({
-//       skills: { $regex: skills, $options: "i", $exists: true, $ne: null },
-//     }).sort({ createdAt: "desc" });
+  try {
+    const searchResult = await Trainer.find({
+      skills: { $regex: skills, $options: "i", $exists: true, $ne: null },
+    });
 
-//     if (trainerSkills.length === 0) {
-//       res.status(404).json({ message: "No skills found" });
-//     }
-//     res.status(200).json({ skills });
-//     console.log();
-//   } catch (err) {
-//     res.status(400).json({ error: error.message });
-//   }
-// };
+    if (!searchResult || searchResult.length === 0) {
+      res.status(400).send({ message: "No skills found" });
+    }
+    res.status(200).json({ searchResult });
+  } catch (err) {
+    res.status(500).send({ message: "Server issues" });
+  }
+};
 
 // const getReviewByTrainerId = async (req, res) => {
 //   try {
@@ -69,5 +68,5 @@ const getAllTrainers = async (req, res) => {
 module.exports = {
   createTrainer,
   getAllTrainers,
-  // searchTrainers,
+  searchTrainerBySkills,
 };

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { GET } from "../../shared/services/requests";
-import { Link } from "react-router-dom";
+import SearchBar from "../search-bar/searchBar";
 
 const Home = () => {
   const [allTrainers, setAllTrainers] = useState([]),
+    [isSearching, setIsSearching] = useState(false),
     [error, setError] = useState(null);
 
   useEffect(() => {
+    setIsSearching(false);
     GET("trainers")
       .then((response) => {
         setAllTrainers(response.data);
@@ -20,7 +22,9 @@ const Home = () => {
   return (
     <>
       <div>HomePage</div>
-      {allTrainers ? (
+
+      <SearchBar setIsSearching={setIsSearching} />
+      {allTrainers && !isSearching ? (
         allTrainers.map((trainer) => (
           <ul key={trainer.id}>
             <li>{trainer.username}</li>

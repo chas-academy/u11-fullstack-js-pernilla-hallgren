@@ -79,5 +79,10 @@ Content-Type: application/json
 GET http://localhost:5000/api/trainers
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMjEzODAzMCwiZXhwIjoxNjMyMTQxNjMwfQ.NZ8oHbVbrgSn8-cPPJf0WRFGIQxhHZTHjyM5HvERlSw
 
+### GET search trainer skills
+GET http://localhost:5000/api/trainers/search?skills=running
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMjIyMTA1NywiZXhwIjoxNjMyMjI0NjU3fQ.saeguatVdjcgSELtLYgD92thVr3p_loJRa5ekJbXyGg
+
+
 
 
