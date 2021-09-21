@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
+import { GET } from "./shared/services/requests";
 import "./App.css";
 import AdminDashboard from "./components/admin-dashboard/adminDashboard";
 import CreateUser from "./components/create-user/createUser";
@@ -11,7 +11,7 @@ import Navbar from "./components/navbar/navbar";
 import Profile from "./components/profile/profile";
 import Register from "./components/register/register";
 import UpdateUser from "./components/update-user/updateUser";
-import { GET } from "./shared/services/requests";
+import EditProfile from "./components/edit-profile/editProfile";
 
 function App() {
   const [userToken, setUserToken] = useState(localStorage.getItem("token")),
@@ -83,6 +83,10 @@ function App() {
                   path="/profile"
                   render={(props) => <Profile {...props} />}
                 />
+                <Route
+                  path="/edit-user"
+                  render={(props) => <EditProfile {...props} />}
+                />
               </Switch>
             </>
           )}
@@ -95,16 +99,16 @@ function App() {
                   render={(props) => <AdminDashboard {...props} />}
                 />
                 <Route
-                  path="/create-trainer"
-                  render={(props) => <CreateTrainer {...props} />}
+                  path="/create-user"
+                  render={(props) => <CreateUser {...props} />}
                 />
                 <Route
                   path="/update-user"
                   render={(props) => <UpdateUser {...props} />}
                 />
                 <Route
-                  path="/create-user"
-                  render={(props) => <CreateUser {...props} />}
+                  path="/create-trainer"
+                  render={(props) => <CreateTrainer {...props} />}
                 />
               </Switch>
             </>

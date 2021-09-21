@@ -15,6 +15,7 @@ const getUserById = async (req, res) => {
 const editUser = (req, res) => {
   const id = req.params.id;
   User.findByIdAndUpdate(id, req.body)
+    .select("-password")
     .then((data) => {
       if (!data) {
         res.status(404).send({

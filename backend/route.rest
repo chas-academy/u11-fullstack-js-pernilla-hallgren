@@ -5,8 +5,8 @@ POST http://localhost:5000/api/users/register
 Content-Type: application/json
 
 {
-  "username": "chris",
-  "email": "chris@chris.com",
+  "username": "chris5",
+  "email": "chris5@chris.com",
   "password": "123456",
   "role": "user"
 }
@@ -16,23 +16,22 @@ POST http://localhost:5000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "chris@chris.com",
+  "email": "chris2@chris.com",
   "password": "123456"
 }
 
 ### GET auth user
 GET http://localhost:5000/api/auth/profile
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDljNjhkMjkxZGYwYWE2YWE5Njk2YSIsImlhdCI6MTYzMjIyNDkwOSwiZXhwIjoxNjMyMjI4NTA5fQ.ZN4yY1Nb5bRJ5AmQmwYpADd22JsPo057vGUmbRnQ2Qc
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDljYTdkNGQyZTg1ODEzMzg3NTBkYyIsImlhdCI6MTYzMjIyNTkxOCwiZXhwIjoxNjMyMjI5NTE4fQ.MJgrN5pKBuvzNkXfscOwMsvjqiZfuBnFF52HKM_1DdU
 
 ### UPATE auth user
-PATCH http://localhost:5000/api/auth/profile/edit/6149c68d291df0aa6aa9696a
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDljNjhkMjkxZGYwYWE2YWE5Njk2YSIsImlhdCI6MTYzMjIyNTMyNSwiZXhwIjoxNjMyMjI4OTI1fQ.9PCl91sz-9sZrh-tt8oQDoSH26IQOrmsHMc7eJ6nGjA
+PATCH http://localhost:5000/api/auth/profile/edit/6149ca7d4d2e8581338750dc
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDljYTdkNGQyZTg1ODEzMzg3NTBkYyIsImlhdCI6MTYzMjIyNTkxOCwiZXhwIjoxNjMyMjI5NTE4fQ.MJgrN5pKBuvzNkXfscOwMsvjqiZfuBnFF52HKM_1DdU
 Content-Type: application/json
 
 {
-  "username": "chris2",
-  "email": "chris2@chris.com",
-  "password": "123456",
+  "username": "chris10",
+  "email": "chris10@chris.com",
   "role": "user"
 }
 

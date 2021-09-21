@@ -19,6 +19,20 @@ const UserSchema = new Schema({
     type: String,
     default: "user",
   },
+  firstName: {
+    type: String,
+  },
+  lastName: {
+    type: String,
+  },
+  avatar: {
+    type: String,
+  },
+  skills: [
+    {
+      type: String,
+    },
+  ],
   register_date: {
     type: Date,
     default: Date.now,
