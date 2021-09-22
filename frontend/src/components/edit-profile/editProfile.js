@@ -20,7 +20,7 @@ const EditProfile = () => {
 
     const id = location.state.id;
 
-    PATCH("admin/users", id, { ...user })
+    PATCH("auth/profile/edit", id, { ...user })
       .then((response) => {
         console.log(response.data);
         setRedirect(true);
@@ -31,6 +31,7 @@ const EditProfile = () => {
   };
 
   console.log(user);
+
   if (redirect) return <Redirect to="/profile" />;
 
   return (
@@ -98,9 +99,9 @@ const EditProfile = () => {
               className="input-field"
               type="text"
               placeholder="Add Image"
-              value={user.avatar}
+              value={user.image}
               onChange={(e) => handleFormData(e, setUser)}
-              id="avatar"
+              id="image"
             />
           </div>
 

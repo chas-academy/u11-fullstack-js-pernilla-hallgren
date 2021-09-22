@@ -14,7 +14,7 @@ const CreateTrainer = () => {
       firstName: "",
       lastName: "",
       role: "",
-      avatar: "",
+      image: "",
       description: "",
       skills: "",
     }),
@@ -110,7 +110,7 @@ const CreateTrainer = () => {
               placeholder="Add Image"
               value={newTrainer.image}
               onChange={(e) => handleFormData(e, setNewTrainer)}
-              id="avatar"
+              id="image"
             />
           </div>
 

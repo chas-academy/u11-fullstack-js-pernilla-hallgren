@@ -12,18 +12,14 @@ const ReviewSchema = new Schema({
     min: [1, "Rating cannot be below 1.0"],
     max: [5, "Rating cannot be above 5.0"],
   },
-  author: {
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-    },
-    username: String,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
   },
-
-  // trainer: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "trainer",
-  // },
+  trainer: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Trainer",
+  },
   createdAt: {
     type: Date,
     default: Date.now,
@@ -36,4 +32,4 @@ ReviewSchema.method("toJSON", function () {
   return object;
 });
 
-module.exports = Review = mongoose.model("review", ReviewSchema);
+module.exports = Review = mongoose.model("Review", ReviewSchema);

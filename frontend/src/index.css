@@ -9,15 +9,6 @@
   color: #cecfd3;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-  background-color: #353d4f;
-  color: #cecfd3;
-}
-
 /* HEADER STYLES */
 .header-one {
   font-size: 34px;

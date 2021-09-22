@@ -6,14 +6,18 @@ const {
   createTrainer,
   getAllTrainers,
   searchTrainerBySkills,
+  getReviewByTrainerId,
+  createReview,
 } = require("../../controllers/trainer.controller");
 
 const router = express.Router();
 
 router.get("/", authAdmin, getAllTrainers);
 router.get("/search", auth, searchTrainerBySkills);
-// router.get("/review", auth, getReviewByTrainerId);
+router.get("/:id", auth, getReviewByTrainerId);
+router.post("/:id/reviews", auth, createReview);
 router.post("/", authAdmin, createTrainer);
+
 // router.delete("/:id", authAdmin, deleteTrainer);
 
 module.exports = router;

@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const Trainer = require("../models/Trainer.model");
+const Review = require("../models/Review.model");
 // const User = require("../models/User.model");
 
 const createTrainer = (req, res) => {
@@ -10,7 +11,7 @@ const createTrainer = (req, res) => {
     firstName,
     lastName,
     role,
-    avatar,
+    image,
     description,
     skills,
   } = req.body;
@@ -21,7 +22,7 @@ const createTrainer = (req, res) => {
     firstName,
     lastName,
     role,
-    avatar,
+    image,
     description,
     skills,
   });
@@ -48,7 +49,7 @@ const searchTrainerBySkills = async (req, res) => {
     });
 
     if (!searchResult || searchResult.length === 0) {
-      res.status(400).send({ message: "No skills found" });
+      return res.status(400).send({ message: "No skills found" });
     }
     res.status(200).json({ searchResult });
   } catch (err) {
@@ -56,17 +57,38 @@ const searchTrainerBySkills = async (req, res) => {
   }
 };
 
-// const getReviewByTrainerId = async (req, res) => {
-//   try {
-//     const review = await Review.findById(req.trainer.id).select("-password");
-//     res.json(review);
-//   } catch (err) {
-//     res.status(500).json({ message: err.message });
-//   }
-// };
+const createReview = async (req, res) => {
+  console.log("hello");
+  const { text, rating } = req.body;
+  console.log(req.body);
+  try {
+    const newReview = await new Review({
+      text,
+      rating,
+      user: req.user.id,
+      trainer: req.params.id,
+    });
+    newReview.save().then((review) => res.json(review));
+  } catch (err) {
+    res.status(500).send({ message: "Server issues" });
+  }
+};
+
+const getReviewByTrainerId = async (req, res) => {
+  try {
+    const review = await Review.find({ trainer: req.params.id })
+      .populate("trainer")
+      .populate("user");
+    res.json(review);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
 
 module.exports = {
   createTrainer,
   getAllTrainers,
   searchTrainerBySkills,
+  getReviewByTrainerId,
+  createReview,
 };

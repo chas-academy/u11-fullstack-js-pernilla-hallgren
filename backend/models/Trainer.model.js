@@ -22,7 +22,7 @@ const TrainerSchema = new Schema({
     type: String,
     default: "user",
   },
-  avatar: {
+  image: {
     type: String,
   },
   description: {

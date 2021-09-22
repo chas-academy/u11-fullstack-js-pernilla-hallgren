@@ -81,10 +81,11 @@ function App() {
                 <Route path="/home" exact component={Home} />
                 <Route
                   path="/profile"
+                  exact
                   render={(props) => <Profile {...props} />}
                 />
                 <Route
-                  path="/edit-user"
+                  path="/profile/edit"
                   render={(props) => <EditProfile {...props} />}
                 />
               </Switch>

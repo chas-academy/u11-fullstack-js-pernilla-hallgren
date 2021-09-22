@@ -65,7 +65,7 @@ const editUser = async (req, res) => {
   User.findByIdAndUpdate(id, req.body)
     .then((data) => {
       if (!data) {
-        res.status(404).send({
+        return res.status(404).send({
           message: `Cannot update user with id=${id}. User cannot be found`,
         });
         // res.json(data);
@@ -87,7 +87,7 @@ const deleteUser = async (req, res) => {
   User.findByIdAndRemove(id)
     .then((data) => {
       if (!data) {
-        res.status(404).send({
+        return res.status(404).send({
           message: `Cannot delete user with id=${id}. User cannot be found`,
         });
       } else {

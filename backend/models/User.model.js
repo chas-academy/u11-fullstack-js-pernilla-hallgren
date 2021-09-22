@@ -25,7 +25,7 @@ const UserSchema = new Schema({
   lastName: {
     type: String,
   },
-  avatar: {
+  image: {
     type: String,
   },
   skills: [

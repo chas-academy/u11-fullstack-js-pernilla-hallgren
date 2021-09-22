@@ -31,7 +31,7 @@ const Home = () => {
             <li>{trainer.email}</li>
             <li>{trainer.firstName}</li>
             <li>{trainer.lastName}</li>
-            <li>{trainer.avatar}</li>
+            <li>{trainer.image}</li>
             <li>{trainer.role}</li>
             <li>{trainer.description}</li>
             <li>{trainer.skills.join(", ")}</li>

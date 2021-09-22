@@ -31,11 +31,11 @@ const Profile = () => {
           <p>Firstname: {authUser.firstName}</p>
           <p>Lastname: {authUser.lastName}</p>
           <p>Skills: {authUser.skills}</p>
-          <p>Avatar: {authUser.avatar}</p>
+          <img src={authUser.image} alt="profile img"></img>
 
           <Link
             to={{
-              pathname: "/edit-user",
+              pathname: "/profile/edit",
               state: {
                 authUser: {
                   username: authUser.username,
