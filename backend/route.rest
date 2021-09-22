@@ -89,7 +89,7 @@ Content-Type: application/json
 
 ### POST review on trainer
 POST http://localhost:5000/api/trainers/614884cec56e841728e460e2/reviews
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDQyZjc5ODc0NjFiOGQxYmJkNjViYyIsImlhdCI6MTYzMjI5OTE5NiwiZXhwIjoxNjMyMzAyNzk2fQ.yxSHvQILhBrcDq1kR904kUn9NG3VZEXke8JzXOrdiyU
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDQyZjc5ODc0NjFiOGQxYmJkNjViYyIsImlhdCI6MTYzMjMxMjkwOCwiZXhwIjoxNjMyMzE2NTA4fQ.YACohsFWEqPCeqaGGxUNHS5O1foHRE1ZQLkxHnc5kZw
 Content-Type: application/json
 
 {
@@ -97,13 +97,18 @@ Content-Type: application/json
   "rating": 4
 }
 
+### GET all reviews
+GET http://localhost:5000/api/trainers/614884cec56e841728e460e2
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDQyZjc5ODc0NjFiOGQxYmJkNjViYyIsImlhdCI6MTYzMjMxMjkwOCwiZXhwIjoxNjMyMzE2NTA4fQ.YACohsFWEqPCeqaGGxUNHS5O1foHRE1ZQLkxHnc5kZw
+
+
 ### GET all trainers
 GET http://localhost:5000/api/trainers
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDQyZjc5ODc0NjFiOGQxYmJkNjViYyIsImlhdCI6MTYzMjI5OTE5NiwiZXhwIjoxNjMyMzAyNzk2fQ.yxSHvQILhBrcDq1kR904kUn9NG3VZEXke8JzXOrdiyU
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDQyZjc5ODc0NjFiOGQxYmJkNjViYyIsImlhdCI6MTYzMjMxMjkwOCwiZXhwIjoxNjMyMzE2NTA4fQ.YACohsFWEqPCeqaGGxUNHS5O1foHRE1ZQLkxHnc5kZw
 
 ### GET search trainer skills
 GET http://localhost:5000/api/trainers/search?skills=running
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMjIyMTA1NywiZXhwIjoxNjMyMjI0NjU3fQ.saeguatVdjcgSELtLYgD92thVr3p_loJRa5ekJbXyGg
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDQyZjc5ODc0NjFiOGQxYmJkNjViYyIsImlhdCI6MTYzMjMwOTAzMCwiZXhwIjoxNjMyMzEyNjMwfQ.owPpAmCjpk9rXW22CAbbGCpETmEWLH85i5_LRaOIvoY
 
 
 

@@ -12,6 +12,8 @@ import Profile from "./components/profile/profile";
 import Register from "./components/register/register";
 import UpdateUser from "./components/update-user/updateUser";
 import EditProfile from "./components/edit-profile/editProfile";
+import TrainerProfile from "./components/trainer-profile/trainerProfile";
+import Review from "./components/review/review";
 
 function App() {
   const [userToken, setUserToken] = useState(localStorage.getItem("token")),
@@ -87,6 +89,15 @@ function App() {
                 <Route
                   path="/profile/edit"
                   render={(props) => <EditProfile {...props} />}
+                />
+                <Route
+                  path="/trainer-profile"
+                  exact
+                  render={(props) => <TrainerProfile {...props} />}
+                />
+                <Route
+                  path="/trainer-profile/review"
+                  render={(props) => <Review {...props} />}
                 />
               </Switch>
             </>

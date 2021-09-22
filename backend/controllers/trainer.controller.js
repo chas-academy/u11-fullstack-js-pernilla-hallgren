@@ -78,7 +78,7 @@ const getReviewByTrainerId = async (req, res) => {
   try {
     const review = await Review.find({ trainer: req.params.id })
       .populate("trainer")
-      .populate("user");
+      .populate("user", "username");
     res.json(review);
   } catch (err) {
     res.status(500).json({ message: err.message });
