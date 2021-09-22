@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { POST } from "../../shared/services/requests";
 import { Row, Col } from "react-bootstrap";
 import ButtonSubmit from "../../shared/components/button_submit";
@@ -168,16 +168,17 @@ const CreateTrainer = () => {
                 </option>
               ))}
             </select> */}
+            <Row>
+              <Col>
+                <Link to="/home">
+                  <ButtonSubmit name="Add Trainer" id="register-btn" />
+                </Link>
+              </Col>
+            </Row>
           </div>
 
           <div className="form-group">
-            <div className="form-group mt-5">
-              <Row>
-                <Col>
-                  <ButtonSubmit name="Add Trainer" id="register-btn" />
-                </Col>
-              </Row>
-            </div>
+            <div className="form-group mt-5"></div>
           </div>
         </form>
       </div>

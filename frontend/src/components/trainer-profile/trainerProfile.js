@@ -15,10 +15,23 @@ const TrainerProfile = () => {
     [redirect, setRedirect] = useState(false),
     [error, setError] = useState(null);
 
-  console.log(id);
+  console.log(trainer);
 
   const imgCardStyle = {
-    width: "15rem",
+    border: "none",
+    height: "20rem",
+    width: "20rem",
+    overflow: "hidden",
+    background: "none",
+    borderRadius: "50%",
+  };
+
+  const cardStyle = {
+    // width: "200px",
+    // height: "200px",
+
+    width: "20rem",
+    height: "auto",
     border: "none",
     background: "none",
   };
@@ -28,13 +41,15 @@ const TrainerProfile = () => {
       <div className="container justify-content-center">
         <div className="row mt-5">
           <div className="col d-flex justify-content-center text-center mb-1">
-            <Card style={imgCardStyle}>
-              <Card.Img
-                style={{ borderRadius: "120px" }}
-                variant="top"
-                src={userImg}
-                alt="user profile"
-              />
+            <Card style={cardStyle}>
+              <div style={imgCardStyle}>
+                <Card.Img
+                  style={{ marginTop: "-2rem" }}
+                  variant="top"
+                  src={trainer.image || userImg}
+                  alt="user profile"
+                />
+              </div>
               <Card.Body>
                 <Card.Title
                   style={{
@@ -43,8 +58,8 @@ const TrainerProfile = () => {
                     marginTop: "8px",
                   }}
                 >
-                  {/* {trainer.firstname.toUpperCase()}{" "}
-                  {trainer.lastname.toUpperCase()} */}
+                  {trainer.firstname.toUpperCase()}{" "}
+                  {trainer.lastname.toUpperCase()}
                 </Card.Title>
                 <div>{/* <ReviewStar /> */}</div>
                 <Link
@@ -59,12 +74,9 @@ const TrainerProfile = () => {
                     },
                   }}
                 >
-                  <button>Reviews</button>
+                  {/* <button>Reviews</button> */}
 
-                  {/* <ButtonSmall
-                    name="0 Reviews"
-                    link="/trainer-profile/review"
-                  /> */}
+                  <ButtonSmall name="Reviews" />
                 </Link>
               </Card.Body>
             </Card>

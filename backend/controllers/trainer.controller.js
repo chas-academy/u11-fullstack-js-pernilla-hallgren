@@ -85,10 +85,32 @@ const getReviewByTrainerId = async (req, res) => {
   }
 };
 
+const deleteReview = async (req, res) => {
+  const id = req.params.id;
+  Review.findByIdAndRemove(id)
+    .then((data) => {
+      if (!data) {
+        return res.status(404).send({
+          message: `Cannot delete review. Review cannot be found`,
+        });
+      } else {
+        res.send({
+          message: "Review was deleted successfully!",
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Could not delete review",
+      });
+    });
+};
+
 module.exports = {
   createTrainer,
   getAllTrainers,
   searchTrainerBySkills,
   getReviewByTrainerId,
   createReview,
+  deleteReview,
 };

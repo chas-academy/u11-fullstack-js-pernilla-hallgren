@@ -99,7 +99,11 @@ Content-Type: application/json
 
 ### GET all reviews
 GET http://localhost:5000/api/trainers/614884cec56e841728e460e2
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDQyZjc5ODc0NjFiOGQxYmJkNjViYyIsImlhdCI6MTYzMjMxMjkwOCwiZXhwIjoxNjMyMzE2NTA4fQ.YACohsFWEqPCeqaGGxUNHS5O1foHRE1ZQLkxHnc5kZw
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDQyZjc5ODc0NjFiOGQxYmJkNjViYyIsImlhdCI6MTYzMjMyNjUwNSwiZXhwIjoxNjMyMzMwMTA1fQ.UqDjkxSADnv0aDhbOXHgin024ZFepPv9dJvghuzNflo
+
+### DELETE review
+DELETE http://localhost:5000/api/trainers/614b238abf61200b820a6502
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDQyZjc5ODc0NjFiOGQxYmJkNjViYyIsImlhdCI6MTYzMjMyNjUwNSwiZXhwIjoxNjMyMzMwMTA1fQ.UqDjkxSADnv0aDhbOXHgin024ZFepPv9dJvghuzNflo
 
 
 ### GET all trainers

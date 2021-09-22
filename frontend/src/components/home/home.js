@@ -25,7 +25,6 @@ const Home = () => {
   return (
     <>
       <div>HomePage</div>
-
       <SearchBar setIsSearching={setIsSearching} />
       {allTrainers && !isSearching ? (
         allTrainers.map((trainer) => (
@@ -39,6 +38,7 @@ const Home = () => {
                     firstname: trainer.firstName,
                     lastname: trainer.lastName,
                     description: trainer.description,
+                    image: trainer.image,
                     skills: trainer.skills,
                   },
                   id: trainer.id,

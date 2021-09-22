@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import ButtonSubmit from "../../shared/components/button_submit";
 import { Redirect, useLocation } from "react-router-dom";
-import { GET, POST } from "../../shared/services/requests";
+import { DELETE, GET, POST } from "../../shared/services/requests";
 import { handleFormData } from "../../shared/helpers/formData";
 // import ReviewStar from "../../shared/components/review_star";
 
@@ -41,6 +41,7 @@ const Review = () => {
       .then((response) => {
         console.log(response);
         setReviews(response.data);
+        // setReviews((reviews) => [...reviews, reviews]);
       })
       .catch((error) => {
         setError(error.response.data.msg);
@@ -48,12 +49,24 @@ const Review = () => {
       });
   }, []);
 
+  const deleteUserHandler = (id) => {
+    DELETE(`trainers/${id}`)
+      .then((response) => {
+        console.log(response.data);
+        setReviews((currentState) => [
+          ...currentState.filter((review) => review.id !== id),
+        ]);
+      })
+      .catch((error) => {
+        console.log(error.response.data.msg);
+      });
+  };
+
   console.log(reviews);
 
   const imgCardStyle = {
     border: "none",
     background: "none",
-    // boxShadow: '3px 3px 4px rgba(0, 0, 0, 0.25)'
   };
 
   const textareaStyle = {
@@ -96,51 +109,31 @@ const Review = () => {
             </Card>
           </div>
         </div>
-        {reviews ? (
-          reviews.map((review) => (
-            <div key={review.id}>
-              {review.text} {review.user.username}
-            </div>
-          ))
-        ) : (
-          <div>No reviews</div>
-        )}
         <div className="row mt-5">
-          <div className="col-md justify-content-center mb-1">
-            <Card style={imgCardStyle}>
-              <Card.Body>
-                <h2 className="header-two">Rebecca</h2>
-                <div className="mb-2">{/* <ReviewStar /> */}</div>
-                <div>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Eligendi quibusdam enim voluptatibus consequuntur aut eum.
-                  Ratione sed tempore vel porro ut nostrum molestiae! Numquam
-                  repudiandae dolor nisi deleniti incidunt repellendus?
-                </div>
-                <br />
-                <div>2022-05-04</div>
-                <hr />
-              </Card.Body>
-            </Card>
-          </div>
-
-          <div className="col-md justify-content-center mb-1">
-            <Card style={imgCardStyle}>
-              <Card.Body>
-                <h2 className="header-two">Magnus</h2>
-                <div className="mb-2">{/* <ReviewStar /> */}</div>
-                <div>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Eligendi quibusdam enim voluptatibus consequuntur aut eum.
-                  Ratione sed tempore vel porro ut nostrum molestiae! Numquam
-                  repudiandae dolor nisi deleniti incidunt repellendus?
-                </div>
-                <br />
-                <div>2022-05-04</div>
-                <hr />
-              </Card.Body>
-            </Card>
-          </div>
+          {reviews ? (
+            reviews.map((review) => (
+              <div
+                key={review.id}
+                className="col-md justify-content-center mb-1"
+              >
+                <Card style={imgCardStyle}>
+                  <Card.Body>
+                    <h2 className="header-two">{review.user.username}</h2>
+                    <div className="mb-2">{/* <ReviewStar /> */}</div>
+                    <div>{review.text}</div>
+                    <br />
+                    <div>{review.createdAt}</div>
+                    <hr />
+                  </Card.Body>
+                </Card>
+                <button onClick={() => deleteUserHandler(review.id)}>
+                  Delete Review
+                </button>
+              </div>
+            ))
+          ) : (
+            <div>No reviews</div>
+          )}
         </div>
       </div>
     </>
