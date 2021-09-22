@@ -4,7 +4,8 @@ import ButtonSubmit from "../../shared/components/button_submit";
 import { Redirect, useLocation } from "react-router-dom";
 import { DELETE, GET, POST } from "../../shared/services/requests";
 import { handleFormData } from "../../shared/helpers/formData";
-// import ReviewStar from "../../shared/components/review_star";
+import ReviewStar from "../../shared/components/review_star";
+import ButtonSmall from "../../shared/components/button_small";
 
 const Review = () => {
   const location = useLocation();
@@ -77,6 +78,10 @@ const Review = () => {
     marginTop: "10px",
   };
 
+  const log = (value) => {
+    console.log(value);
+  };
+
   return (
     <>
       <div className="container">
@@ -85,7 +90,15 @@ const Review = () => {
             <Card style={imgCardStyle}>
               <h2>Review {trainer.username}</h2>
               <Card.Body>
-                <div>{/* <ReviewStar /> */}</div>
+                <div>
+                  <ReviewStar onChange={log} />
+                </div>
+                <input
+                  type="text"
+                  id="rating"
+                  onChange={(e) => handleFormData(e, setNewReview)}
+                />
+                Set rating
                 <form onSubmit={handleSubmit}>
                   <div className="form-group">
                     <textarea
@@ -96,12 +109,6 @@ const Review = () => {
                       id="text"
                       onChange={(e) => handleFormData(e, setNewReview)}
                     ></textarea>
-                    <input
-                      type="text"
-                      id="rating"
-                      onChange={(e) => handleFormData(e, setNewReview)}
-                    />
-                    Set rating
                   </div>
                   <ButtonSubmit name="Send" id="login-btn" />
                 </form>
@@ -119,16 +126,17 @@ const Review = () => {
                 <Card style={imgCardStyle}>
                   <Card.Body>
                     <h2 className="header-two">{review.user.username}</h2>
-                    <div className="mb-2">{/* <ReviewStar /> */}</div>
+                    <div className="mb-2">Rating: {review.rating}</div>
                     <div>{review.text}</div>
                     <br />
                     <div>{review.createdAt}</div>
+                    <ButtonSmall
+                      name="Delete Review"
+                      onClick={() => deleteUserHandler(review.id)}
+                    ></ButtonSmall>
                     <hr />
                   </Card.Body>
                 </Card>
-                <button onClick={() => deleteUserHandler(review.id)}>
-                  Delete Review
-                </button>
               </div>
             ))
           ) : (

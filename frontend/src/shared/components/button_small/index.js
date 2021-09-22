@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-const ButtonSmall = ({ name, link }) => {
+const ButtonSmall = ({ name }) => {
   const btnStyle = {
     borderRadius: "20px",
     border: "0",
