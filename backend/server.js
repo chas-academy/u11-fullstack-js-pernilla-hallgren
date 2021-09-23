@@ -7,19 +7,16 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Max-Age", "1800");
-  res.setHeader("Access-Control-Allow-Headers", "content-type");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "PUT, POST, GET, DELETE, PATCH, OPTIONS"
-  );
-  next();
-});
+app.use(
+  cors({
+    origin: "*",
+    methods: "PUT,POST,GET,DELETE,PATCH,OPTIONS",
+    allowedHeaders: "x-auth-token, Content-Type",
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 
