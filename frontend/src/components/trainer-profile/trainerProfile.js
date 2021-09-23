@@ -27,9 +27,6 @@ const TrainerProfile = () => {
   };
 
   const cardStyle = {
-    // width: "200px",
-    // height: "200px",
-
     width: "20rem",
     height: "auto",
     border: "none",
@@ -38,7 +35,7 @@ const TrainerProfile = () => {
 
   return (
     <>
-      <div className="container justify-content-center">
+      <div className="container">
         <div className="row mt-5">
           <div className="col d-flex justify-content-center text-center mb-1">
             <Card style={cardStyle}>
@@ -69,8 +66,6 @@ const TrainerProfile = () => {
                     },
                   }}
                 >
-                  {/* <button>Reviews</button> */}
-
                   <ButtonSmall name="Reviews" />
                 </Link>
               </Card.Body>

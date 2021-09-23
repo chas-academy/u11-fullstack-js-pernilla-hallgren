@@ -7,17 +7,18 @@ import CreateUser from "./components/create-user/createUser";
 import CreateTrainer from "./components/create-trainer/createTrainer";
 import Home from "./components/home/home";
 import Login from "./components/login/login";
-import Navbar from "./components/navbar/navbar";
+import Navbar from "./components/menu/menu";
 import Profile from "./components/profile/profile";
 import Register from "./components/register/register";
 import UpdateUser from "./components/update-user/updateUser";
 import EditProfile from "./components/edit-profile/editProfile";
 import TrainerProfile from "./components/trainer-profile/trainerProfile";
 import Review from "./components/review/review";
+import { Nav } from "react-bootstrap";
+import Menu from "./components/menu/menu";
 
 function App() {
   const [userToken, setUserToken] = useState(localStorage.getItem("token")),
-    // [authUser, setAuthUser] = useState(localStorage.getItem("authUser")),
     [isAdmin, setIsAdmin] = useState(localStorage.getItem("admin")),
     [loading, setLoading] = useState(false);
 
@@ -45,10 +46,6 @@ function App() {
         window.location.reload();
       });
   };
-
-  // const getUserToken = (e) => setUserToken(e);
-
-  console.log(isAdmin);
 
   return (
     <>
@@ -81,7 +78,7 @@ function App() {
 
           {userToken && (
             <>
-              <Navbar isAdmin={isAdmin} logoutHandler={logout} />
+              <Menu isAdmin={isAdmin} logoutHandler={logout} />
               <Switch>
                 <Route path="/home" exact component={Home} />
                 <Route

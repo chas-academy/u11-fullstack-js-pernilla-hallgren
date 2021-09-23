@@ -178,6 +178,14 @@ li {
   display: none;
 } */
 
+/* .navlinks > a {
+  color: #0eb933;
+}
+
+.navlinks > a:hover {
+  text-decoration: underline;
+  color: #d81717;
+} */
 .navbar-toggler-icon {
   background: #283041;
   /* color: #FF9187; */

@@ -24,7 +24,6 @@ const Home = () => {
 
   return (
     <>
-      <div>HomePage</div>
       <SearchBar setIsSearching={setIsSearching} />
       {allTrainers && !isSearching ? (
         allTrainers.map((trainer) => (
