@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const Trainer = require("../models/Trainer.model");
+const Review = require("../models/Review.model");
 // const User = require("../models/User.model");
 
 const createTrainer = (req, res) => {
@@ -10,29 +11,32 @@ const createTrainer = (req, res) => {
     firstName,
     lastName,
     role,
-    avatar,
+    image,
     description,
     skills,
   } = req.body;
-
-  const newTrainer = new Trainer({
-    username,
-    email,
-    firstName,
-    lastName,
-    role,
-    avatar,
-    description,
-    skills,
-  });
-  newTrainer.save().then((trainer) => res.json(trainer));
-  // newTrainer.save().then((trainer) => { req.trainer.review.push(trainer.id)
-  //   res.json(trainer) });
+  try {
+    const newTrainer = new Trainer({
+      username,
+      email,
+      firstName,
+      lastName,
+      role,
+      image,
+      description,
+      skills,
+    });
+    newTrainer.save().then((trainer) => res.json(trainer));
+    // newTrainer.save().then((trainer) => { req.trainer.review.push(trainer.id)
+    //   res.json(trainer) });
+  } catch (err) {
+    res.status(500).send({ message: "Server issues" });
+  }
 };
 
 const getAllTrainers = async (req, res) => {
   try {
-    const trainers = await Trainer.find();
+    const trainers = await Trainer.find().sort({ register_date: "desc" });
     res.json(trainers);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -48,7 +52,7 @@ const searchTrainerBySkills = async (req, res) => {
     });
 
     if (!searchResult || searchResult.length === 0) {
-      res.status(400).send({ message: "No skills found" });
+      return res.status(400).send({ message: "No skills found" });
     }
     res.status(200).json({ searchResult });
   } catch (err) {
@@ -56,17 +60,81 @@ const searchTrainerBySkills = async (req, res) => {
   }
 };
 
-// const getReviewByTrainerId = async (req, res) => {
-//   try {
-//     const review = await Review.findById(req.trainer.id).select("-password");
-//     res.json(review);
-//   } catch (err) {
-//     res.status(500).json({ message: err.message });
-//   }
+const createReview = async (req, res) => {
+  const { text, rating } = req.body;
+  try {
+    const newReview = await new Review({
+      text,
+      rating,
+      user: req.user.id,
+      trainer: req.params.id,
+    });
+    newReview.save().then(async (review) => {
+      await review.populate("user", "username");
+      // console.log({ review: review.populate("user", "username") });
+      res.json(review);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ message: "Server issues" });
+  }
+};
+
+const getReviewByTrainerId = async (req, res) => {
+  try {
+    const review = await Review.find({ trainer: req.params.id })
+      .sort({ createdAt: "desc" })
+      .populate("trainer")
+      .populate("user", "username");
+    res.json(review);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+const deleteReview = async (req, res) => {
+  try {
+    const review = await Review.findById(req.params.id);
+    if (req.user.id != review.user._id.toString())
+      return res
+        .status(401)
+        .send({ message: "Not authorized for this action" });
+    await review.delete();
+    res.send("Successfully deleted");
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Could not delete review",
+    });
+  }
+};
+
+// const deleteReview = async (req, res) => {
+//   const id = req.params.id;
+//   await Review.findByIdAndRemove(id)
+//     .then((data) => {
+//       if (!data) {
+//         return res.status(404).send({
+//           message: `Cannot delete review. Review cannot be found`,
+//         });
+//       } else {
+//         res.send({
+//           message: "Review was deleted successfully!",
+//         });
+//       }
+//     })
+//     .catch((err) => {
+//       res.status(500).send({
+//         message: "Could not delete review",
+//       });
+//     });
 // };
 
 module.exports = {
   createTrainer,
   getAllTrainers,
   searchTrainerBySkills,
+  getReviewByTrainerId,
+  createReview,
+  deleteReview,
 };
