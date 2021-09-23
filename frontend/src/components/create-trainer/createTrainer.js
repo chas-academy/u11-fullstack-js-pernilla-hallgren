@@ -31,7 +31,7 @@ const CreateTrainer = () => {
         setLoading(false);
         setRedirect(true);
         setNewTrainer(data.data);
-        console.log(data.data);
+        // console.log(data.data);
       })
       .catch((error) => {
         setLoading(false);
@@ -168,17 +168,18 @@ const CreateTrainer = () => {
                 </option>
               ))}
             </select> */}
-            <Row>
-              <Col>
-                <Link to="/home">
-                  <ButtonSubmit name="Add Trainer" id="register-btn" />
-                </Link>
-              </Col>
-            </Row>
           </div>
 
           <div className="form-group">
-            <div className="form-group mt-5"></div>
+            <div className="form-group mt-5">
+              <Row>
+                <Col>
+                  {/* <Link to="/home"> */}
+                  <ButtonSubmit name="Add Trainer" id="register-btn" />
+                  {/* </Link> */}
+                </Col>
+              </Row>
+            </div>
           </div>
         </form>
       </div>

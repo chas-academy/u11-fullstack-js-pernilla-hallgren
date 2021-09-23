@@ -73,18 +73,18 @@ Content-Type: application/json
 
 ### POST trainer
 POST http://localhost:5000/api/trainers
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMjI5NzU0MCwiZXhwIjoxNjMyMzAxMTQwfQ.wQrqKHwXql5Z7swIxrKsm7Oz-kOnDAdBwZqToyp-DGc
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMjM3NjY1MywiZXhwIjoxNjMyMzgwMjUzfQ._xivzhIWBF1vKLdayDB0_TjRSNYxAKiyhWPkgcFME54
 Content-Type: application/json
 
 {
-  "username": "test",
-  "email": "stest@test.com",
-  "firstName": "test",
-  "lastName": "andersson",
+  "username": "Sara",
+  "email": "sara@sara.com",
+  "firstName": "Sara",
+  "lastName": "Lund",
   "role": "user",
-  "avatar": "bild",
-  "description": "Hej",
-  "skills": ["HIIT", "cardio", "flex"]
+  "image": "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+  "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora autem odit ullam, nihil a nesciunt ut cum veniam? Excepturi corporis enim ea consectetur id voluptas hic error quidem, saepe ad.",
+  "skills": ["HIIT", "Cardio", "Flex", "Yoga", "Running"]
 }
 
 ### POST review on trainer
@@ -99,11 +99,11 @@ Content-Type: application/json
 
 ### GET all reviews
 GET http://localhost:5000/api/trainers/614884cec56e841728e460e2
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDQyZjc5ODc0NjFiOGQxYmJkNjViYyIsImlhdCI6MTYzMjMyNjUwNSwiZXhwIjoxNjMyMzMwMTA1fQ.UqDjkxSADnv0aDhbOXHgin024ZFepPv9dJvghuzNflo
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDQyZjc5ODc0NjFiOGQxYmJkNjViYyIsImlhdCI6MTYzMjM4NDQ5MCwiZXhwIjoxNjMyMzg4MDkwfQ.R93umPvEOo4DoxPbeotBdjkTnZQdvV5xoTT0i6OdLFI
 
 ### DELETE review
-DELETE http://localhost:5000/api/trainers/614b238abf61200b820a6502
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDQyZjc5ODc0NjFiOGQxYmJkNjViYyIsImlhdCI6MTYzMjMyNjUwNSwiZXhwIjoxNjMyMzMwMTA1fQ.UqDjkxSADnv0aDhbOXHgin024ZFepPv9dJvghuzNflo
+DELETE http://localhost:5000/api/trainers/614b2418bf61200b820a6507
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDQyZjc5ODc0NjFiOGQxYmJkNjViYyIsImlhdCI6MTYzMjM4NDQ5MCwiZXhwIjoxNjMyMzg4MDkwfQ.R93umPvEOo4DoxPbeotBdjkTnZQdvV5xoTT0i6OdLFI
 
 
 ### GET all trainers

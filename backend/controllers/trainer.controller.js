@@ -15,25 +15,28 @@ const createTrainer = (req, res) => {
     description,
     skills,
   } = req.body;
-
-  const newTrainer = new Trainer({
-    username,
-    email,
-    firstName,
-    lastName,
-    role,
-    image,
-    description,
-    skills,
-  });
-  newTrainer.save().then((trainer) => res.json(trainer));
-  // newTrainer.save().then((trainer) => { req.trainer.review.push(trainer.id)
-  //   res.json(trainer) });
+  try {
+    const newTrainer = new Trainer({
+      username,
+      email,
+      firstName,
+      lastName,
+      role,
+      image,
+      description,
+      skills,
+    });
+    newTrainer.save().then((trainer) => res.json(trainer));
+    // newTrainer.save().then((trainer) => { req.trainer.review.push(trainer.id)
+    //   res.json(trainer) });
+  } catch (err) {
+    res.status(500).send({ message: "Server issues" });
+  }
 };
 
 const getAllTrainers = async (req, res) => {
   try {
-    const trainers = await Trainer.find();
+    const trainers = await Trainer.find().sort({ register_date: "desc" });
     res.json(trainers);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -58,9 +61,7 @@ const searchTrainerBySkills = async (req, res) => {
 };
 
 const createReview = async (req, res) => {
-  console.log("hello");
   const { text, rating } = req.body;
-  console.log(req.body);
   try {
     const newReview = await new Review({
       text,
@@ -68,8 +69,13 @@ const createReview = async (req, res) => {
       user: req.user.id,
       trainer: req.params.id,
     });
-    newReview.save().then((review) => res.json(review));
+    newReview.save().then(async (review) => {
+      await review.populate("user", "username");
+      // console.log({ review: review.populate("user", "username") });
+      res.json(review);
+    });
   } catch (err) {
+    console.log(err);
     res.status(500).send({ message: "Server issues" });
   }
 };
@@ -77,6 +83,7 @@ const createReview = async (req, res) => {
 const getReviewByTrainerId = async (req, res) => {
   try {
     const review = await Review.find({ trainer: req.params.id })
+      .sort({ createdAt: "desc" })
       .populate("trainer")
       .populate("user", "username");
     res.json(review);
@@ -86,25 +93,42 @@ const getReviewByTrainerId = async (req, res) => {
 };
 
 const deleteReview = async (req, res) => {
-  const id = req.params.id;
-  Review.findByIdAndRemove(id)
-    .then((data) => {
-      if (!data) {
-        return res.status(404).send({
-          message: `Cannot delete review. Review cannot be found`,
-        });
-      } else {
-        res.send({
-          message: "Review was deleted successfully!",
-        });
-      }
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: "Could not delete review",
-      });
+  try {
+    const review = await Review.findById(req.params.id);
+    if (req.user.id != review.user._id.toString())
+      return res
+        .status(401)
+        .send({ message: "Not authorized for this action" });
+    await review.delete();
+    res.send("Successfully deleted");
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Could not delete review",
     });
+  }
 };
+
+// const deleteReview = async (req, res) => {
+//   const id = req.params.id;
+//   await Review.findByIdAndRemove(id)
+//     .then((data) => {
+//       if (!data) {
+//         return res.status(404).send({
+//           message: `Cannot delete review. Review cannot be found`,
+//         });
+//       } else {
+//         res.send({
+//           message: "Review was deleted successfully!",
+//         });
+//       }
+//     })
+//     .catch((err) => {
+//       res.status(500).send({
+//         message: "Could not delete review",
+//       });
+//     });
+// };
 
 module.exports = {
   createTrainer,

@@ -33,17 +33,22 @@ const Home = () => {
               to={{
                 pathname: "/trainer-profile",
                 state: {
-                  trainer: {
-                    username: trainer.username,
-                    firstname: trainer.firstName,
-                    lastname: trainer.lastName,
-                    description: trainer.description,
-                    image: trainer.image,
-                    skills: trainer.skills,
-                  },
-                  id: trainer.id,
+                  trainer,
                 },
               }}
+              //   pathname: "/trainer-profile",
+              //   state: {
+              //     trainer: {
+              //       username: trainer.username,
+              //       firstname: trainer.firstName,
+              //       lastname: trainer.lastName,
+              //       description: trainer.description,
+              //       image: trainer.image,
+              //       skills: trainer.skills,
+              //     },
+              //     id: trainer.id,
+              //   },
+              // }}
             >
               <li>{trainer.username}</li>
             </Link>

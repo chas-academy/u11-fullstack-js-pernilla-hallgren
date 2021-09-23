@@ -17,6 +17,7 @@ import Review from "./components/review/review";
 
 function App() {
   const [userToken, setUserToken] = useState(localStorage.getItem("token")),
+    // [authUser, setAuthUser] = useState(localStorage.getItem("authUser")),
     [isAdmin, setIsAdmin] = useState(localStorage.getItem("admin")),
     [loading, setLoading] = useState(false);
 
@@ -30,6 +31,7 @@ function App() {
 
         localStorage.removeItem("token");
         localStorage.removeItem("admin");
+        localStorage.removeItem("user");
         window.location.reload();
       })
       .catch((err) => {
@@ -39,6 +41,7 @@ function App() {
 
         localStorage.removeItem("token");
         localStorage.removeItem("admin");
+        localStorage.removeItem("user");
         window.location.reload();
       });
   };

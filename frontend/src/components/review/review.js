@@ -7,10 +7,10 @@ import { handleFormData } from "../../shared/helpers/formData";
 import ReviewStar from "../../shared/components/review_star";
 import ButtonSmall from "../../shared/components/button_small";
 
-const Review = () => {
+const Review = ({ setAuthUser }) => {
   const location = useLocation();
-  const id = location.state.id;
-  console.log(id);
+  // const id = location.state.trainer.id;
+  console.log(setAuthUser);
   const [trainer, setTrainer] = useState(location.state.trainer),
     [newReview, setNewReview] = useState({ text: "", rating: Number }),
     [reviews, setReviews] = useState([]),
@@ -24,8 +24,9 @@ const Review = () => {
     e.preventDefault();
 
     setLoading(true);
-    POST(`trainers/${id}/reviews`, newReview)
+    POST(`trainers/${trainer.id}/reviews`, newReview)
       .then((data) => {
+        setReviews((currentState) => [...currentState.concat(data.data)]); // concat return the new array (.push the lenght of the array)
         setLoading(false);
         setRedirect(true);
         setNewReview(data.data);
@@ -38,11 +39,10 @@ const Review = () => {
   };
 
   useEffect(() => {
-    GET(`trainers/${id}`)
+    GET(`trainers/${trainer.id}`)
       .then((response) => {
         console.log(response);
         setReviews(response.data);
-        // setReviews((reviews) => [...reviews, reviews]);
       })
       .catch((error) => {
         setError(error.response.data.msg);
@@ -50,8 +50,8 @@ const Review = () => {
       });
   }, []);
 
-  const deleteUserHandler = (id) => {
-    DELETE(`trainers/${id}`)
+  const deleteReviewHandler = (id) => {
+    DELETE("trainers", id)
       .then((response) => {
         console.log(response.data);
         setReviews((currentState) => [
@@ -130,10 +130,12 @@ const Review = () => {
                     <div>{review.text}</div>
                     <br />
                     <div>{review.createdAt}</div>
-                    <ButtonSmall
-                      name="Delete Review"
-                      onClick={() => deleteUserHandler(review.id)}
-                    ></ButtonSmall>
+                    {review.user._id ===
+                      JSON.parse(localStorage.getItem("user"))?.id && (
+                      <button onClick={() => deleteReviewHandler(review.id)}>
+                        Delete
+                      </button>
+                    )}
                     <hr />
                   </Card.Body>
                 </Card>

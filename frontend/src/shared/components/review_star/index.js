@@ -19,7 +19,7 @@ const ReviewStar = ({ onChange }) => {
       {[1, 2, 3, 4, 5].map((value) => (
         <Star
           key={value}
-          filled={value <= rating}
+          filled={(value <= rating).toString()}
           onClick={() => changeRating(value)}
           // className={index <= (hover || rating) ? "on" : "off"}
           // onMouseLeave={() => setHover(rating)}

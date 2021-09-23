@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const TrainerProfile = () => {
   const location = useLocation();
-  const id = location.state.id;
+  // const id = location.state.trainer.id;
   const [trainer, setTrainer] = useState(location.state.trainer),
     [redirect, setRedirect] = useState(false),
     [error, setError] = useState(null);
@@ -58,19 +58,14 @@ const TrainerProfile = () => {
                     marginTop: "8px",
                   }}
                 >
-                  {trainer.firstname.toUpperCase()}{" "}
-                  {trainer.lastname.toUpperCase()}
+                  {trainer.firstName.toUpperCase()}{" "}
+                  {trainer.lastName.toUpperCase()}
                 </Card.Title>
-                <div>{/* <ReviewStar /> */}</div>
                 <Link
                   to={{
                     pathname: "/trainer-profile/review",
                     state: {
-                      trainer: {
-                        username: trainer.username,
-                        email: trainer.email,
-                      },
-                      id: id,
+                      trainer,
                     },
                   }}
                 >
