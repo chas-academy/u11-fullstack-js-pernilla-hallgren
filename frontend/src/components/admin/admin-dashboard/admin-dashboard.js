@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { GET, DELETE } from "../../../shared/services/requests";
 import { Link } from "react-router-dom";
-import ErrorMessage from "../../../shared/components/error_message";
+import ErrorMessage from "../../../shared/components/error-message";
 
 const AdminDashboard = ({ logoutHandler }) => {
   const [adminUser, setAdminUser] = useState([]),

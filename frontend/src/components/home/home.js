@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import ErrorMessage from "../../shared/components/error_message";
+import ErrorMessage from "../../shared/components/error-message";
 import { GET } from "../../shared/services/requests";
-import SearchBar from "../search-bar/searchBar";
+import SearchBar from "../trainer/search-bar/searchBar";
 
 const Home = () => {
   const [allTrainers, setAllTrainers] = useState([]),

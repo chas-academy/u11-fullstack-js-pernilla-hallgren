@@ -12,7 +12,7 @@ import Register from "./components/register/register";
 import UpdateUser from "./components/admin/update-user/update-user";
 import EditProfile from "./components/auth/edit-profile/edit-profile";
 import TrainerProfile from "./components/trainer/trainer-profile/trainerProfile";
-import Review from "./components/review/review";
+import Review from "./components/trainer/review/review";
 import Menu from "./components/menu/menu";
 
 function App() {

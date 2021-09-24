@@ -3,8 +3,8 @@ import { POST } from "../../shared/services/requests";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
-import ButtonSubmit from "../../shared/components/button_submit";
-import ErrorMessage from "../../shared/components/error_message";
+import ButtonSubmit from "../../shared/components/button-submit";
+import ErrorMessage from "../../shared/components/error-message";
 
 const Register = ({ getToken }) => {
   const [username, setUsername] = useState(""),

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Redirect, useLocation } from "react-router-dom";
 import { Card } from "react-bootstrap";
-import ButtonSmall from "../../../shared/components/button_small";
-import ButtonSubmit from "../../../shared/components/button_submit";
+import ButtonSmall from "../../../shared/components/button-small";
+import ButtonSubmit from "../../../shared/components/button-submit";
 // import Skills from "../../shared/components/skills";
 // import ReviewStar from "../../shared/components/review_star";
 import userImg from "../../../shared/assets/images/user-img.png";

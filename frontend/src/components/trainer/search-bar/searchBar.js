@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Search } from "react-bootstrap-icons";
 import { GET } from "../../../shared/services/requests";
-import ErrorMessage from "../../../shared/components/error_message";
+import ErrorMessage from "../../../shared/components/error-message";
 
 const SearchBar = ({ setIsSearching }) => {
   const [query, setQuery] = useState(""),

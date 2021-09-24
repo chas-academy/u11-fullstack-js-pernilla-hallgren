@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { POST } from "../../shared/services/requests";
 import { Link, Redirect } from "react-router-dom";
-import ErrorMessage from "../../shared/components/error_message";
-import ButtonSubmit from "../../shared/components/button_submit";
+import ErrorMessage from "../../shared/components/error-message";
+import ButtonSubmit from "../../shared/components/button-submit";
 import { Col, Row } from "react-bootstrap";
 
 const Login = ({ getToken, setAdmin, setAuthUser }) => {
