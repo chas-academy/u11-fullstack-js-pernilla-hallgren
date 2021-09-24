@@ -52,8 +52,16 @@ const TrainerProfile = () => {
                     marginTop: "8px",
                   }}
                 >
-                  {trainer.firstName.toUpperCase()}{" "}
-                  {trainer.lastName.toUpperCase()}
+                  <div className="mb-3">
+                    {trainer.firstName.toUpperCase()}{" "}
+                    {trainer.lastName.toUpperCase()}
+                  </div>
+                  <a
+                    href={`mailto:${trainer.email}`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    Contact
+                  </a>
                 </Card.Title>
                 <Link
                   to={{
