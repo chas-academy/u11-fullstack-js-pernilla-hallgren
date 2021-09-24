@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Redirect, useLocation } from "react-router-dom";
-import { PATCH } from "../../shared/services/requests";
+import { PATCH } from "../../../shared/services/requests";
 import { Row, Col } from "react-bootstrap";
-import ButtonSubmit from "../../shared/components/button_submit";
-import { handleFormData } from "../../shared/helpers/formData";
-import ErrorMessage from "../../shared/components/error_message";
+import ButtonSubmit from "../../../shared/components/button_submit";
+import { handleFormData } from "../../../shared/helpers/formData";
+import ErrorMessage from "../../../shared/components/error_message";
 
 const EditProfile = () => {
   const location = useLocation();

@@ -88,7 +88,7 @@ const Login = ({ getToken, setAdmin, setAuthUser }) => {
                   </h3>
                 </Link>
 
-                <ButtonSubmit name="Register" id="register-btn" />
+                <ButtonSubmit name="Login" id="register-btn" />
               </Col>
             </Row>
           </div>

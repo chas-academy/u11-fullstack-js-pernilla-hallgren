@@ -2,19 +2,17 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { GET } from "./shared/services/requests";
 import "./App.css";
-import AdminDashboard from "./components/admin-dashboard/adminDashboard";
-import CreateUser from "./components/create-user/createUser";
-import CreateTrainer from "./components/create-trainer/createTrainer";
+import AdminDashboard from "./components/admin/admin-dashboard/admin-dashboard";
+import CreateUser from "./components/admin/create-user/create-user";
+import CreateTrainer from "./components/admin/create-trainer/create-trainer";
 import Home from "./components/home/home";
 import Login from "./components/login/login";
-import Navbar from "./components/menu/menu";
-import Profile from "./components/profile/profile";
+import Profile from "./components/auth/profile/profile";
 import Register from "./components/register/register";
-import UpdateUser from "./components/update-user/updateUser";
-import EditProfile from "./components/edit-profile/editProfile";
-import TrainerProfile from "./components/trainer-profile/trainerProfile";
+import UpdateUser from "./components/admin/update-user/update-user";
+import EditProfile from "./components/auth/edit-profile/edit-profile";
+import TrainerProfile from "./components/trainer/trainer-profile/trainerProfile";
 import Review from "./components/review/review";
-import { Nav } from "react-bootstrap";
 import Menu from "./components/menu/menu";
 
 function App() {
