@@ -3,7 +3,7 @@ import { POST } from "../../shared/services/requests";
 import { Redirect } from "react-router-dom";
 import ErrorMessage from "../../shared/components/error_message";
 
-const Login = () => {
+const Login = ({ getToken, setAdmin, setAuthUser }) => {
   const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [error, setError] = useState(null),
@@ -19,12 +19,18 @@ const Login = () => {
     };
 
     setLoading(true);
-    POST("auth/login", data)
+    POST("users/login", data)
       .then((data) => {
+        console.log(data);
         setLoading(false);
         setRedirect(true);
-        localStorage.setItem("token", JSON.stringify(data.data.token));
-        console.log(data.data);
+        localStorage.setItem("token", data.data.token);
+        localStorage.setItem("user", JSON.stringify(data.data.user));
+        getToken(localStorage.getItem("token"));
+        if (data.data.user.role === "admin") {
+          setAdmin(data.data.user.role);
+          localStorage.setItem("admin", data.data.user.role);
+        }
       })
       .catch((error) => {
         setLoading(false);
@@ -35,12 +41,8 @@ const Login = () => {
     setPassword("");
   };
 
-  // useEffect(() => {
-  //   GET("/user").then(response => {
-  //   })
-  // }, []);
-
-  if (redirect) return <Redirect to="/" />;
+  // redirect later to homepage
+  if (redirect) return <Redirect to="/profile" />;
 
   const btnStyle = {
     borderRadius: "20px",

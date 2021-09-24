@@ -1,28 +1,119 @@
 GET http://localhost:5000/api/users
 
 ### POST - Register User
-POST http://localhost:5000/api/register
+POST http://localhost:5000/api/users/register
 Content-Type: application/json
 
 {
-  "username": "p",
-  "email": "per@test.com",
-  "password": "perni"
+  "username": "admin",
+  "email": "admin@admin.com",
+  "password": "123456",
+  "role": "user"
 }
 
 ### POST login user
-POST http://localhost:5000/api/auth/login
+POST http://localhost:5000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "pernilla@test.com",
-  "password": "pernilla"
+  "email": "chris3@test.com",
+  "password": "123456"
 }
 
 ### GET auth user
-GET http://localhost:5000/api/auth/user
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxM2IyOTk3MWFiNDljOTY3YWRmNTllZCIsImlhdCI6MTYzMTI3NDkxOCwiZXhwIjoxNjMxMjc4NTE4fQ.iYTcFwKyPSE27GV_kogZw-6qcUx69maDvZjIalxzZp4
-### GET logout user token
+GET http://localhost:5000/api/auth/profile
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDQyZjc5ODc0NjFiOGQxYmJkNjViYyIsImlhdCI6MTYzMjI5NjMwNSwiZXhwIjoxNjMyMjk5OTA1fQ.SKvXkVFsmxiIq1ySe1lnHTjSBGyR-Oo9TuTpwDkOtR0
 
+### UPATE auth user
+PATCH http://localhost:5000/api/auth/profile/edit/6149ca7d4d2e8581338750dc
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDljYTdkNGQyZTg1ODEzMzg3NTBkYyIsImlhdCI6MTYzMjIyNTkxOCwiZXhwIjoxNjMyMjI5NTE4fQ.MJgrN5pKBuvzNkXfscOwMsvjqiZfuBnFF52HKM_1DdU
+Content-Type: application/json
+
+{
+  "username": "chris10",
+  "email": "chris10@chris.com",
+  "role": "user"
+}
+
+
+### GET logout user token
 GET http://localhost:5000/api/auth/logout
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxM2IyOTk3MWFiNDljOTY3YWRmNTllZCIsImlhdCI6MTYzMTI3NDkxOCwiZXhwIjoxNjMxMjc4NTE4fQ.iYTcFwKyPSE27GV_kogZw-6qcUx69maDvZjIalxzZp4
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTc4NzQ0NSwiZXhwIjoxNjMxNzkxMDQ1fQ.6rAezo5LeLPS2Q2Ea4X4oG9O_P7yBawMies0BkFVcOI
+
+### GET ADMIN all user
+GET http://localhost:5000/api/admin
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMjEzNTUxMSwiZXhwIjoxNjMyMTM5MTExfQ.v5nSVOecDdrBzdJ4NPXZ15rqlyMVS7_UWRP_dfuFy78
+### DELETE ADMIN user :id
+DELETE http://localhost:5000/api/admin/delete-user/614319b1886b9067814c21aa
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTc4NzQ0NSwiZXhwIjoxNjMxNzkxMDQ1fQ.6rAezo5LeLPS2Q2Ea4X4oG9O_P7yBawMies0BkFVcOI
+
+### PATCH ADMIN user update
+PATCH http://localhost:5000/api/admin/update-user/61442f8887461b8d1bbd65c1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMTg2MTQ4MiwiZXhwIjoxNjMxODY1MDgyfQ.TP6nw8VNqN9raurRtgXI0Q9hBIaOFzoGsIUH6n01EQY
+Content-Type: application/json
+
+{
+  "username": "alva",
+  "email": "alva@test.com",
+  "password": "123456",
+  "role": "user"
+}
+
+### POST ADMIN create new user
+POST http://localhost:5000/api/admin/users
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMjI5NzU0MCwiZXhwIjoxNjMyMzAxMTQwfQ.wQrqKHwXql5Z7swIxrKsm7Oz-kOnDAdBwZqToyp-DGc
+Content-Type: application/json
+
+{
+  "username": "emma",
+  "email": "emma@test.com",
+  "password": "123456",
+  "role": "user"
+}
+
+### POST trainer
+POST http://localhost:5000/api/trainers
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDMwNWVjOWYxNGM1NWNhMGY0MWMxMyIsImlhdCI6MTYzMjM3NjY1MywiZXhwIjoxNjMyMzgwMjUzfQ._xivzhIWBF1vKLdayDB0_TjRSNYxAKiyhWPkgcFME54
+Content-Type: application/json
+
+{
+  "username": "Sara",
+  "email": "sara@sara.com",
+  "firstName": "Sara",
+  "lastName": "Lund",
+  "role": "user",
+  "image": "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+  "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora autem odit ullam, nihil a nesciunt ut cum veniam? Excepturi corporis enim ea consectetur id voluptas hic error quidem, saepe ad.",
+  "skills": ["HIIT", "Cardio", "Flex", "Yoga", "Running"]
+}
+
+### POST review on trainer
+POST http://localhost:5000/api/trainers/614884cec56e841728e460e2/reviews
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDQyZjc5ODc0NjFiOGQxYmJkNjViYyIsImlhdCI6MTYzMjMxMjkwOCwiZXhwIjoxNjMyMzE2NTA4fQ.YACohsFWEqPCeqaGGxUNHS5O1foHRE1ZQLkxHnc5kZw
+Content-Type: application/json
+
+{
+  "text": "Super duper bra",
+  "rating": 4
+}
+
+### GET all reviews
+GET http://localhost:5000/api/trainers/614884cec56e841728e460e2
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDQyZjc5ODc0NjFiOGQxYmJkNjViYyIsImlhdCI6MTYzMjM4NDQ5MCwiZXhwIjoxNjMyMzg4MDkwfQ.R93umPvEOo4DoxPbeotBdjkTnZQdvV5xoTT0i6OdLFI
+
+### DELETE review
+DELETE http://localhost:5000/api/trainers/614b2418bf61200b820a6507
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDQyZjc5ODc0NjFiOGQxYmJkNjViYyIsImlhdCI6MTYzMjM4NDQ5MCwiZXhwIjoxNjMyMzg4MDkwfQ.R93umPvEOo4DoxPbeotBdjkTnZQdvV5xoTT0i6OdLFI
+
+
+### GET all trainers
+GET http://localhost:5000/api/trainers
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDQyZjc5ODc0NjFiOGQxYmJkNjViYyIsImlhdCI6MTYzMjMxMjkwOCwiZXhwIjoxNjMyMzE2NTA4fQ.YACohsFWEqPCeqaGGxUNHS5O1foHRE1ZQLkxHnc5kZw
+
+### GET search trainer skills
+GET http://localhost:5000/api/trainers/search?skills=running
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNDQyZjc5ODc0NjFiOGQxYmJkNjViYyIsImlhdCI6MTYzMjMwOTAzMCwiZXhwIjoxNjMyMzEyNjMwfQ.owPpAmCjpk9rXW22CAbbGCpETmEWLH85i5_LRaOIvoY
+
+
+
+

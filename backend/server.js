@@ -7,7 +7,16 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
+
+app.use(
+  cors({
+    origin: "*",
+    methods: "PUT,POST,GET,DELETE,PATCH,OPTIONS",
+    allowedHeaders: "x-auth-token, Content-Type",
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 
@@ -23,8 +32,7 @@ mongoose
   .catch((err) => console.log(err));
 
 // Routes
-app.use("/api/register", require("./routes/api/users"));
-app.use("/api/auth/login", require("./routes/api/auth"));
+app.use("/api", require("./routes/"));
 
 const port = process.env.PORT || 5000;
 

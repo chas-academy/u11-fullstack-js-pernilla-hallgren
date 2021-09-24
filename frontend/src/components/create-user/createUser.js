@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { POST } from "../../shared/services/requests";
 import { Redirect } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { POST } from "../../shared/services/requests";
 import { Row, Col } from "react-bootstrap";
 import ButtonSubmit from "../../shared/components/button_submit";
+import { Link } from "react-router-dom";
 import ErrorMessage from "../../shared/components/error_message";
 
-const Register = ({ getToken }) => {
+const CreateUser = () => {
   const [username, setUsername] = useState(""),
     [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
+    [role, setRole] = useState(""),
     [newUser, setNewUser] = useState({}),
     [error, setError] = useState(null),
     [redirect, setRedirect] = useState(false),
@@ -22,16 +23,15 @@ const Register = ({ getToken }) => {
       username: username,
       email: email,
       password: password,
+      role: role,
     };
 
     setLoading(true);
-    POST("users/register", data)
+    POST("admin/users", data)
       .then((data) => {
         setLoading(false);
         setRedirect(true);
         setNewUser(data.data);
-        localStorage.setItem("token", data.data.token);
-        getToken(localStorage.getItem("token"));
         console.log(data.data);
       })
       .catch((error) => {
@@ -44,20 +44,13 @@ const Register = ({ getToken }) => {
     setPassword("");
   };
 
-  if (redirect) return <Redirect to="/profile" />;
-
-  console.log(newUser);
+  if (redirect) return <Redirect to="/admin-dashboard" />;
 
   return (
     <>
-      {loading && <h4>Your are being registered...</h4>}
-
       <div className="container justify-content-center text-center">
         <div className="mb-5">
-          <h1 className="header-one">REGISTER HERE</h1>
-          <h3 className="header-three">
-            Please fill in your details to register an account
-          </h3>
+          <h1 className="header-one">Create New User</h1>
         </div>
 
         <form onSubmit={handleSubmit} className="mb-5 mt-4">
@@ -85,6 +78,18 @@ const Register = ({ getToken }) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               id="register-email"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="role"></label>
+            <input
+              className="input-field"
+              type="text"
+              placeholder="Add Role"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              id="role"
             />
           </div>
 
@@ -119,4 +124,4 @@ const Register = ({ getToken }) => {
   );
 };
 
-export default Register;
+export default CreateUser;

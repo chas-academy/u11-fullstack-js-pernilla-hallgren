@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
+// Create schema
+const TrainerSchema = new Schema({
   username: {
     type: String,
     required: true,
@@ -11,21 +12,20 @@ const UserSchema = new Schema({
     required: true,
     unique: true,
   },
-  password: {
-    type: String,
-    required: true,
-  },
-  role: {
-    type: String,
-    default: "user",
-  },
   firstName: {
     type: String,
   },
   lastName: {
     type: String,
   },
+  role: {
+    type: String,
+    default: "user",
+  },
   image: {
+    type: String,
+  },
+  description: {
     type: String,
   },
   skills: [
@@ -33,16 +33,28 @@ const UserSchema = new Schema({
       type: String,
     },
   ],
+  // reviews: [
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: "Review",
+  //   },
+  // ],
+  // skills: [
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: "Skill",
+  //   },
+  // ],
   register_date: {
     type: Date,
     default: Date.now,
   },
 });
-// Will delete the _id which is automatically generated
-UserSchema.method("toJSON", function () {
+
+TrainerSchema.method("toJSON", function () {
   const { __v, _id, ...object } = this.toObject();
   object.id = _id;
   return object;
 });
 
-module.exports = User = mongoose.model("User", UserSchema);
+module.exports = Trainer = mongoose.model("Trainer", TrainerSchema);

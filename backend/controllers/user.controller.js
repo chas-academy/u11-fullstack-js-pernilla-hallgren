@@ -8,8 +8,7 @@ const User = require("../models/User.model");
 const jwtSecret = process.env.JWT_SECRET;
 
 const register = (req, res) => {
-  // res.send("register");
-  const { username, email, password } = req.body;
+  const { username, email, password, role } = req.body;
 
   if (!username || !email || !password) {
     return res.status(400).json({ msg: "Please enter all fields" });
@@ -39,6 +38,7 @@ const register = (req, res) => {
       username,
       email,
       password,
+      role,
     });
     bcrypt.genSalt(10, (err, salt) => {
       bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -58,6 +58,7 @@ const register = (req, res) => {
                   id: user.id,
                   username: user.username,
                   email: user.email,
+                  role: user.role,
                 },
               });
             }
@@ -67,17 +68,42 @@ const register = (req, res) => {
     });
   });
 };
-// Add this to auth instead
-// const getAllUsers = async (req, res) => {
-//   try {
-//     const users = await User.find();
-//     res.json(users);
-//   } catch (err) {
-//     res.status(500).json({ message: err.message });
-//   }
-// };
+
+const login = (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ msg: "Please enter all fields" });
+  }
+
+  User.findOne({ email }).then((user) => {
+    if (!user) return res.status(400).json({ msg: "User does not exist" });
+
+    bcrypt.compare(password, user.password).then((isMatch) => {
+      if (!isMatch) return res.status(400).json({ msg: "Invalid credentials" });
+      jwt.sign(
+        { id: user.id },
+        jwtSecret,
+        { expiresIn: 3600 },
+        (err, token) => {
+          if (err) throw err;
+          res.json({
+            token,
+            user: {
+              id: user.id,
+              username: user.username,
+              email: user.email,
+              role: user.role,
+            },
+          });
+        }
+      );
+    });
+  });
+};
 
 module.exports = {
   register,
+  login,
   // getAllUsers,
 };
