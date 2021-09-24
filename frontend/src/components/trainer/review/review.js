@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
-import ButtonSubmit from "../../shared/components/button_submit";
+import ButtonSubmit from "../../../shared/components/button_submit";
 import { Redirect, useLocation } from "react-router-dom";
-import { DELETE, GET, POST } from "../../shared/services/requests";
-import { handleFormData } from "../../shared/helpers/formData";
-import ReviewStar from "../../shared/components/review_star";
-import ButtonSmall from "../../shared/components/button_small";
-import ErrorMessage from "../../shared/components/error_message";
+import { DELETE, GET, POST } from "../../../shared/services/requests";
+import { handleFormData } from "../../../shared/helpers/formData";
+import ReviewStar from "../../../shared/components/review_star";
+import ButtonSmall from "../../../shared/components/button_small";
+import ErrorMessage from "../../../shared/components/error_message";
 
 const Review = ({ setAuthUser }) => {
   const location = useLocation();

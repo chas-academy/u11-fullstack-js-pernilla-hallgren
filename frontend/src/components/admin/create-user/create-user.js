@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { POST } from "../../shared/services/requests";
+import { POST } from "../../../shared/services/requests";
 import { Row, Col } from "react-bootstrap";
-import ButtonSubmit from "../../shared/components/button_submit";
+import ButtonSubmit from "../../../shared/components/button_submit";
 import { Link } from "react-router-dom";
-import ErrorMessage from "../../shared/components/error_message";
+import ErrorMessage from "../../../shared/components/error_message";
 
 const CreateUser = () => {
   const [username, setUsername] = useState(""),
@@ -108,13 +108,7 @@ const CreateUser = () => {
             <div className="form-group mt-5">
               <Row>
                 <Col>
-                  <Link to="/login" className="link">
-                    <h3 className="header-three">
-                      Do you have an account? Login
-                    </h3>
-                  </Link>
-
-                  <ButtonSubmit name="Register" id="register-btn" />
+                  <ButtonSubmit name="Create User" id="register-btn" />
                 </Col>
               </Row>
             </div>
