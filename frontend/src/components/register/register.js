@@ -11,8 +11,8 @@ const Register = ({ getToken }) => {
     [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [newUser, setNewUser] = useState({}),
-    [error, setError] = useState(null),
     [redirect, setRedirect] = useState(false),
+    [error, setError] = useState(null),
     [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
@@ -24,15 +24,13 @@ const Register = ({ getToken }) => {
       password: password,
     };
 
-    setLoading(true);
     POST("users/register", data)
       .then((data) => {
-        setLoading(false);
+        setLoading(true);
         setRedirect(true);
         setNewUser(data.data);
         localStorage.setItem("token", data.data.token);
         getToken(localStorage.getItem("token"));
-        console.log(data.data);
       })
       .catch((error) => {
         setLoading(false);
@@ -46,12 +44,8 @@ const Register = ({ getToken }) => {
 
   if (redirect) return <Redirect to="/profile" />;
 
-  console.log(newUser);
-
   return (
     <>
-      {loading && <h4>Your are being registered...</h4>}
-
       <div className="container justify-content-center text-center">
         <div className="mb-5">
           <h1 className="header-one">REGISTER HERE</h1>
@@ -59,6 +53,8 @@ const Register = ({ getToken }) => {
             Please fill in your details to register an account
           </h3>
         </div>
+
+        {loading && !error && <p>Your are being registered...</p>}
 
         <form onSubmit={handleSubmit} className="mb-5 mt-4">
           <div className="form-group">

@@ -6,6 +6,7 @@ import { DELETE, GET, POST } from "../../shared/services/requests";
 import { handleFormData } from "../../shared/helpers/formData";
 import ReviewStar from "../../shared/components/review_star";
 import ButtonSmall from "../../shared/components/button_small";
+import ErrorMessage from "../../shared/components/error_message";
 
 const Review = ({ setAuthUser }) => {
   const location = useLocation();
@@ -14,9 +15,12 @@ const Review = ({ setAuthUser }) => {
   const [trainer, setTrainer] = useState(location.state.trainer),
     [newReview, setNewReview] = useState({ text: "", rating: Number }),
     [reviews, setReviews] = useState([]),
-    [redirect, setRedirect] = useState(false),
     [loading, setLoading] = useState(false),
-    [error, setError] = useState(null);
+    [loadingReviews, setLoadingReviews] = useState(false),
+    [loadingDelete, setLoadingDelete] = useState(false),
+    [success, setSuccess] = useState(null),
+    [error, setError] = useState(null),
+    [errorDelete, setErrorDelete] = useState(null);
 
   console.log(trainer);
 
@@ -28,7 +32,6 @@ const Review = ({ setAuthUser }) => {
       .then((data) => {
         setReviews((currentState) => [...currentState.concat(data.data)]); // concat return the new array (.push the lenght of the array)
         setLoading(false);
-        setRedirect(true);
         setNewReview(data.data);
         console.log(data.data);
       })
@@ -41,25 +44,27 @@ const Review = ({ setAuthUser }) => {
   useEffect(() => {
     GET(`trainers/${trainer.id}`)
       .then((response) => {
-        console.log(response);
         setReviews(response.data);
       })
       .catch((error) => {
         setError(error.response.data.msg);
-        console.log(error.response);
       });
   }, []);
 
   const deleteReviewHandler = (id) => {
+    setLoadingDelete(true);
     DELETE("trainers", id)
       .then((response) => {
-        console.log(response.data);
+        setLoadingDelete(false);
+        setSuccess(response.data.msg);
         setReviews((currentState) => [
           ...currentState.filter((review) => review.id !== id),
         ]);
       })
       .catch((error) => {
-        console.log(error.response.data.msg);
+        setErrorDelete(error.response.data.msg);
+        setLoadingDelete(false);
+        setSuccess(null);
       });
   };
 
@@ -87,6 +92,9 @@ const Review = ({ setAuthUser }) => {
       <div className="container">
         <div className="row mt-5">
           <div className="col text-center">
+            {loading && !error && <p>Review page is loading...</p>}
+            {error && <ErrorMessage message={error} />}
+
             <Card style={imgCardStyle}>
               <h2>Review {trainer.username}</h2>
               <Card.Body>
@@ -139,6 +147,7 @@ const Review = ({ setAuthUser }) => {
                     <hr />
                   </Card.Body>
                 </Card>
+                {success && <p>{success}</p>}
               </div>
             ))
           ) : (

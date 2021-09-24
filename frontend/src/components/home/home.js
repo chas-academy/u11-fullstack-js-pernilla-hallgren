@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ErrorMessage from "../../shared/components/error_message";
 import { GET } from "../../shared/services/requests";
 import SearchBar from "../search-bar/searchBar";
 
 const Home = () => {
   const [allTrainers, setAllTrainers] = useState([]),
     [isSearching, setIsSearching] = useState(false),
+    [loading, setLoading] = useState(false),
     [error, setError] = useState(null);
 
   useEffect(() => {
+    setLoading(true);
     setIsSearching(false);
     GET("trainers")
       .then((response) => {
         setAllTrainers(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         setError(error.response.data.msg);
-        console.log(error.response);
+        setLoading(false);
       });
   }, []);
 
@@ -24,6 +28,10 @@ const Home = () => {
 
   return (
     <>
+      {error && <ErrorMessage message={error} />}
+
+      {loading && !error && <p>Page is loading...</p>}
+
       <SearchBar setIsSearching={setIsSearching} />
       {allTrainers && !isSearching ? (
         allTrainers.map((trainer) => (

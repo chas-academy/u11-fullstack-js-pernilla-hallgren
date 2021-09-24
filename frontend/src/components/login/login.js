@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { POST } from "../../shared/services/requests";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import ErrorMessage from "../../shared/components/error_message";
+import ButtonSubmit from "../../shared/components/button_submit";
+import { Col, Row } from "react-bootstrap";
 
 const Login = ({ getToken, setAdmin, setAuthUser }) => {
   const [email, setEmail] = useState(""),
@@ -18,11 +20,9 @@ const Login = ({ getToken, setAdmin, setAuthUser }) => {
       password: password,
     };
 
-    setLoading(true);
     POST("users/login", data)
       .then((data) => {
-        console.log(data);
-        setLoading(false);
+        setLoading(true);
         setRedirect(true);
         localStorage.setItem("token", data.data.token);
         localStorage.setItem("user", JSON.stringify(data.data.user));
@@ -41,24 +41,17 @@ const Login = ({ getToken, setAdmin, setAuthUser }) => {
     setPassword("");
   };
 
-  // redirect later to homepage
   if (redirect) return <Redirect to="/profile" />;
-
-  const btnStyle = {
-    borderRadius: "20px",
-    border: "0",
-    color: "white",
-  };
 
   return (
     <>
-      {loading && <h4>Your are being registered...</h4>}
-
       <div className="container justify-content-center text-center">
         <div className="mb-5">
           <h2>LOGIN NOW</h2>
           <p>Please login to continue</p>
         </div>
+
+        {loading && !error && <p>Your are being logged in...</p>}
 
         <form onSubmit={handleSubmit} className="mb-5 mt-4">
           {error && <ErrorMessage message={error} />}
@@ -85,11 +78,19 @@ const Login = ({ getToken, setAdmin, setAuthUser }) => {
               onChange={(e) => setPassword(e.target.value)}
               id="register-password"
             />
-            <div className="form-group m-5">
-              <button type="submit" className="btn" style={btnStyle}>
-                Login
-              </button>
-            </div>
+          </div>
+          <div className="form-group mt-5">
+            <Row>
+              <Col>
+                <Link to="/register" className="link">
+                  <h3 className="header-three">
+                    Don't have an account? Register
+                  </h3>
+                </Link>
+
+                <ButtonSubmit name="Register" id="register-btn" />
+              </Col>
+            </Row>
           </div>
         </form>
       </div>

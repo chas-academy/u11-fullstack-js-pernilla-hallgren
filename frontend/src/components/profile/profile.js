@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { GET } from "../../shared/services/requests";
-// import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import ErrorMessage from "../../shared/components/error_message";
 
 const Profile = () => {
   const [authUser, setAuthUser] = useState([]),
+    [loading, setLoading] = useState(false),
     [error, setError] = useState(null);
 
   useEffect(() => {
+    setLoading(true);
     GET("auth/profile")
       .then((response) => {
-        console.log(response);
+        setLoading(false);
         setAuthUser(response.data);
       })
       .catch((error) => {
         setError(error.response.data.msg);
-        console.log(error.response);
+        setLoading(false);
       });
   }, []);
 
@@ -23,6 +25,10 @@ const Profile = () => {
 
   return (
     <>
+      {error && <ErrorMessage message={error} />}
+
+      {loading && !error && <p>Your profile page is loading...</p>}
+
       {authUser && (
         <div>
           <h1>{authUser.username}'s Profile Page</h1>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Search } from "react-bootstrap-icons";
 import { GET } from "../../shared/services/requests";
+import ErrorMessage from "../../shared/components/error_message";
 
 const SearchBar = ({ setIsSearching }) => {
   const [query, setQuery] = useState(""),
@@ -10,7 +11,6 @@ const SearchBar = ({ setIsSearching }) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log(query);
     setLoading(true);
     GET(`/trainers/search?skills=${query}`)
       .then((response) => {
@@ -21,18 +21,17 @@ const SearchBar = ({ setIsSearching }) => {
       })
       .catch((error) => {
         setLoading(false);
-        setError(error.response.data.message);
+        setError(error.response.data.msg);
         setSearchResult([]);
       });
     setError(null);
   };
 
-  // console.log(query);
-  // console.log(searchResult);
-
   return (
     <>
       <div className="text-center mt-4">
+        {loading && !error && <p>Searching...</p>}
+
         <input
           className="input-field"
           type="text"
@@ -46,7 +45,7 @@ const SearchBar = ({ setIsSearching }) => {
           <Search />
         </button>
 
-        {error && <div>{error}</div>}
+        {error && <ErrorMessage message={error} />}
 
         {searchResult && (
           <ul>

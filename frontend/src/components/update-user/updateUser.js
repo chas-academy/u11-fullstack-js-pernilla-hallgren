@@ -4,25 +4,30 @@ import { PATCH } from "../../shared/services/requests";
 import { Row, Col } from "react-bootstrap";
 import ButtonSubmit from "../../shared/components/button_submit";
 import { handleFormData } from "../../shared/helpers/formData";
+import ErrorMessage from "../../shared/components/error_message";
 
 const UpdateUser = () => {
   const location = useLocation();
 
   const [user, setUser] = useState(location.state.user),
+    [error, setError] = useState(null),
+    [loading, setLoading] = useState(false),
     [redirect, setRedirect] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const id = location.state.id;
-
+    setLoading(true);
     PATCH("admin/users", id, { ...user })
       .then((response) => {
+        setLoading(false);
         // console.log(response.data);
         setRedirect(true);
       })
       .catch((error) => {
-        console.log(error.response.data.msg);
+        setError(error.response.data.msg);
+        setLoading(false);
       });
   };
 
@@ -31,6 +36,10 @@ const UpdateUser = () => {
   return (
     <>
       <h1>Update User</h1>
+
+      {loading && !error && <p>User is being updated...</p>}
+
+      {error && <ErrorMessage message={error} />}
 
       <form onSubmit={handleSubmit} className="mb-5 mt-4">
         <div className="form-group">
