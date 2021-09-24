@@ -14,6 +14,7 @@ import EditProfile from "./components/auth/edit-profile/edit-profile";
 import TrainerProfile from "./components/trainer/trainer-profile/trainerProfile";
 import Review from "./components/trainer/review/review";
 import Menu from "./components/menu/menu";
+import LandingPage from "./components/landing-page/landing-page";
 
 function App() {
   const [userToken, setUserToken] = useState(localStorage.getItem("token")),
@@ -49,11 +50,10 @@ function App() {
     <>
       <Router>
         <main>
+          <Route path="/" exact component={LandingPage} />
           {!userToken && (
             <>
               <Switch>
-                {/* <Route path="/" exact render={(props) => <LandingPage {...props} />}
-                /> */}
                 <Route
                   path="/register"
                   render={(props) => (
