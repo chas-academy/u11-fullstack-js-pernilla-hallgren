@@ -11,9 +11,8 @@ const EditProfile = () => {
 
   const [user, setUser] = useState(location.state.authUser),
     [redirect, setRedirect] = useState(false),
+    [loading, setLoading] = useState(false),
     [error, setError] = useState(null);
-
-  console.log(user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,11 +21,13 @@ const EditProfile = () => {
 
     PATCH("auth/profile/edit", id, { ...user })
       .then((response) => {
+        setLoading(true);
         console.log(response.data);
         setRedirect(true);
       })
       .catch((error) => {
         setError(error.response.data.msg);
+        setLoading(false);
       });
   };
 
@@ -40,6 +41,10 @@ const EditProfile = () => {
         <div className="mb-5">
           <h1 className="header-one">Update Profile</h1>
         </div>
+
+        {error && <ErrorMessage message={error} />}
+
+        {loading && !error && <p>Your profile is beeing updated...</p>}
 
         <form onSubmit={handleSubmit} className="mb-5 mt-4">
           <div className="form-group">
@@ -131,62 +136,5 @@ const EditProfile = () => {
     </>
   );
 };
-
-//   return (
-//     <>
-//       <h1>Update User</h1>
-
-//       <form onSubmit={handleSubmit} className="mb-5 mt-4">
-//         <div className="form-group">
-//           <label htmlFor="username"></label>
-
-//           <input
-//             className="input-field"
-//             type="text"
-//             autoComplete="off"
-//             // placeholder={user.username}
-//             value={user.username}
-//             onChange={(e) => handleFormData(e, setUser)}
-//             id="username"
-//           />
-//         </div>
-
-//         <div className="form-group">
-//           <label htmlFor="email"></label>
-//           <input
-//             className="input-field"
-//             type="email"
-//             // placeholder={user.email}
-//             value={user.email}
-//             onChange={(e) => handleFormData(e, setUser)}
-//             id="email"
-//           />
-//         </div>
-
-//         <div className="form-group">
-//           <label htmlFor="role"></label>
-//           <input
-//             className="input-field"
-//             type="text"
-//             // placeholder={user.role}
-//             value={user.role}
-//             onChange={(e) => handleFormData(e, setUser)}
-//             id="role"
-//           />
-//         </div>
-
-//         <div className="form-group">
-//           <div className="form-group mt-5">
-//             <Row>
-//               <Col>
-//                 <ButtonSubmit name="Save" id="register-btn" />
-//               </Col>
-//             </Row>
-//           </div>
-//         </div>
-//       </form>
-//     </>
-//   );
-// };
 
 export default EditProfile;

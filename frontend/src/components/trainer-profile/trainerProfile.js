@@ -10,10 +10,7 @@ import { Link } from "react-router-dom";
 
 const TrainerProfile = () => {
   const location = useLocation();
-  // const id = location.state.trainer.id;
-  const [trainer, setTrainer] = useState(location.state.trainer),
-    [redirect, setRedirect] = useState(false),
-    [error, setError] = useState(null);
+  const [trainer, setTrainer] = useState(location.state.trainer);
 
   console.log(trainer);
 

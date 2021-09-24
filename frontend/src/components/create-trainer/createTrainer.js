@@ -31,7 +31,6 @@ const CreateTrainer = () => {
         setLoading(false);
         setRedirect(true);
         setNewTrainer(data.data);
-        // console.log(data.data);
       })
       .catch((error) => {
         setLoading(false);
@@ -41,7 +40,7 @@ const CreateTrainer = () => {
 
   console.log(newTrainer);
 
-  // if (redirect) return <Redirect to="/home" />;
+  if (redirect) return <Redirect to="/home" />;
 
   return (
     <>
@@ -50,11 +49,12 @@ const CreateTrainer = () => {
           <h1 className="header-one">Create New Trainer</h1>
         </div>
 
+        {loading && !error && <p>Create trainer loading...</p>}
+        {error && <ErrorMessage message={error} />}
+
         <form onSubmit={handleSubmit} className="mb-5 mt-4">
           <div className="form-group">
             <label htmlFor="register-username"></label>
-
-            {error && <ErrorMessage message={error} />}
 
             <input
               className="input-field"
@@ -174,9 +174,7 @@ const CreateTrainer = () => {
             <div className="form-group mt-5">
               <Row>
                 <Col>
-                  {/* <Link to="/home"> */}
                   <ButtonSubmit name="Add Trainer" id="register-btn" />
-                  {/* </Link> */}
                 </Col>
               </Row>
             </div>

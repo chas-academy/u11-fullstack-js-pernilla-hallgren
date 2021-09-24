@@ -2,9 +2,8 @@ require("dotenv").config();
 
 const Trainer = require("../models/Trainer.model");
 const Review = require("../models/Review.model");
-// const User = require("../models/User.model");
 
-const createTrainer = (req, res) => {
+const createTrainer = async (req, res) => {
   const {
     username,
     email,
@@ -16,7 +15,7 @@ const createTrainer = (req, res) => {
     skills,
   } = req.body;
   try {
-    const newTrainer = new Trainer({
+    const newTrainer = await new Trainer({
       username,
       email,
       firstName,
@@ -27,10 +26,8 @@ const createTrainer = (req, res) => {
       skills,
     });
     newTrainer.save().then((trainer) => res.json(trainer));
-    // newTrainer.save().then((trainer) => { req.trainer.review.push(trainer.id)
-    //   res.json(trainer) });
   } catch (err) {
-    res.status(500).send({ message: "Server issues" });
+    res.status(500).send({ msg: "Server issues" });
   }
 };
 
@@ -39,7 +36,7 @@ const getAllTrainers = async (req, res) => {
     const trainers = await Trainer.find().sort({ register_date: "desc" });
     res.json(trainers);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ msg: "Server issues" });
   }
 };
 
@@ -52,11 +49,11 @@ const searchTrainerBySkills = async (req, res) => {
     });
 
     if (!searchResult || searchResult.length === 0) {
-      return res.status(400).send({ message: "No skills found" });
+      return res.status(400).send({ msg: "No skills found" });
     }
     res.status(200).json({ searchResult });
   } catch (err) {
-    res.status(500).send({ message: "Server issues" });
+    res.status(500).send({ msg: "Server issues" });
   }
 };
 
@@ -88,7 +85,7 @@ const getReviewByTrainerId = async (req, res) => {
       .populate("user", "username");
     res.json(review);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ msg: "Server issues" });
   }
 };
 
@@ -96,39 +93,16 @@ const deleteReview = async (req, res) => {
   try {
     const review = await Review.findById(req.params.id);
     if (req.user.id != review.user._id.toString())
-      return res
-        .status(401)
-        .send({ message: "Not authorized for this action" });
+      return res.status(401).send({ msg: "Not authorized for this action" });
     await review.delete();
     res.send("Successfully deleted");
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      message: "Could not delete review",
+      msg: "Could not delete review, server issues",
     });
   }
 };
-
-// const deleteReview = async (req, res) => {
-//   const id = req.params.id;
-//   await Review.findByIdAndRemove(id)
-//     .then((data) => {
-//       if (!data) {
-//         return res.status(404).send({
-//           message: `Cannot delete review. Review cannot be found`,
-//         });
-//       } else {
-//         res.send({
-//           message: "Review was deleted successfully!",
-//         });
-//       }
-//     })
-//     .catch((err) => {
-//       res.status(500).send({
-//         message: "Could not delete review",
-//       });
-//     });
-// };
 
 module.exports = {
   createTrainer,

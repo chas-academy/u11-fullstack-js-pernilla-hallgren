@@ -52,12 +52,13 @@ const CreateUser = () => {
         <div className="mb-5">
           <h1 className="header-one">Create New User</h1>
         </div>
+        {loading && !error && <p>User is being created...</p>}
+
+        {error && <ErrorMessage message={error} />}
 
         <form onSubmit={handleSubmit} className="mb-5 mt-4">
           <div className="form-group">
             <label htmlFor="register-username"></label>
-
-            {error && <ErrorMessage message={error} />}
 
             <input
               className="input-field"
