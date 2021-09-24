@@ -22,6 +22,7 @@ const SearchBar = ({ setIsSearching }) => {
       .catch((error) => {
         setLoading(false);
         setError(error.response.data.message);
+        setSearchResult([]);
       });
     setError(null);
   };
