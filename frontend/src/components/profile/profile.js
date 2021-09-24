@@ -40,6 +40,10 @@ const Profile = () => {
                 authUser: {
                   username: authUser.username,
                   email: authUser.email,
+                  firstName: authUser.firstName,
+                  lastName: authUser.lastName,
+                  skills: authUser.skills,
+                  image: authUser.image,
                 },
                 id: authUser.id,
               },
