@@ -32,7 +32,6 @@ function App() {
         localStorage.removeItem("token");
         localStorage.removeItem("admin");
         localStorage.removeItem("user");
-        window.location.reload();
       })
       .catch((err) => {
         setLoading(false);
@@ -42,7 +41,6 @@ function App() {
         localStorage.removeItem("token");
         localStorage.removeItem("admin");
         localStorage.removeItem("user");
-        window.location.reload();
       });
   };
 

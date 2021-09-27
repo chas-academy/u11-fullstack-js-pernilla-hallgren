@@ -46,7 +46,7 @@ const Home = () => {
               sm={12}
               md={6}
               lg={3}
-              className="col justify-content-center m-3"
+              className="justify-content-center"
             >
               <Link
                 to={{

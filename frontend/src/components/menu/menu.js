@@ -73,19 +73,12 @@ const Menu = ({ isAdmin, logoutHandler }) => {
                 Admin Dashboard
               </NavLink>
             )}
-            <NavLink style={color} onClick={logoutHandler} to="/login">
+            <NavLink style={color} onClick={logoutHandler} to="/">
               Logout
             </NavLink>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      {/* <div style={navStyle.nav}>
-        <div style={navStyle.logo}>
-          Navbar
-        </div>
-        
-        <RightNav />
-      </div> */}
     </>
   );
 };
