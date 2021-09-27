@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import ButtonSmall from "../../../shared/components/button-small";
 import ButtonSubmit from "../../../shared/components/button-submit";
@@ -10,10 +10,13 @@ import userImg from "../../../shared/assets/images/user-img.png";
 import { Link } from "react-router-dom";
 
 const TrainerProfile = () => {
+  let history = useHistory();
   const location = useLocation();
   const [trainer, setTrainer] = useState(location.state.trainer);
 
-  console.log(trainer);
+  const handleClickBack = () => {
+    history.push("/home");
+  };
 
   const imgCardStyle = {
     border: "none",
@@ -34,10 +37,14 @@ const TrainerProfile = () => {
   return (
     <>
       <div className="m-3">
-        <Link className="link" to="">
+        <button
+          className="link"
+          style={{ border: "none" }}
+          onClick={handleClickBack}
+        >
           <ArrowLeft color="#FF9187" />
           <span className="m-1">Back</span>
-        </Link>
+        </button>
       </div>
       <div className="container">
         <div className="row" style={{ margin: "auto" }}>

@@ -15,7 +15,7 @@ import TrainerProfile from "./components/trainer/trainer-profile/trainerProfile"
 import Review from "./components/trainer/review/review";
 import Menu from "./components/menu/menu";
 import LandingPage from "./components/landing-page/landing-page";
-import Footer from "./components/footer/footer";
+// import Footer from "./components/footer/footer";
 
 function App() {
   const [userToken, setUserToken] = useState(localStorage.getItem("token")),
@@ -124,7 +124,7 @@ function App() {
           )}
         </main>
       </Router>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

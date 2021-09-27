@@ -9,8 +9,7 @@ import ErrorMessage from "../../../shared/components/error-message";
 
 const Review = ({ setAuthUser }) => {
   const location = useLocation();
-  // const id = location.state.trainer.id;
-  console.log(setAuthUser);
+
   const [trainer, setTrainer] = useState(location.state.trainer),
     [newReview, setNewReview] = useState({ text: "", rating: Number }),
     [reviews, setReviews] = useState([]),
