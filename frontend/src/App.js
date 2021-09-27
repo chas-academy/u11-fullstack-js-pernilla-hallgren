@@ -123,6 +123,7 @@ function App() {
           )}
         </main>
       </Router>
+      <footer className="footer">2021 &copy; Pernilla Hällgren</footer>
     </>
   );
 }

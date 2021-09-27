@@ -28,6 +28,14 @@
   color: var(--text-color);
 }
 
+main {
+  height: 90%;
+}
+
+body {
+  height: 100%;
+}
+
 /* HEADER STYLES */
 .header-one {
   font-size: 34px;
@@ -188,4 +196,11 @@ li {
 .navbar-toggler-icon {
   background: var(--background-nav);
   /* color: #FF9187; */
+}
+
+.footer {
+  height: 10%;
+  bottom: 0;
+  text-align: center;
+  background: var(--background-nav);
 }

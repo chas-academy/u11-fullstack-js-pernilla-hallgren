@@ -53,11 +53,11 @@ const TrainerProfile = () => {
                     fontSize: "17px",
                     fontWeight: "300",
                     marginTop: "8px",
+                    textTransform: "uppercase",
                   }}
                 >
                   <div className="mb-3">
-                    {trainer.firstName.toUpperCase()}{" "}
-                    {trainer.lastName.toUpperCase()}
+                    {trainer.firstName} {trainer.lastName}
                   </div>
                   <a
                     href={`mailto:${trainer.email}`}
