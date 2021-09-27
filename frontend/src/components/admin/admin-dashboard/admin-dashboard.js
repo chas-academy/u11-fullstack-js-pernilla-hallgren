@@ -59,7 +59,7 @@ const AdminDashboard = ({ logoutHandler }) => {
           <p>Email: {adminUser.email}</p>
           {loading && !error && <p>Admin dashboard is loading...</p>}
           {error && <ErrorMessage message={error} />}
-          {success && <p>{success}</p>}
+          {success && <p style={{ color: "#69FF51" }}>{success}</p>}
           <Link to="/login">
             <button onClick={logoutHandler}>Logout</button>
           </Link>

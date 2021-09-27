@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ErrorMessage from "../../shared/components/error-message";
 import { GET } from "../../shared/services/requests";
 import SearchBar from "../trainer/search-bar/searchBar";
+import TrainerCard from "../trainer/trainer-card/trainer-card";
 
 const Home = () => {
   const [allTrainers, setAllTrainers] = useState([]),
@@ -33,44 +35,38 @@ const Home = () => {
       {loading && !error && <p>Page is loading...</p>}
 
       <SearchBar setIsSearching={setIsSearching} />
-      {allTrainers && !isSearching ? (
-        allTrainers.map((trainer) => (
-          <ul key={trainer.id}>
-            <Link
-              to={{
-                pathname: "/trainer-profile",
-                state: {
-                  trainer,
-                },
-              }}
-              //   pathname: "/trainer-profile",
-              //   state: {
-              //     trainer: {
-              //       username: trainer.username,
-              //       firstname: trainer.firstName,
-              //       lastname: trainer.lastName,
-              //       description: trainer.description,
-              //       image: trainer.image,
-              //       skills: trainer.skills,
-              //     },
-              //     id: trainer.id,
-              //   },
-              // }}
+      <div>
+        <h1 className="header-one mb-5 mt-2 text-center">Trainers</h1>
+      </div>
+      <div className="row">
+        {allTrainers && !isSearching ? (
+          allTrainers.map((trainer) => (
+            <Col
+              key={trainer.id}
+              sm={12}
+              md={6}
+              lg={3}
+              className="col justify-content-center m-3"
             >
-              <li>{trainer.username}</li>
-            </Link>
-            <li>{trainer.email}</li>
-            <li>{trainer.firstName}</li>
-            <li>{trainer.lastName}</li>
-            <li>{trainer.image}</li>
-            <li>{trainer.role}</li>
-            <li>{trainer.description}</li>
-            <li>{trainer.skills.join(", ")}</li>
-          </ul>
-        ))
-      ) : (
-        <div>There are no trainers in database</div>
-      )}
+              <Link
+                to={{
+                  pathname: "/trainer-profile",
+                  state: {
+                    trainer,
+                  },
+                }}
+              >
+                <TrainerCard
+                  image={trainer.image}
+                  name={trainer.username.toUpperCase()}
+                />
+              </Link>
+            </Col>
+          ))
+        ) : (
+          <div>There are no trainers in database</div>
+        )}
+      </div>
     </>
   );
 };

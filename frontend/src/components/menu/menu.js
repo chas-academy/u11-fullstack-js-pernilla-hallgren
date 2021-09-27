@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { Navbar, Nav } from "react-bootstrap";
+import { Link, NavLink } from "react-router-dom";
+import { Navbar, Nav, Image } from "react-bootstrap";
+import logo from "../../shared/assets/icons/logo.svg";
 
 const Menu = ({ isAdmin, logoutHandler }) => {
   const [expanded, setExpanded] = useState(false);
@@ -22,8 +23,17 @@ const Menu = ({ isAdmin, logoutHandler }) => {
   return (
     <>
       <Navbar style={color} expand="lg" variant="dark" expanded={expanded}>
-        <Navbar.Brand style={color} href="#home">
-          LOGO
+        <Navbar.Brand style={color}>
+          <Link to="/home">
+            <Image
+              src={logo}
+              alt="logo"
+              style={{
+                width: "8rem",
+                background: "#283041",
+              }}
+            />
+          </Link>
         </Navbar.Brand>
         <Navbar.Toggle
           style={toggler}
@@ -31,11 +41,12 @@ const Menu = ({ isAdmin, logoutHandler }) => {
           onClick={() => setExpanded(expanded ? false : "expanded")}
         />
         <Navbar.Collapse style={color} id="navbar-toggle">
-          <Nav className="me-auto">
+          <Nav className="mr-auto">
             <NavLink
               style={color}
               to="/home"
               onClick={() => setExpanded(false)}
+              id="home"
             >
               Home
             </NavLink>
