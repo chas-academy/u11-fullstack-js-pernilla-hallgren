@@ -10,7 +10,7 @@ const Menu = ({ isAdmin, logoutHandler }) => {
     padding: "5px 8px",
     fontSize: "17px",
     fontWeight: "300",
-    color: "#FF9187",
+    color: "#CECFD3",
     background: "#283041",
   };
 

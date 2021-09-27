@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Redirect, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import ButtonSmall from "../../../shared/components/button-small";
 import ButtonSubmit from "../../../shared/components/button-submit";
+import { ArrowLeft } from "react-bootstrap-icons";
 // import Skills from "../../shared/components/skills";
 // import ReviewStar from "../../shared/components/review_star";
 import userImg from "../../../shared/assets/images/user-img.png";
@@ -32,6 +33,12 @@ const TrainerProfile = () => {
 
   return (
     <>
+      <div className="m-3">
+        <Link className="link" to="">
+          <ArrowLeft color="#FF9187" />
+          <span className="m-1">Back</span>
+        </Link>
+      </div>
       <div className="container">
         <div className="row" style={{ margin: "auto" }}>
           <div

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import ButtonSubmit from "../../../shared/components/button-submit";
-import { Redirect, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { DELETE, GET, POST } from "../../../shared/services/requests";
 import { handleFormData } from "../../../shared/helpers/formData";
 import ReviewStar from "../../../shared/components/review-star";
-import ButtonSmall from "../../../shared/components/button-small";
 import ErrorMessage from "../../../shared/components/error-message";
 
 const Review = ({ setAuthUser }) => {
@@ -68,8 +67,6 @@ const Review = ({ setAuthUser }) => {
       });
   };
 
-  console.log(reviews);
-
   const imgCardStyle = {
     border: "none",
     background: "none",
@@ -81,6 +78,12 @@ const Review = ({ setAuthUser }) => {
     color: "white",
     border: "none",
     marginTop: "10px",
+  };
+
+  const btnStyle = {
+    borderRadius: "10px",
+    border: "0",
+    color: "white",
   };
 
   const log = (value) => {
@@ -131,7 +134,7 @@ const Review = ({ setAuthUser }) => {
                 key={review.id}
                 className="col-md justify-content-center mb-1"
               >
-                <Card style={imgCardStyle}>
+                <Card style={{ border: "none" }}>
                   <Card.Body>
                     <h2 className="header-two">{review.user.username}</h2>
                     <div className="mb-2">Rating: {review.rating}</div>
@@ -140,7 +143,11 @@ const Review = ({ setAuthUser }) => {
                     <div>{review.createdAt}</div>
                     {review.user._id ===
                       JSON.parse(localStorage.getItem("user"))?.id && (
-                      <button onClick={() => deleteReviewHandler(review.id)}>
+                      <button
+                        className="btn xsmall-btn"
+                        style={btnStyle}
+                        onClick={() => deleteReviewHandler(review.id)}
+                      >
                         Delete
                       </button>
                     )}

@@ -45,7 +45,7 @@ const CreateTrainer = () => {
   return (
     <>
       <div className="container justify-content-center text-center">
-        <div className="mb-5">
+        <div>
           <h1 className="header-one">Create New Trainer</h1>
         </div>
 
@@ -148,36 +148,13 @@ const CreateTrainer = () => {
               onChange={(e) => handleFormData(e, setNewTrainer)}
               id="skills"
             />
-
-            {/* <select
-              className="input-field"
-              // type="text"
-              // multiple={true}
-              // placeholder="Choose Skills"
-              options={skills}
-              value={newTrainer.skills}
-              onChange={(e) => handleFormData(e, setNewTrainer)}
-              id="skills"
-            >
-              <option disabled={true} value="">
-                Choose Skills
-              </option>
-              {skills.map((skill) => (
-                <option key={skill} value={skill}>
-                  {skill}
-                </option>
-              ))}
-            </select> */}
           </div>
-
           <div className="form-group">
-            <div className="form-group mt-5">
-              <Row>
-                <Col>
-                  <ButtonSubmit name="Add Trainer" id="register-btn" />
-                </Col>
-              </Row>
-            </div>
+            <Row>
+              <Col>
+                <ButtonSubmit name="Add Trainer" id="register-btn" />
+              </Col>
+            </Row>
           </div>
         </form>
       </div>
