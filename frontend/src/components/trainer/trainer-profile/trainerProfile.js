@@ -33,8 +33,11 @@ const TrainerProfile = () => {
   return (
     <>
       <div className="container">
-        <div className="row mt-5">
-          <div className="col d-flex justify-content-center text-center mb-1">
+        <div className="row" style={{ margin: "auto" }}>
+          <div
+            className="col d-flex justify-content-center text-center"
+            style={{ marginRight: "40px" }}
+          >
             <Card style={cardStyle}>
               <div style={imgCardStyle}>
                 <Card.Img
@@ -77,7 +80,10 @@ const TrainerProfile = () => {
             </Card>
           </div>
 
-          <div className="col d-flex justify-content-center text-center">
+          <div
+            className="col d-flex justify-content-center text-center"
+            style={{ marginLeft: "40px" }}
+          >
             <Card style={{ border: "none", width: "25rem" }}>
               <Card.Body style={{ textAlign: "left" }}>
                 <Card.Text style={{ fontStyle: "italic", fontWeight: "300" }}>
