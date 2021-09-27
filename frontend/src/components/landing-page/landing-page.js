@@ -1,17 +1,24 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-
+import logo from "../../shared/assets/icons/logo.svg";
 import ButtonLink from "../../shared/components/button-link/index";
 
 const LandingPage = () => {
   return (
     <>
-      <div className="container justify-content-center">
-        <div>
-          <h1 className="header-one mb-5">LOGO</h1>
+      <div className="container justify-content-center text-center">
+        <div className="mb-5">
+          <img
+            src={logo}
+            alt="logo"
+            style={{
+              marginBottom: "40px",
+              width: "90%",
+            }}
+          />
         </div>
         <Row>
-          <Col>
+          <Col className="mt-5">
             <ButtonLink name="Login" link="/login" />
           </Col>
         </Row>
@@ -26,6 +33,5 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
-
-// <a href="mailto:mailadress@gmail.com"
-// a href={"mailto:" + this.props.email}>email</a>;
+//                                       <a href="mailto:mailadress@gmail.com"
+// a href={"mailto:" + this.props.email}>email</a>

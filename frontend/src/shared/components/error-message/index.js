@@ -1,9 +1,13 @@
 import React from "react";
 
+const errStyling = {
+  color: "#FE7367",
+};
+
 const ErrorMessage = ({ message }) => {
   return (
     <div>
-      <p>{message}</p>
+      <p style={errStyling}>{message}</p>
     </div>
   );
 };

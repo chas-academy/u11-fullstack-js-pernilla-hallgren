@@ -33,8 +33,11 @@ const TrainerProfile = () => {
   return (
     <>
       <div className="container">
-        <div className="row mt-5">
-          <div className="col d-flex justify-content-center text-center mb-1">
+        <div className="row" style={{ margin: "auto" }}>
+          <div
+            className="col d-flex justify-content-center text-center"
+            style={{ marginRight: "40px" }}
+          >
             <Card style={cardStyle}>
               <div style={imgCardStyle}>
                 <Card.Img
@@ -52,8 +55,16 @@ const TrainerProfile = () => {
                     marginTop: "8px",
                   }}
                 >
-                  {trainer.firstName.toUpperCase()}{" "}
-                  {trainer.lastName.toUpperCase()}
+                  <div className="mb-3">
+                    {trainer.firstName.toUpperCase()}{" "}
+                    {trainer.lastName.toUpperCase()}
+                  </div>
+                  <a
+                    href={`mailto:${trainer.email}`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    Contact
+                  </a>
                 </Card.Title>
                 <Link
                   to={{
@@ -69,7 +80,10 @@ const TrainerProfile = () => {
             </Card>
           </div>
 
-          <div className="col d-flex justify-content-center text-center">
+          <div
+            className="col d-flex justify-content-center text-center"
+            style={{ marginLeft: "40px" }}
+          >
             <Card style={{ border: "none", width: "25rem" }}>
               <Card.Body style={{ textAlign: "left" }}>
                 <Card.Text style={{ fontStyle: "italic", fontWeight: "300" }}>
