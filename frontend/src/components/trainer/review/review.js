@@ -63,6 +63,14 @@ const Review = ({ setAuthUser }) => {
       });
   };
 
+  const mapOverNumber = (num, element) => {
+    const arr = [];
+    for (let i = 0; i < num; i++) {
+      arr.push(element);
+    }
+    return arr;
+  };
+
   const imgCardStyle = {
     border: "none",
     background: "none",
@@ -86,8 +94,6 @@ const Review = ({ setAuthUser }) => {
     cursor: "pointer",
     transition: "color 200ms",
   };
-
-  console.log(reviews.createdAt);
 
   return (
     <>
@@ -158,7 +164,16 @@ const Review = ({ setAuthUser }) => {
                     <h2 className="header-two">
                       {review.user.username.toUpperCase()}
                     </h2>
-                    <div className="mb-2">Rating: {review.rating}</div>
+                    <div className="mb-2">
+                      {mapOverNumber(
+                        review.rating,
+                        <StarFill
+                          style={{ ...starStyle, cursor: "auto" }}
+                          size={15}
+                          color={"#FF7580"}
+                        />
+                      )}
+                    </div>
                     <p style={{ fontStyle: "italic", fontWeight: "300" }}>
                       {review.text}
                     </p>

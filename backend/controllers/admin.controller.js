@@ -70,7 +70,7 @@ const editUser = async (req, res) => {
         });
         // res.json(data);
       } else {
-        res.send({
+        return res.send({
           msg: "User was updated successfully!",
         });
       }
@@ -84,14 +84,15 @@ const editUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
   const id = req.params.id;
-  User.findByIdAndRemove(id)
-    .then((data) => {
+  User.findById(id)
+    .then(async (data) => {
       if (!data) {
         return res.status(404).send({
           msg: `Cannot delete user with id=${id}. User cannot be found`,
         });
       } else {
-        res.send({
+        await data.remove();
+        return res.send({
           msg: "User was deleted successfully!",
         });
       }

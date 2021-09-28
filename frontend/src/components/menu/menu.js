@@ -53,14 +53,6 @@ const Menu = ({ isAdmin, logoutHandler }) => {
             <NavLink
               className="link"
               style={color}
-              to="/messages"
-              onClick={() => setExpanded(false)}
-            >
-              Messages
-            </NavLink>
-            <NavLink
-              className="link"
-              style={color}
               to="/profile"
               onClick={() => setExpanded(false)}
             >
