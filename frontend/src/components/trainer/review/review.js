@@ -4,8 +4,9 @@ import ButtonSubmit from "../../../shared/components/button-submit";
 import { useLocation } from "react-router-dom";
 import { DELETE, GET, POST } from "../../../shared/services/requests";
 import { handleFormData } from "../../../shared/helpers/formData";
-import ReviewStar from "../../../shared/components/review-star";
+// import ReviewStar from "../../../shared/components/review-star";
 import ErrorMessage from "../../../shared/components/error-message";
+import { StarFill } from "react-bootstrap-icons";
 
 const Review = ({ setAuthUser }) => {
   const location = useLocation();
@@ -13,6 +14,8 @@ const Review = ({ setAuthUser }) => {
   const [trainer, setTrainer] = useState(location.state.trainer),
     [newReview, setNewReview] = useState({ text: "", rating: Number }),
     [reviews, setReviews] = useState([]),
+    [rating, setRating] = useState(null),
+    [hover, setHover] = useState(null),
     [loading, setLoading] = useState(false),
     [loadingReviews, setLoadingReviews] = useState(false),
     [loadingDelete, setLoadingDelete] = useState(false),
@@ -83,11 +86,12 @@ const Review = ({ setAuthUser }) => {
     border: "0",
     color: "white",
   };
-
-  const log = (value) => {
-    console.log(value);
+  const starStyle = {
+    margin: "3px",
+    cursor: "pointer",
+    transition: "color 200ms",
   };
-  console.log(reviews);
+
   console.log(newReview);
 
   return (
@@ -99,9 +103,39 @@ const Review = ({ setAuthUser }) => {
             {error && <ErrorMessage message={error} />}
 
             <Card style={imgCardStyle}>
-              <h2>Review {trainer.username}</h2>
+              <h2 className="header-two">
+                Review {trainer.username.toUpperCase()}
+              </h2>
               <Card.Body>
-                <div>
+                {[...Array(5)].map((star, i) => {
+                  const ratingValue = i + 1;
+                  return (
+                    <label>
+                      <input
+                        style={{ display: "none" }}
+                        type="radio"
+                        name="rating"
+                        value={ratingValue}
+                        id="rating"
+                        onChange={(e) => handleFormData(e, setNewReview)}
+                        onClick={() => setRating(ratingValue)}
+                      />
+                      <StarFill
+                        style={starStyle}
+                        size={20}
+                        color={
+                          ratingValue <= (hover || rating)
+                            ? "#FF7580"
+                            : "#5D6475"
+                        }
+                        onMouseEnter={() => setHover(ratingValue)}
+                        onMouseLeave={() => setHover(null)}
+                      />
+                    </label>
+                  );
+                })}
+
+                {/* <div>
                   <ReviewStar onChange={log} />
                 </div>
                 <input
@@ -109,7 +143,8 @@ const Review = ({ setAuthUser }) => {
                   id="rating"
                   onChange={(e) => handleFormData(e, setNewReview)}
                 />
-                Set rating
+                Set rating */}
+
                 <form onSubmit={handleSubmit}>
                   <div className="form-group">
                     <textarea
