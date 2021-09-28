@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
+import moment from "moment";
 import ButtonSubmit from "../../../shared/components/button-submit";
 import { useLocation } from "react-router-dom";
 import { DELETE, GET, POST } from "../../../shared/services/requests";
 import { handleFormData } from "../../../shared/helpers/formData";
-// import ReviewStar from "../../../shared/components/review-star";
 import ErrorMessage from "../../../shared/components/error-message";
 import { StarFill } from "react-bootstrap-icons";
 
@@ -17,11 +17,8 @@ const Review = ({ setAuthUser }) => {
     [rating, setRating] = useState(null),
     [hover, setHover] = useState(null),
     [loading, setLoading] = useState(false),
-    [loadingReviews, setLoadingReviews] = useState(false),
-    [loadingDelete, setLoadingDelete] = useState(false),
     [success, setSuccess] = useState(null),
-    [error, setError] = useState(null),
-    [errorDelete, setErrorDelete] = useState(null);
+    [error, setError] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,18 +49,16 @@ const Review = ({ setAuthUser }) => {
   }, []);
 
   const deleteReviewHandler = (id) => {
-    setLoadingDelete(true);
     DELETE("trainers", id)
       .then((response) => {
-        setLoadingDelete(false);
         setSuccess(response.data.msg);
         setReviews((currentState) => [
           ...currentState.filter((review) => review.id !== id),
         ]);
       })
       .catch((error) => {
-        setErrorDelete(error.response.data.msg);
-        setLoadingDelete(false);
+        setError(error.response.data.msg);
+
         setSuccess(null);
       });
   };
@@ -92,7 +87,7 @@ const Review = ({ setAuthUser }) => {
     transition: "color 200ms",
   };
 
-  console.log(newReview);
+  console.log(reviews.createdAt);
 
   return (
     <>
@@ -134,17 +129,6 @@ const Review = ({ setAuthUser }) => {
                     </label>
                   );
                 })}
-
-                {/* <div>
-                  <ReviewStar onChange={log} />
-                </div>
-                <input
-                  type="text"
-                  id="rating"
-                  onChange={(e) => handleFormData(e, setNewReview)}
-                />
-                Set rating */}
-
                 <form onSubmit={handleSubmit}>
                   <div className="form-group">
                     <textarea
@@ -171,11 +155,17 @@ const Review = ({ setAuthUser }) => {
               >
                 <Card style={{ border: "none" }}>
                   <Card.Body>
-                    <h2 className="header-two">{review.user.username}</h2>
+                    <h2 className="header-two">
+                      {review.user.username.toUpperCase()}
+                    </h2>
                     <div className="mb-2">Rating: {review.rating}</div>
-                    <div>{review.text}</div>
+                    <p style={{ fontStyle: "italic", fontWeight: "300" }}>
+                      {review.text}
+                    </p>
                     <br />
-                    <div>{review.createdAt}</div>
+                    <div style={{ fontWeight: "300" }}>
+                      {moment(review.createdAt).format("YYYY-MM-DD")}
+                    </div>
                     {review.user._id ===
                       JSON.parse(localStorage.getItem("user"))?.id && (
                       <button

@@ -206,6 +206,6 @@ li {
 .footer {
   height: 10%;
   bottom: 0;
+  padding-bottom: 10px;
   text-align: center;
-  background: var(--background-nav);
 }
