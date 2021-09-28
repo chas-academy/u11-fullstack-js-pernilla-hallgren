@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import ButtonSmall from "../../../shared/components/button-small";
 import ButtonSubmit from "../../../shared/components/button-submit";
 import { ArrowLeft } from "react-bootstrap-icons";
-// import Skills from "../../shared/components/skills";
-// import ReviewStar from "../../shared/components/review_star";
 import userImg from "../../../shared/assets/images/user-img.png";
 import { Link } from "react-router-dom";
 
@@ -34,6 +32,14 @@ const TrainerProfile = () => {
     background: "none",
   };
 
+  const btnStyle = {
+    borderRadius: "8px",
+    border: "0",
+    cursor: "auto",
+  };
+
+  console.log(trainer);
+
   return (
     <>
       <div className="m-3">
@@ -46,6 +52,7 @@ const TrainerProfile = () => {
           <span className="m-1">Back</span>
         </button>
       </div>
+
       <div className="container">
         <div className="row" style={{ margin: "auto" }}>
           <div
@@ -103,10 +110,14 @@ const TrainerProfile = () => {
                 <Card.Text style={{ fontStyle: "italic", fontWeight: "300" }}>
                   {trainer.description}
                 </Card.Text>
-                <Card.Title>Skills</Card.Title>
-                {trainer.skills}
 
-                <ButtonSubmit name="Send a message to..." id="login-btn" />
+                <Card.Title>Skills</Card.Title>
+                {trainer.skills.map((skill) => (
+                  <Button className="xsmall-btn m-2" style={btnStyle}>
+                    {skill}
+                  </Button>
+                ))}
+                {/* <ButtonSubmit name="Send a message to..." id="login-btn" /> */}
               </Card.Body>
             </Card>
           </div>

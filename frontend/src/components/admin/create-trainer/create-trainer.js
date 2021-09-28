@@ -5,7 +5,6 @@ import { Row, Col } from "react-bootstrap";
 import ButtonSubmit from "../../../shared/components/button-submit";
 import ErrorMessage from "../../../shared/components/error-message";
 import { handleFormData } from "../../../shared/helpers/formData";
-// import skills from "../../shared/helpers/skills";
 
 const CreateTrainer = () => {
   const [newTrainer, setNewTrainer] = useState({
@@ -37,8 +36,6 @@ const CreateTrainer = () => {
         setError(error.response.data.msg);
       });
   };
-
-  console.log(newTrainer);
 
   if (redirect) return <Redirect to="/home" />;
 

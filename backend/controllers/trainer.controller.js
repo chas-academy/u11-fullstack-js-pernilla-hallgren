@@ -23,7 +23,7 @@ const createTrainer = async (req, res) => {
       role,
       image,
       description,
-      skills,
+      skills: skills.split(/[ ,]+/),
     });
     newTrainer.save().then((trainer) => res.json(trainer));
   } catch (err) {

@@ -115,19 +115,12 @@ body {
   color: rgb(3, 3, 3);
 }
 
-/* .btn:focus { 
-  outline: 0px;
-  border: 0.5rem solid;
-  border-color: #283041;
-} */
-
 /* CONTAINER STYLES */
 .container {
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
 }
 
 .container-msg {
@@ -164,7 +157,6 @@ body {
 .nav-wrapper {
   list-style: none;
   display: flex;
-  /* flex-flow: row nowrap */
   flex-flow: column nowrap;
   background-color: var(--background-nav);
   position: fixed;
@@ -180,27 +172,8 @@ li {
   background-color: var(--background-nav);
 }
 
-/* .burger-nav {
-  width: 2rem;
-  height: 2rem;
-  position: fixed;
-  top: 15px;
-  right: 20px;
-  z-index: 20;
-  display: none;
-} */
-
-/* .navlinks > a {
-  color: #0eb933;
-}
-
-.navlinks > a:hover {
-  text-decoration: underline;
-  color: #d81717;
-} */
 .navbar-toggler-icon {
   background: var(--background-nav);
-  /* color: #FF9187; */
 }
 
 .footer {
