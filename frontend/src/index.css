@@ -56,6 +56,11 @@ body {
   font-size: 15px;
 }
 
+.header-six {
+  font-size: 15px;
+  font-weight: 300;
+}
+
 /* TEXT-LINK STYLES */
 .link {
   text-decoration: none;

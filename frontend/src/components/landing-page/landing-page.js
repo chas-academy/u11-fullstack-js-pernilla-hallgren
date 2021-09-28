@@ -18,7 +18,7 @@ const LandingPage = () => {
           />
         </div>
         <Row>
-          <Col className="mt-5">
+          <Col className="mt-3">
             <ButtonLink name="Login" link="/login" />
           </Col>
         </Row>

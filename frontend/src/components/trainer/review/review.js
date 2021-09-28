@@ -20,8 +20,6 @@ const Review = ({ setAuthUser }) => {
     [error, setError] = useState(null),
     [errorDelete, setErrorDelete] = useState(null);
 
-  console.log(trainer);
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -42,6 +40,7 @@ const Review = ({ setAuthUser }) => {
   useEffect(() => {
     GET(`trainers/${trainer.id}`)
       .then((response) => {
+        console.log(response.data);
         setReviews(response.data);
       })
       .catch((error) => {
@@ -88,6 +87,8 @@ const Review = ({ setAuthUser }) => {
   const log = (value) => {
     console.log(value);
   };
+  console.log(reviews);
+  console.log(newReview);
 
   return (
     <>

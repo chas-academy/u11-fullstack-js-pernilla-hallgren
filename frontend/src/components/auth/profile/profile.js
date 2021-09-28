@@ -39,8 +39,16 @@ const Profile = () => {
     background: "none",
   };
 
-  console.log(authUser);
+  const btnStyle = {
+    borderRadius: "10px",
+    border: "0",
+    float: "right",
+    color: "white",
+  };
 
+  console.log(authUser);
+  // const skillsArr = authUser.skills.split("");
+  // console.log(skillsArr);
   return (
     <>
       <div className="container justify-content-center">
@@ -107,17 +115,31 @@ const Profile = () => {
                 <Card.Body>
                   <Card.Title></Card.Title>
                   <Card.Text className="text-align-left">
-                    <p>Firstname</p>
-                    <p style={{ color: "#848383" }}>{authUser.firstName}</p>
+                    <p className="header-six">Firstname</p>
+                    <span style={{ color: "#848383" }}>
+                      {authUser.firstName}
+                    </span>
                     <hr />
-                    <p>Lastname</p>
-                    <p style={{ color: "#848383" }}>{authUser.lastName}</p>
+                    <p className="header-six">Lastname</p>
+                    <span style={{ color: "#848383" }}>
+                      {authUser.lastName}
+                    </span>
                     <hr />
-                    <p>Email</p>
-                    <p style={{ color: "#848383" }}>{authUser.email}</p>
+                    <p className="header-six">Email</p>
+                    <span style={{ color: "#848383" }}>{authUser.email}</span>
                     <hr />
-                    <p>Skills</p>
-                    <p style={{ color: "#848383" }}>{authUser.skills}</p>
+                    <p className="header-six">Skills</p>
+                    <span style={{ color: "#848383" }}>
+                      {authUser.skills}
+                      {/* {authUser.skills.map((skill) => (
+                        <button
+                          className="btn xsmall-btn my-auto m-1"
+                          style={btnStyle}
+                        >
+                          {skill.skills}
+                        </button>
+                      ))} */}
+                    </span>
                     <hr />
                   </Card.Text>
                 </Card.Body>
@@ -125,6 +147,11 @@ const Profile = () => {
             </div>
           </div>
         )}
+        {/* {authUser.skills.map((skill) => (
+          <button className="btn xsmall-btn my-auto m-1" style={btnStyle}>
+            {skill.skills}
+          </button>
+        ))} */}
       </div>
     </>
   );
