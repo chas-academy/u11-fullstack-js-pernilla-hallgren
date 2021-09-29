@@ -47,8 +47,8 @@ const Login = ({ getToken, setAdmin, setAuthUser }) => {
     <>
       <div className="container justify-content-center text-center">
         <div className="mb-5">
-          <h2>LOGIN NOW</h2>
-          <p>Please login to continue</p>
+          <h1 className="header-one">LOGIN NOW</h1>
+          <h3 className="header-three">Please login to continue</h3>
         </div>
 
         {loading && !error && <p>Your are being logged in...</p>}

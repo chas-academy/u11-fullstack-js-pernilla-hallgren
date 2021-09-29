@@ -50,7 +50,7 @@ const CreateUser = () => {
     <>
       <div className="container justify-content-center text-center">
         <div className="mb-5">
-          <h1 className="header-one">Create New User</h1>
+          <h1 className="header-one">CREATE NEW USER</h1>
         </div>
         {loading && !error && <p>User is being created...</p>}
 

@@ -43,7 +43,7 @@ const CreateTrainer = () => {
     <>
       <div className="container justify-content-center text-center">
         <div>
-          <h1 className="header-one">Create New Trainer</h1>
+          <h1 className="header-one">CREATE NEW TRAINER</h1>
         </div>
 
         {loading && !error && <p>Create trainer loading...</p>}

@@ -62,7 +62,7 @@ const SearchBar = ({ setIsSearching }) => {
         <input
           className="input-field"
           type="text"
-          placeholder="Search by skills"
+          placeholder="Search by skill"
           // value={searchResult}
           onChange={(e) => setQuery(e.target.value)}
           id={query}

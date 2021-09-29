@@ -72,7 +72,7 @@ const AdminDashboard = () => {
   return (
     <>
       <div>
-        <h1 className="header-one mt-5 mb-5 text-center">All Users</h1>
+        <h1 className="header-one mt-5 mb-5 text-center">ALL USERS</h1>
       </div>
       {adminUser && (
         <div className="mb-2 text-center">
@@ -126,7 +126,7 @@ const AdminDashboard = () => {
                           fontSize: "20px",
                         }}
                       >
-                        {user.username}
+                        {user.username.toUpperCase()}
                         <Link
                           className="link"
                           style={{ background: "none" }}
