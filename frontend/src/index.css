@@ -15,7 +15,9 @@
     #eab393 89.37%
   );
   --background-nav: #283041;
-  --text-color: #cecfd3;
+  --text-color-primary: #cecfd3;
+  --text-color: #e4e5e7;
+
   --box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -28,10 +30,18 @@
   color: var(--text-color);
 }
 
+main {
+  height: 90%;
+}
+
+body {
+  height: 100%;
+}
+
 /* HEADER STYLES */
 .header-one {
   font-size: 34px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .header-two {
@@ -46,6 +56,11 @@
 
 .header-four {
   font-size: 15px;
+}
+
+.header-six {
+  font-size: 15px;
+  font-weight: 300;
 }
 
 /* TEXT-LINK STYLES */
@@ -102,19 +117,12 @@
   color: rgb(3, 3, 3);
 }
 
-/* .btn:focus { 
-  outline: 0px;
-  border: 0.5rem solid;
-  border-color: #283041;
-} */
-
 /* CONTAINER STYLES */
 .container {
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
 }
 
 .container-msg {
@@ -136,11 +144,32 @@
   border-radius: 20px;
   border: 0;
 }
+.input-field-small {
+  background: #5d6475;
+  box-shadow: var(--box-shadow);
+  font-size: 15px;
+  width: 20rem;
+  height: 3rem;
+  margin: 1rem;
+  padding: 20px;
+  border-radius: 20px;
+  border: 0;
+}
+
+.input-field-small::placeholder {
+  color: var(--text-color);
+  font-size: 15px;
+  font-weight: 300;
+}
 
 .input-field::placeholder {
   color: var(--text-color);
   font-size: 15px;
   font-weight: 300;
+}
+
+.input-field-small:focus {
+  outline: none;
 }
 
 .input-field:focus {
@@ -151,7 +180,6 @@
 .nav-wrapper {
   list-style: none;
   display: flex;
-  /* flex-flow: row nowrap */
   flex-flow: column nowrap;
   background-color: var(--background-nav);
   position: fixed;
@@ -167,25 +195,13 @@ li {
   background-color: var(--background-nav);
 }
 
-/* .burger-nav {
-  width: 2rem;
-  height: 2rem;
-  position: fixed;
-  top: 15px;
-  right: 20px;
-  z-index: 20;
-  display: none;
-} */
-
-/* .navlinks > a {
-  color: #0eb933;
-}
-
-.navlinks > a:hover {
-  text-decoration: underline;
-  color: #d81717;
-} */
 .navbar-toggler-icon {
   background: var(--background-nav);
-  /* color: #FF9187; */
+}
+
+.footer {
+  height: 10%;
+  bottom: 0;
+  padding-bottom: 10px;
+  text-align: center;
 }

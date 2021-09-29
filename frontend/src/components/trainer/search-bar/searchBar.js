@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Search } from "react-bootstrap-icons";
 import { GET } from "../../../shared/services/requests";
 import ErrorMessage from "../../../shared/components/error-message";
+import TrainerCard from "../trainer-card/trainer-card";
+import { Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const SearchBar = ({ setIsSearching }) => {
   const [query, setQuery] = useState(""),
@@ -25,7 +28,10 @@ const SearchBar = ({ setIsSearching }) => {
         setSearchResult([]);
       });
     setError(null);
+    setQuery("");
   };
+
+  console.log(searchResult);
 
   return (
     <>
@@ -35,25 +41,65 @@ const SearchBar = ({ setIsSearching }) => {
         <input
           className="input-field"
           type="text"
-          placeholder="Search"
+          placeholder="Search by skill"
           // value={searchResult}
           onChange={(e) => setQuery(e.target.value)}
           id={query}
         />
 
-        <button onClick={handleSearch} style={{ border: "none" }}>
+        <button
+          onClick={handleSearch}
+          style={{ border: "none" }}
+          name="search btn"
+        >
           <Search />
         </button>
 
         {error && <ErrorMessage message={error} />}
+        <div className="row">
+          {/* {searchResult && (
+            <ul>
+              {searchResult.map((trainer) => (
+                <li key={trainer.id}>{trainer.username}</li>
+              ))}
+            </ul>
+          )} */}
+          {/* {searchResult.length && (
+            <div>
+              <h1 className="header-one mb-5 mt-2 text-center">
+                Search Result
+              </h1>
+            </div>
+          )} */}
 
-        {searchResult && (
-          <ul>
-            {searchResult.map((trainer) => (
-              <li key={trainer.id}>{trainer.username}</li>
-            ))}
-          </ul>
-        )}
+          {searchResult.length && (
+            <div className="row">
+              {searchResult.map((trainer) => (
+                <Col
+                  key={trainer.id}
+                  sm={12}
+                  md={6}
+                  lg={3}
+                  className="justify-content-center"
+                >
+                  <Link
+                    to={{
+                      pathname: "/trainer-profile",
+                      state: {
+                        trainer,
+                      },
+                    }}
+                  >
+                    <TrainerCard
+                      image={trainer.image}
+                      name={trainer.username.toUpperCase()}
+                    />
+                  </Link>
+                </Col>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

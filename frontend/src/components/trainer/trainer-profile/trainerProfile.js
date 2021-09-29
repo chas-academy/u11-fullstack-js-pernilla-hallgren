@@ -1,21 +1,24 @@
 import React, { useState } from "react";
-import { Redirect, useLocation } from "react-router-dom";
-import { Card } from "react-bootstrap";
+import { useLocation, useHistory } from "react-router-dom";
+import { Card, Button } from "react-bootstrap";
 import ButtonSmall from "../../../shared/components/button-small";
 import ButtonSubmit from "../../../shared/components/button-submit";
-// import Skills from "../../shared/components/skills";
-// import ReviewStar from "../../shared/components/review_star";
+import { ArrowLeft } from "react-bootstrap-icons";
 import userImg from "../../../shared/assets/images/user-img.png";
 import { Link } from "react-router-dom";
 
 const TrainerProfile = () => {
+  let history = useHistory();
   const location = useLocation();
   const [trainer, setTrainer] = useState(location.state.trainer);
 
-  console.log(trainer);
+  const handleClickBack = () => {
+    history.push("/home");
+  };
 
   const imgCardStyle = {
-    border: "none",
+    border: "0.5px solid ",
+    boxShadow: "3px 3px 4px rgba(0, 0, 0, 0.25)",
     height: "20rem",
     width: "20rem",
     overflow: "hidden",
@@ -30,8 +33,27 @@ const TrainerProfile = () => {
     background: "none",
   };
 
+  const btnStyle = {
+    borderRadius: "8px",
+    border: "0",
+    cursor: "auto",
+  };
+
+  console.log(trainer);
+
   return (
     <>
+      <div className="m-3">
+        <button
+          className="link"
+          style={{ border: "none" }}
+          onClick={handleClickBack}
+        >
+          <ArrowLeft color="#FF9187" />
+          <span className="m-1">Back</span>
+        </button>
+      </div>
+
       <div className="container">
         <div className="row" style={{ margin: "auto" }}>
           <div
@@ -53,11 +75,11 @@ const TrainerProfile = () => {
                     fontSize: "17px",
                     fontWeight: "300",
                     marginTop: "8px",
+                    textTransform: "uppercase",
                   }}
                 >
                   <div className="mb-3">
-                    {trainer.firstName.toUpperCase()}{" "}
-                    {trainer.lastName.toUpperCase()}
+                    {trainer.firstName} {trainer.lastName}
                   </div>
                   <a
                     href={`mailto:${trainer.email}`}
@@ -89,10 +111,14 @@ const TrainerProfile = () => {
                 <Card.Text style={{ fontStyle: "italic", fontWeight: "300" }}>
                   {trainer.description}
                 </Card.Text>
-                <Card.Title>Skills</Card.Title>
-                {trainer.skills}
 
-                <ButtonSubmit name="Send a message to..." id="login-btn" />
+                <Card.Title>Skills</Card.Title>
+                {trainer.skills.map((skill) => (
+                  <Button className="xsmall-btn m-2" style={btnStyle}>
+                    {skill}
+                  </Button>
+                ))}
+                {/* <ButtonSubmit name="Send a message to..." id="login-btn" /> */}
               </Card.Body>
             </Card>
           </div>

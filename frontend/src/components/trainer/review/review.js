@@ -1,28 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
+import moment from "moment";
 import ButtonSubmit from "../../../shared/components/button-submit";
-import { Redirect, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { DELETE, GET, POST } from "../../../shared/services/requests";
 import { handleFormData } from "../../../shared/helpers/formData";
-import ReviewStar from "../../../shared/components/review-star";
-import ButtonSmall from "../../../shared/components/button-small";
 import ErrorMessage from "../../../shared/components/error-message";
+import { StarFill } from "react-bootstrap-icons";
 
-const Review = ({ setAuthUser }) => {
+const Review = () => {
   const location = useLocation();
-  // const id = location.state.trainer.id;
-  console.log(setAuthUser);
+
   const [trainer, setTrainer] = useState(location.state.trainer),
     [newReview, setNewReview] = useState({ text: "", rating: Number }),
     [reviews, setReviews] = useState([]),
+    [rating, setRating] = useState(null),
+    [hover, setHover] = useState(null),
     [loading, setLoading] = useState(false),
-    [loadingReviews, setLoadingReviews] = useState(false),
-    [loadingDelete, setLoadingDelete] = useState(false),
     [success, setSuccess] = useState(null),
-    [error, setError] = useState(null),
-    [errorDelete, setErrorDelete] = useState(null);
-
-  console.log(trainer);
+    [error, setError] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,31 +40,36 @@ const Review = ({ setAuthUser }) => {
   useEffect(() => {
     GET(`trainers/${trainer.id}`)
       .then((response) => {
+        console.log(response.data);
         setReviews(response.data);
       })
       .catch((error) => {
         setError(error.response.data.msg);
       });
-  }, []);
+  }, [trainer.id]);
 
   const deleteReviewHandler = (id) => {
-    setLoadingDelete(true);
     DELETE("trainers", id)
       .then((response) => {
-        setLoadingDelete(false);
         setSuccess(response.data.msg);
         setReviews((currentState) => [
           ...currentState.filter((review) => review.id !== id),
         ]);
       })
       .catch((error) => {
-        setErrorDelete(error.response.data.msg);
-        setLoadingDelete(false);
+        setError(error.response.data.msg);
+
         setSuccess(null);
       });
   };
 
-  console.log(reviews);
+  const mapOverNumber = (num, element) => {
+    const arr = [];
+    for (let i = 0; i < num; i++) {
+      arr.push(element);
+    }
+    return arr;
+  };
 
   const imgCardStyle = {
     border: "none",
@@ -83,8 +84,15 @@ const Review = ({ setAuthUser }) => {
     marginTop: "10px",
   };
 
-  const log = (value) => {
-    console.log(value);
+  const btnStyle = {
+    borderRadius: "10px",
+    border: "0",
+    color: "white",
+  };
+  const starStyle = {
+    margin: "3px",
+    cursor: "pointer",
+    transition: "color 200ms",
   };
 
   return (
@@ -96,17 +104,35 @@ const Review = ({ setAuthUser }) => {
             {error && <ErrorMessage message={error} />}
 
             <Card style={imgCardStyle}>
-              <h2>Review {trainer.username}</h2>
+              <h1 className="header-one">REVIEW {trainer.username}</h1>
               <Card.Body>
-                <div>
-                  <ReviewStar onChange={log} />
-                </div>
-                <input
-                  type="text"
-                  id="rating"
-                  onChange={(e) => handleFormData(e, setNewReview)}
-                />
-                Set rating
+                {[...Array(5)].map((star, i) => {
+                  const ratingValue = i + 1;
+                  return (
+                    <label>
+                      <input
+                        style={{ display: "none" }}
+                        type="radio"
+                        name="rating"
+                        value={ratingValue}
+                        id="rating"
+                        onChange={(e) => handleFormData(e, setNewReview)}
+                        onClick={() => setRating(ratingValue)}
+                      />
+                      <StarFill
+                        style={starStyle}
+                        size={20}
+                        color={
+                          ratingValue <= (hover || rating)
+                            ? "#FF7580"
+                            : "#5D6475"
+                        }
+                        onMouseEnter={() => setHover(ratingValue)}
+                        onMouseLeave={() => setHover(null)}
+                      />
+                    </label>
+                  );
+                })}
                 <form onSubmit={handleSubmit}>
                   <div className="form-group">
                     <textarea
@@ -131,16 +157,35 @@ const Review = ({ setAuthUser }) => {
                 key={review.id}
                 className="col-md justify-content-center mb-1"
               >
-                <Card style={imgCardStyle}>
+                <Card style={{ border: "none" }}>
                   <Card.Body>
-                    <h2 className="header-two">{review.user.username}</h2>
-                    <div className="mb-2">Rating: {review.rating}</div>
-                    <div>{review.text}</div>
+                    <h3 className="header-three">
+                      {review.user.username.toUpperCase()}
+                    </h3>
+                    <div className="mb-2">
+                      {mapOverNumber(
+                        review.rating,
+                        <StarFill
+                          style={{ ...starStyle, cursor: "auto" }}
+                          size={15}
+                          color={"#FF7580"}
+                        />
+                      )}
+                    </div>
+                    <p style={{ fontStyle: "italic", fontWeight: "300" }}>
+                      {review.text}
+                    </p>
                     <br />
-                    <div>{review.createdAt}</div>
+                    <div style={{ fontWeight: "300" }}>
+                      {moment(review.createdAt).format("YYYY-MM-DD")}
+                    </div>
                     {review.user._id ===
                       JSON.parse(localStorage.getItem("user"))?.id && (
-                      <button onClick={() => deleteReviewHandler(review.id)}>
+                      <button
+                        className="btn xsmall-btn"
+                        style={btnStyle}
+                        onClick={() => deleteReviewHandler(review.id)}
+                      >
                         Delete
                       </button>
                     )}

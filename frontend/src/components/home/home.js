@@ -33,13 +33,15 @@ const Home = () => {
       {error && <ErrorMessage message={error} />}
 
       {loading && !error && <p>Page is loading...</p>}
+      {/* <div>
+        <h1 className="header-one mb-3 mt-5 text-center">TRAINERS</h1>
+      </div> */}
 
       <SearchBar setIsSearching={setIsSearching} />
-      <div>
-        <h1 className="header-one mb-5 mt-2 text-center">Trainers</h1>
-      </div>
+
       <div className="row">
-        {allTrainers && !isSearching ? (
+        {allTrainers &&
+          !isSearching &&
           allTrainers.map((trainer) => (
             <Col
               key={trainer.id}
@@ -62,10 +64,7 @@ const Home = () => {
                 />
               </Link>
             </Col>
-          ))
-        ) : (
-          <div>There are no trainers in database</div>
-        )}
+          ))}
       </div>
     </>
   );

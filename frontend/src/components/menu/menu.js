@@ -12,7 +12,6 @@ const Menu = ({ isAdmin, logoutHandler }) => {
     fontWeight: "300",
     color: "#CECFD3",
     background: "#283041",
-    textDecoration: "none",
   };
 
   const toggler = {
@@ -43,6 +42,7 @@ const Menu = ({ isAdmin, logoutHandler }) => {
         <Navbar.Collapse style={color} id="navbar-toggle">
           <Nav className="mr-auto">
             <NavLink
+              className="link"
               style={color}
               to="/home"
               onClick={() => setExpanded(false)}
@@ -51,13 +51,7 @@ const Menu = ({ isAdmin, logoutHandler }) => {
               Home
             </NavLink>
             <NavLink
-              style={color}
-              to="/messages"
-              onClick={() => setExpanded(false)}
-            >
-              Messages
-            </NavLink>
-            <NavLink
+              className="link"
               style={color}
               to="/profile"
               onClick={() => setExpanded(false)}
@@ -66,6 +60,7 @@ const Menu = ({ isAdmin, logoutHandler }) => {
             </NavLink>
             {isAdmin && (
               <NavLink
+                className="link"
                 style={color}
                 to="/admin-dashboard"
                 onClick={() => setExpanded(false)}
@@ -73,7 +68,12 @@ const Menu = ({ isAdmin, logoutHandler }) => {
                 Admin Dashboard
               </NavLink>
             )}
-            <NavLink style={color} onClick={logoutHandler} to="/">
+            <NavLink
+              className="link"
+              style={color}
+              onClick={logoutHandler}
+              to="/"
+            >
               Logout
             </NavLink>
           </Nav>

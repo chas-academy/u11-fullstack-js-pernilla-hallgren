@@ -14,6 +14,20 @@ const createTrainer = async (req, res) => {
     description,
     skills,
   } = req.body;
+
+  if (
+    !username ||
+    !email ||
+    !firstName ||
+    !lastName ||
+    !role ||
+    !image ||
+    !description ||
+    !skills
+  ) {
+    return res.status(400).json({ msg: "Please enter all fields" });
+  }
+
   try {
     const newTrainer = await new Trainer({
       username,
@@ -23,7 +37,7 @@ const createTrainer = async (req, res) => {
       role,
       image,
       description,
-      skills,
+      skills: skills.split(/[ ,]+/),
     });
     newTrainer.save().then((trainer) => res.json(trainer));
   } catch (err) {
@@ -68,11 +82,9 @@ const createReview = async (req, res) => {
     });
     newReview.save().then(async (review) => {
       await review.populate("user", "username");
-      // console.log({ review: review.populate("user", "username") });
       res.json(review);
     });
   } catch (err) {
-    console.log(err);
     res.status(500).send({ message: "Server issues" });
   }
 };
@@ -97,7 +109,6 @@ const deleteReview = async (req, res) => {
     await review.delete();
     res.send("Successfully deleted");
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       msg: "Could not delete review, server issues",
     });

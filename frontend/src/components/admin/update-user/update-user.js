@@ -37,7 +37,7 @@ const UpdateUser = () => {
     <>
       <div className="container justify-content-center text-center">
         <div className="mb-5">
-          <h1 className="header-one">Update User</h1>
+          <h1 className="header-one">UPDATE USER</h1>
         </div>
 
         {loading && !error && <p>User is being updated...</p>}
