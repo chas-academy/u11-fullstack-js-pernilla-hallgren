@@ -159,9 +159,9 @@ const Review = ({ setAuthUser }) => {
               >
                 <Card style={{ border: "none" }}>
                   <Card.Body>
-                    <h2 className="header-two">
+                    <h3 className="header-three">
                       {review.user.username.toUpperCase()}
-                    </h2>
+                    </h3>
                     <div className="mb-2">
                       {mapOverNumber(
                         review.rating,

@@ -115,7 +115,7 @@ const EditProfile = () => {
             <input
               className="input-field"
               type="text"
-              placeholder="Choose Skills"
+              placeholder="Add Interests"
               value={user.skills}
               onChange={(e) => handleFormData(e, setUser)}
               id="skills"

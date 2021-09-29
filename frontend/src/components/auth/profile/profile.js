@@ -118,7 +118,7 @@ const Profile = () => {
                     <p className="header-six">Email</p>
                     <span style={{ color: "#848383" }}>{authUser.email}</span>
                     <hr />
-                    <p className="header-six">Skills</p>
+                    <p className="header-six">Interests</p>
                     <span style={{ color: "#848383" }}>{authUser.skills}</span>
                     <hr />
                   </Card.Text>
