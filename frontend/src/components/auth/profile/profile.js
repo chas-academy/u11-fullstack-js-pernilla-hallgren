@@ -110,7 +110,7 @@ const Profile = () => {
               <Card style={{ border: "none", width: "30rem" }}>
                 <Card.Body>
                   <Card.Title></Card.Title>
-                  <Card.Text className="text-align-left">
+                  <Card.Text as="div" className="text-align-left">
                     <p className="header-six">Firstname</p>
                     <span style={{ color: "#848383" }}>
                       {authUser.firstName}

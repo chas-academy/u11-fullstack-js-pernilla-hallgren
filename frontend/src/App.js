@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { GET } from "./shared/services/requests";
 import "./App.css";
 import AdminDashboard from "./components/admin/admin-dashboard/admin-dashboard";
 import CreateUser from "./components/admin/create-user/create-user";
@@ -15,7 +14,7 @@ import TrainerProfile from "./components/trainer/trainer-profile/trainerProfile"
 import Review from "./components/trainer/review/review";
 import Menu from "./components/menu/menu";
 import LandingPage from "./components/landing-page/landing-page";
-import Footer from "./components/footer/footer";
+// import Footer from "./components/footer/footer";
 
 function App() {
   const [userToken, setUserToken] = useState(localStorage.getItem("token")),
@@ -92,10 +91,7 @@ function App() {
                   exact
                   component={TrainerProfile}
                 />
-                <Route
-                  path="/trainer-profile/review"
-                  render={(props) => <Review {...props} />}
-                />
+                <Route path="/trainer-profile/review" component={Review} />
               </Switch>
             </>
           )}
@@ -103,28 +99,16 @@ function App() {
           {isAdmin && (
             <>
               <Switch>
-                <Route
-                  path="/admin-dashboard"
-                  render={(props) => <AdminDashboard {...props} />}
-                />
-                <Route
-                  path="/create-user"
-                  render={(props) => <CreateUser {...props} />}
-                />
-                <Route
-                  path="/update-user"
-                  render={(props) => <UpdateUser {...props} />}
-                />
-                <Route
-                  path="/create-trainer"
-                  render={(props) => <CreateTrainer {...props} />}
-                />
+                <Route path="/admin-dashboard" component={AdminDashboard} />
+                <Route path="/create-user" component={CreateUser} />
+                <Route path="/update-user" component={UpdateUser} />
+                <Route path="/create-trainer" component={CreateTrainer} />
               </Switch>
             </>
           )}
         </main>
       </Router>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

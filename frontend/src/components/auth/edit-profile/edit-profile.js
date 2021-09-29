@@ -62,7 +62,7 @@ const EditProfile = () => {
             />
           </div>
 
-          <div className="form-group">
+          {/* <div className="form-group">
             <label htmlFor="register-email"></label>
             <input
               className="input-field"
@@ -72,7 +72,7 @@ const EditProfile = () => {
               onChange={(e) => handleFormData(e, setUser)}
               id="email"
             />
-          </div>
+          </div> */}
 
           <div className="form-group">
             <label htmlFor="register-firstname"></label>

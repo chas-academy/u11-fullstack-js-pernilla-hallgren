@@ -91,6 +91,7 @@ const Review = () => {
     width: "5rem",
     marginTop: "10px",
   };
+
   const starStyle = {
     margin: "3px",
     cursor: "pointer",
