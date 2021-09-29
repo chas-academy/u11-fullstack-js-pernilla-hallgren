@@ -33,12 +33,12 @@ const editUser = (req, res) => {
     });
 };
 
-const logout = (req, res) => {
-  res.cookie(token, "", { maxAge: 1 });
-};
+// const logout = (req, res) => {
+//   res.cookie(token, "", { maxAge: 1 });
+// };
 
 module.exports = {
   getUserById,
-  logout,
+  // logout,
   editUser,
 };
