@@ -23,26 +23,33 @@ function App() {
   // [loading, setLoading] = useState(false);
 
   const logout = () => {
+    setUserToken(null);
+    setIsAdmin(null);
+
+    localStorage.removeItem("token");
+    localStorage.removeItem("admin");
+    localStorage.removeItem("user");
     // setLoading(true);
-    GET("logout")
-      .then((data) => {
-        // setLoading(false);
-        setUserToken(null);
-        setIsAdmin(null);
 
-        localStorage.removeItem("token");
-        localStorage.removeItem("admin");
-        localStorage.removeItem("user");
-      })
-      .catch((err) => {
-        // setLoading(false);
-        setUserToken(null);
-        setIsAdmin(null);
+    // GET("auth/logout")
+    //   .then((data) => {
+    //     // setLoading(false);
+    //     setUserToken(null);
+    //     setIsAdmin(null);
 
-        localStorage.removeItem("token");
-        localStorage.removeItem("admin");
-        localStorage.removeItem("user");
-      });
+    //     localStorage.removeItem("token");
+    //     localStorage.removeItem("admin");
+    //     localStorage.removeItem("user");
+    //   })
+    //   .catch((err) => {
+    //     // setLoading(false);
+    //     setUserToken(null);
+    //     setIsAdmin(null);
+
+    //     localStorage.removeItem("token");
+    //     localStorage.removeItem("admin");
+    //     localStorage.removeItem("user");
+    //   });
   };
 
   return (
