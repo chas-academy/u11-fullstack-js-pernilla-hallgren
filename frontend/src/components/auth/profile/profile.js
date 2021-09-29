@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ErrorMessage from "../../../shared/components/error-message";
 import userImg from "../../../shared/assets/images/user-img.svg";
 import { Card } from "react-bootstrap";
+import { PencilFill } from "react-bootstrap-icons";
 
 const Profile = () => {
   const [authUser, setAuthUser] = useState([]),
@@ -93,6 +94,11 @@ const Profile = () => {
                         fontWeight: "300",
                       }}
                     >
+                      {" "}
+                      <PencilFill
+                        color="#FF7580"
+                        style={{ marginRight: "6px", marginBottom: "4px" }}
+                      />
                       Edit Profile
                     </h3>
                   </Link>
