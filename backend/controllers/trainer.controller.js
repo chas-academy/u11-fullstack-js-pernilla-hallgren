@@ -14,6 +14,20 @@ const createTrainer = async (req, res) => {
     description,
     skills,
   } = req.body;
+
+  if (
+    !username ||
+    !email ||
+    !firstName ||
+    !lastName ||
+    !role ||
+    !image ||
+    !description ||
+    !skills
+  ) {
+    return res.status(400).json({ msg: "Please enter all fields" });
+  }
+
   try {
     const newTrainer = await new Trainer({
       username,

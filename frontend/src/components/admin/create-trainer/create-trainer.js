@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { POST } from "../../../shared/services/requests";
 import { Row, Col } from "react-bootstrap";
 import ButtonSubmit from "../../../shared/components/button-submit";
@@ -47,14 +47,15 @@ const CreateTrainer = () => {
         </div>
 
         {loading && !error && <p>Create trainer loading...</p>}
-        {error && <ErrorMessage message={error} />}
 
         <form onSubmit={handleSubmit} className="mb-5 mt-4">
           <div className="form-group">
             <label htmlFor="register-username"></label>
 
+            {error && <ErrorMessage message={error} />}
+
             <input
-              className="input-field"
+              className="input-field-small"
               type="text"
               placeholder="Add Username"
               value={newTrainer.username}
@@ -66,7 +67,7 @@ const CreateTrainer = () => {
           <div className="form-group">
             <label htmlFor="register-email"></label>
             <input
-              className="input-field"
+              className="input-field-small"
               type="email"
               placeholder="Add Email"
               value={newTrainer.email}
@@ -78,7 +79,7 @@ const CreateTrainer = () => {
           <div className="form-group">
             <label htmlFor="register-firstname"></label>
             <input
-              className="input-field"
+              className="input-field-small"
               type="text"
               placeholder="Add Firstname"
               value={newTrainer.firstName}
@@ -90,7 +91,7 @@ const CreateTrainer = () => {
           <div className="form-group">
             <label htmlFor="register-lastname"></label>
             <input
-              className="input-field"
+              className="input-field-small"
               type="text"
               placeholder="Add Lastname"
               value={newTrainer.lastName}
@@ -102,7 +103,7 @@ const CreateTrainer = () => {
           <div className="form-group">
             <label htmlFor="image"></label>
             <input
-              className="input-field"
+              className="input-field-small"
               type="text"
               placeholder="Add Image"
               value={newTrainer.image}
@@ -114,7 +115,7 @@ const CreateTrainer = () => {
           <div className="form-group">
             <label htmlFor="role"></label>
             <input
-              className="input-field"
+              className="input-field-small"
               type="text"
               placeholder="Add Role"
               value={newTrainer.role}
@@ -126,7 +127,7 @@ const CreateTrainer = () => {
           <div className="form-group">
             <label htmlFor="description"></label>
             <input
-              className="input-field"
+              className="input-field-small"
               type="text"
               placeholder="Add Description"
               value={newTrainer.description}
@@ -138,9 +139,9 @@ const CreateTrainer = () => {
           <div className="form-group">
             <label htmlFor="skills"></label>
             <input
-              className="input-field"
+              className="input-field-small"
               type="text"
-              placeholder="Choose Skills"
+              placeholder="Add Skills"
               value={newTrainer.skills}
               onChange={(e) => handleFormData(e, setNewTrainer)}
               id="skills"

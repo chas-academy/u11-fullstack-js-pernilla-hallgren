@@ -39,7 +39,7 @@ body {
 /* HEADER STYLES */
 .header-one {
   font-size: 34px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .header-two {
@@ -142,11 +142,32 @@ body {
   border-radius: 20px;
   border: 0;
 }
+.input-field-small {
+  background: #5d6475;
+  box-shadow: var(--box-shadow);
+  font-size: 15px;
+  width: 20rem;
+  height: 3rem;
+  margin: 1rem;
+  padding: 20px;
+  border-radius: 20px;
+  border: 0;
+}
+
+.input-field-small::placeholder {
+  color: var(--text-color);
+  font-size: 15px;
+  font-weight: 300;
+}
 
 .input-field::placeholder {
   color: var(--text-color);
   font-size: 15px;
   font-weight: 300;
+}
+
+.input-field-small:focus {
+  outline: none;
 }
 
 .input-field:focus {
