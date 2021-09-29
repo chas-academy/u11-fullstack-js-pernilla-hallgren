@@ -15,7 +15,9 @@
     #eab393 89.37%
   );
   --background-nav: #283041;
-  --text-color: #cecfd3;
+  --text-color-primary: #cecfd3;
+  --text-color: #e4e5e7;
+
   --box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
 }
 

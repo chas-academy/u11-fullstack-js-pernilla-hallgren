@@ -17,7 +17,8 @@ const TrainerProfile = () => {
   };
 
   const imgCardStyle = {
-    border: "none",
+    border: "0.5px solid ",
+    boxShadow: "3px 3px 4px rgba(0, 0, 0, 0.25)",
     height: "20rem",
     width: "20rem",
     overflow: "hidden",

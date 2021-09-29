@@ -122,7 +122,7 @@ const AdminDashboard = () => {
                         className="list-group-item"
                         style={{
                           background: "#5D6475",
-                          color: "#CECFD3",
+                          color: "#e4e5e7",
                           fontSize: "20px",
                         }}
                       >

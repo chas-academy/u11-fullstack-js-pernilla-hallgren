@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { GET } from "../../../shared/services/requests";
 import { Link } from "react-router-dom";
 import ErrorMessage from "../../../shared/components/error-message";
-import userImg from "../../../shared/assets/images/user-img.png";
+import userImg from "../../../shared/assets/images/user-img.svg";
 import { Card } from "react-bootstrap";
 
 const Profile = () => {
@@ -39,16 +39,6 @@ const Profile = () => {
     background: "none",
   };
 
-  const btnStyle = {
-    borderRadius: "10px",
-    border: "0",
-    float: "right",
-    color: "white",
-  };
-
-  console.log(authUser);
-  // const skillsArr = authUser.skills.split("");
-  // console.log(skillsArr);
   return (
     <>
       <div className="container justify-content-center">
@@ -129,17 +119,7 @@ const Profile = () => {
                     <span style={{ color: "#848383" }}>{authUser.email}</span>
                     <hr />
                     <p className="header-six">Skills</p>
-                    <span style={{ color: "#848383" }}>
-                      {authUser.skills}
-                      {/* {authUser.skills.map((skill) => (
-                        <button
-                          className="btn xsmall-btn my-auto m-1"
-                          style={btnStyle}
-                        >
-                          {skill.skills}
-                        </button>
-                      ))} */}
-                    </span>
+                    <span style={{ color: "#848383" }}>{authUser.skills}</span>
                     <hr />
                   </Card.Text>
                 </Card.Body>
@@ -147,11 +127,6 @@ const Profile = () => {
             </div>
           </div>
         )}
-        {/* {authUser.skills.map((skill) => (
-          <button className="btn xsmall-btn my-auto m-1" style={btnStyle}>
-            {skill.skills}
-          </button>
-        ))} */}
       </div>
     </>
   );

@@ -12,27 +12,6 @@ const SearchBar = ({ setIsSearching }) => {
     [error, setError] = useState(null),
     [loading, setLoading] = useState(false);
 
-  // const doSearch = () => {
-  //   setLoading(true);
-  //   GET(`/trainers/search?skills=${query}`)
-  //     .then((response) => {
-  //       console.log(response);
-  //       setLoading(false);
-  //       setSearchResult(response.data.searchResult);
-  //       setIsSearching(true);
-  //     })
-  //     .catch((error) => {
-  //       setLoading(false);
-  //       setError(error.response.data.msg);
-  //       setSearchResult([]);
-  //     });
-  //   setError(null);
-  // };
-
-  // useEffect(() => {
-  //   doSearch();
-  // }, []);
-
   const handleSearch = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -68,7 +47,11 @@ const SearchBar = ({ setIsSearching }) => {
           id={query}
         />
 
-        <button onClick={handleSearch} style={{ border: "none" }}>
+        <button
+          onClick={handleSearch}
+          style={{ border: "none" }}
+          name="search btn"
+        >
           <Search />
         </button>
 

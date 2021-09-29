@@ -104,9 +104,7 @@ const Review = ({ setAuthUser }) => {
             {error && <ErrorMessage message={error} />}
 
             <Card style={imgCardStyle}>
-              <h2 className="header-two">
-                Review {trainer.username.toUpperCase()}
-              </h2>
+              <h1 className="header-one">REVIEW {trainer.username}</h1>
               <Card.Body>
                 {[...Array(5)].map((star, i) => {
                   const ratingValue = i + 1;
