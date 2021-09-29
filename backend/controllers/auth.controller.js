@@ -20,7 +20,6 @@ const editUser = (req, res) => {
         return res.status(404).send({
           msg: "Cannot update user",
         });
-        // res.json(data);
       } else {
         res.send({
           msg: "User was updated successfully!",
@@ -34,9 +33,7 @@ const editUser = (req, res) => {
     });
 };
 
-//OBS! Används denna!
 const logout = (req, res) => {
-  // res.clearCookie('token').status(200).json({ message: "Success!"})
   res.cookie(token, "", { maxAge: 1 });
 };
 

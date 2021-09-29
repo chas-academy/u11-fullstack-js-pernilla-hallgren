@@ -19,14 +19,14 @@ import Footer from "./components/footer/footer";
 
 function App() {
   const [userToken, setUserToken] = useState(localStorage.getItem("token")),
-    [isAdmin, setIsAdmin] = useState(localStorage.getItem("admin")),
-    [loading, setLoading] = useState(false);
+    [isAdmin, setIsAdmin] = useState(localStorage.getItem("admin"));
+  // [loading, setLoading] = useState(false);
 
   const logout = () => {
-    setLoading(true);
+    // setLoading(true);
     GET("logout")
       .then((data) => {
-        setLoading(false);
+        // setLoading(false);
         setUserToken(null);
         setIsAdmin(null);
 
@@ -35,7 +35,7 @@ function App() {
         localStorage.removeItem("user");
       })
       .catch((err) => {
-        setLoading(false);
+        // setLoading(false);
         setUserToken(null);
         setIsAdmin(null);
 
@@ -78,19 +78,12 @@ function App() {
               <Menu isAdmin={isAdmin} logoutHandler={logout} />
               <Switch>
                 <Route path="/home" exact component={Home} />
-                <Route
-                  path="/profile"
-                  exact
-                  render={(props) => <Profile {...props} />}
-                />
-                <Route
-                  path="/profile/edit"
-                  render={(props) => <EditProfile {...props} />}
-                />
+                <Route path="/profile" exact component={Profile} />
+                <Route path="/profile/edit" component={EditProfile} />
                 <Route
                   path="/trainer-profile"
                   exact
-                  render={(props) => <TrainerProfile {...props} />}
+                  component={TrainerProfile}
                 />
                 <Route
                   path="/trainer-profile/review"

@@ -3,7 +3,6 @@ import { Redirect } from "react-router-dom";
 import { POST } from "../../../shared/services/requests";
 import { Row, Col } from "react-bootstrap";
 import ButtonSubmit from "../../../shared/components/button-submit";
-import { Link } from "react-router-dom";
 import ErrorMessage from "../../../shared/components/error-message";
 
 const CreateUser = () => {

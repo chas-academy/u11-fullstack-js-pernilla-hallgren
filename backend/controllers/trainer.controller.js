@@ -82,11 +82,9 @@ const createReview = async (req, res) => {
     });
     newReview.save().then(async (review) => {
       await review.populate("user", "username");
-      // console.log({ review: review.populate("user", "username") });
       res.json(review);
     });
   } catch (err) {
-    console.log(err);
     res.status(500).send({ message: "Server issues" });
   }
 };
@@ -111,7 +109,6 @@ const deleteReview = async (req, res) => {
     await review.delete();
     res.send("Successfully deleted");
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       msg: "Could not delete review, server issues",
     });

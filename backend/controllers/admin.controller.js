@@ -6,7 +6,6 @@ const User = require("../models/User.model");
 
 const jwtSecret = process.env.JWT_SECRET;
 
-// Add this to auth instead
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.find().select("-password");
@@ -40,7 +39,6 @@ const createUser = (req, res) => {
             { id: user.id },
             jwtSecret,
             { expiresIn: 3600 },
-            // callback
             (err, token) => {
               if (err) throw err;
               res.json({
@@ -68,7 +66,6 @@ const editUser = async (req, res) => {
         return res.status(404).send({
           msg: `Cannot update user with id=${id}. User cannot be found`,
         });
-        // res.json(data);
       } else {
         return res.send({
           msg: "User was updated successfully!",

@@ -8,7 +8,7 @@ import { handleFormData } from "../../../shared/helpers/formData";
 import ErrorMessage from "../../../shared/components/error-message";
 import { StarFill } from "react-bootstrap-icons";
 
-const Review = ({ setAuthUser }) => {
+const Review = () => {
   const location = useLocation();
 
   const [trainer, setTrainer] = useState(location.state.trainer),
@@ -46,7 +46,7 @@ const Review = ({ setAuthUser }) => {
       .catch((error) => {
         setError(error.response.data.msg);
       });
-  }, []);
+  }, [trainer.id]);
 
   const deleteReviewHandler = (id) => {
     DELETE("trainers", id)
