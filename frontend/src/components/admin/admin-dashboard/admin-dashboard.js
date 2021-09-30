@@ -12,16 +12,14 @@ const AdminDashboard = () => {
     [error, setError] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
     GET("auth/profile")
       .then((response) => {
         setAdminUser(response.data);
-        setLoading(false);
       })
       .catch((error) => {
         setError(error.response.data.msg);
       });
-
+    setLoading(true);
     GET("admin")
       .then((response) => {
         setAllUsers(response.data);
@@ -36,7 +34,6 @@ const AdminDashboard = () => {
   const deleteUserHandler = (id) => {
     DELETE("admin/users", id)
       .then((response) => {
-        setLoading(false);
         setSuccess(response.data.msg);
         setAllUsers((currentState) => [
           ...currentState.filter((user) => user.id !== id),
@@ -44,7 +41,6 @@ const AdminDashboard = () => {
       })
       .catch((error) => {
         setError(error.response.data.msg);
-        setLoading(false);
         setSuccess(null);
       });
   };

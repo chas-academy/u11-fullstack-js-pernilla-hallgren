@@ -99,11 +99,8 @@ const TrainerProfile = () => {
             </Card>
           </div>
 
-          <div
-            className="col d-flex justify-content-center text-center"
-            style={{ marginLeft: "40px" }}
-          >
-            <Card style={{ border: "none", width: "25rem" }}>
+          <div className="col d-flex justify-content-center text-center">
+            <Card style={{ border: "none", minWidth: "20rem" }}>
               <Card.Body style={{ textAlign: "left" }}>
                 <Card.Text style={{ fontStyle: "italic", fontWeight: "300" }}>
                   {trainer.description}
@@ -112,7 +109,7 @@ const TrainerProfile = () => {
                 <Card.Title>Skills</Card.Title>
                 {trainer.skills.map((skill) => (
                   <Button
-                    key={trainer.id_skill}
+                    key={`${trainer.id}_${skill}`}
                     className="xsmall-btn m-2"
                     style={btnStyle}
                   >

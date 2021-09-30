@@ -35,7 +35,7 @@ const EditProfile = () => {
   return (
     <>
       <div className="container justify-content-center text-center">
-        <div className="mb-4">
+        <div className="mb-2 mt-5">
           <h1 className="header-one">UPDATE PROFILE</h1>
         </div>
 

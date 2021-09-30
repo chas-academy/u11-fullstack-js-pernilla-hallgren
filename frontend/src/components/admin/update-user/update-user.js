@@ -35,7 +35,7 @@ const UpdateUser = () => {
   return (
     <>
       <div className="container justify-content-center text-center">
-        <div className="mb-5">
+        <div className="mb-2 mt-5">
           <h1 className="header-one">UPDATE USER</h1>
         </div>
 

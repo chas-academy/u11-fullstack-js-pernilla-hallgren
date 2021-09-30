@@ -46,7 +46,7 @@ const Login = ({ getToken, setAdmin }) => {
   return (
     <>
       <div className="container justify-content-center text-center">
-        <div className="mb-5">
+        <div className="mb-5 mt-5">
           <h1 className="header-one">LOGIN NOW</h1>
           <h3 className="header-three">Please login to continue</h3>
         </div>
