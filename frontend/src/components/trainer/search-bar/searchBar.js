@@ -17,7 +17,6 @@ const SearchBar = ({ setIsSearching }) => {
     setLoading(true);
     GET(`/trainers/search?skills=${query}`)
       .then((response) => {
-        console.log(response);
         setLoading(false);
         setSearchResult(response.data.searchResult);
         setIsSearching(true);
@@ -30,8 +29,6 @@ const SearchBar = ({ setIsSearching }) => {
     setError(null);
     setQuery("");
   };
-
-  console.log(searchResult);
 
   return (
     <>

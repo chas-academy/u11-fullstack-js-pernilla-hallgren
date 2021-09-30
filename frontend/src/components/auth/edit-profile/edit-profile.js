@@ -22,7 +22,6 @@ const EditProfile = () => {
     PATCH("auth/profile/edit", id, { ...user })
       .then((response) => {
         setLoading(true);
-        console.log(response.data);
         setRedirect(true);
       })
       .catch((error) => {
@@ -30,8 +29,6 @@ const EditProfile = () => {
         setLoading(false);
       });
   };
-
-  console.log(user);
 
   if (redirect) return <Redirect to="/profile" />;
 
@@ -59,18 +56,6 @@ const EditProfile = () => {
               value={user.username}
               onChange={(e) => handleFormData(e, setUser)}
               id="username"
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="register-email"></label>
-            <input
-              className="input-field"
-              type="email"
-              placeholder="Add Email"
-              value={user.email}
-              onChange={(e) => handleFormData(e, setUser)}
-              id="email"
             />
           </div>
 

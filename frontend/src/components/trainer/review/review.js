@@ -29,7 +29,6 @@ const Review = () => {
         setReviews((currentState) => [...currentState.concat(data.data)]); // concat return the new array (.push the lenght of the array)
         setLoading(false);
         setNewReview(data.data);
-        console.log(data.data);
       })
       .catch((error) => {
         setLoading(false);
@@ -40,7 +39,6 @@ const Review = () => {
   useEffect(() => {
     GET(`trainers/${trainer.id}`)
       .then((response) => {
-        console.log(response.data);
         setReviews(response.data);
       })
       .catch((error) => {
@@ -88,7 +86,10 @@ const Review = () => {
     borderRadius: "10px",
     border: "0",
     color: "white",
+    width: "5rem",
+    marginTop: "10px",
   };
+
   const starStyle = {
     margin: "3px",
     cursor: "pointer",
@@ -157,7 +158,7 @@ const Review = () => {
                 key={review.id}
                 className="col-md justify-content-center mb-1"
               >
-                <Card style={{ border: "none" }}>
+                <Card style={{ border: "none", minWidth: "20rem" }}>
                   <Card.Body>
                     <h3 className="header-three">
                       {review.user.username.toUpperCase()}
@@ -182,7 +183,7 @@ const Review = () => {
                     {review.user._id ===
                       JSON.parse(localStorage.getItem("user"))?.id && (
                       <button
-                        className="btn xsmall-btn"
+                        className="xsmall-btn"
                         style={btnStyle}
                         onClick={() => deleteReviewHandler(review.id)}
                       >

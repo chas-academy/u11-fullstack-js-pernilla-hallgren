@@ -30,7 +30,6 @@ const AdminDashboard = () => {
       .catch((error) => {
         setError(error.response.data.msg);
         setLoading(false);
-        console.log(error.response);
       });
   }, []);
 

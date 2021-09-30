@@ -26,16 +26,11 @@ const Home = () => {
       });
   }, []);
 
-  console.log(allTrainers);
-
   return (
     <>
       {error && <ErrorMessage message={error} />}
 
       {loading && !error && <p>Page is loading...</p>}
-      {/* <div>
-        <h1 className="header-one mb-3 mt-5 text-center">TRAINERS</h1>
-      </div> */}
 
       <SearchBar setIsSearching={setIsSearching} />
 

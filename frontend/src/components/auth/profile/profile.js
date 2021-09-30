@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ErrorMessage from "../../../shared/components/error-message";
 import userImg from "../../../shared/assets/images/user-img.svg";
 import { Card } from "react-bootstrap";
+import { PencilFill } from "react-bootstrap-icons";
 
 const Profile = () => {
   const [authUser, setAuthUser] = useState([]),
@@ -93,6 +94,11 @@ const Profile = () => {
                         fontWeight: "300",
                       }}
                     >
+                      {" "}
+                      <PencilFill
+                        color="#FF7580"
+                        style={{ marginRight: "6px", marginBottom: "4px" }}
+                      />
                       Edit Profile
                     </h3>
                   </Link>
@@ -104,7 +110,7 @@ const Profile = () => {
               <Card style={{ border: "none", width: "30rem" }}>
                 <Card.Body>
                   <Card.Title></Card.Title>
-                  <Card.Text className="text-align-left">
+                  <Card.Text as="div" className="text-align-left">
                     <p className="header-six">Firstname</p>
                     <span style={{ color: "#848383" }}>
                       {authUser.firstName}

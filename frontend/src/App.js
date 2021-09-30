@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { GET } from "./shared/services/requests";
 import "./App.css";
 import AdminDashboard from "./components/admin/admin-dashboard/admin-dashboard";
 import CreateUser from "./components/admin/create-user/create-user";
@@ -54,77 +53,64 @@ function App() {
 
   return (
     <>
-      <Router>
-        <main>
-          <Route path="/" exact component={LandingPage} />
-          {!userToken && (
-            <>
-              <Switch>
-                <Route
-                  path="/register"
-                  render={(props) => (
-                    <Register {...props} getToken={setUserToken} />
-                  )}
-                />
-                <Route
-                  path="/login"
-                  render={(props) => (
-                    <Login
-                      {...props}
-                      getToken={setUserToken}
-                      setAdmin={setIsAdmin}
-                    />
-                  )}
-                />
-              </Switch>
-            </>
-          )}
+      <div id="app-wrapper">
+        <Router>
+          <main>
+            <Route path="/" exact component={LandingPage} />
+            {!userToken && (
+              <>
+                <Switch>
+                  <Route
+                    path="/register"
+                    render={(props) => (
+                      <Register {...props} getToken={setUserToken} />
+                    )}
+                  />
+                  <Route
+                    path="/login"
+                    render={(props) => (
+                      <Login
+                        {...props}
+                        getToken={setUserToken}
+                        setAdmin={setIsAdmin}
+                      />
+                    )}
+                  />
+                </Switch>
+              </>
+            )}
 
-          {userToken && (
-            <>
-              <Menu isAdmin={isAdmin} logoutHandler={logout} />
-              <Switch>
-                <Route path="/home" exact component={Home} />
-                <Route path="/profile" exact component={Profile} />
-                <Route path="/profile/edit" component={EditProfile} />
-                <Route
-                  path="/trainer-profile"
-                  exact
-                  component={TrainerProfile}
-                />
-                <Route
-                  path="/trainer-profile/review"
-                  render={(props) => <Review {...props} />}
-                />
-              </Switch>
-            </>
-          )}
+            {userToken && (
+              <>
+                <Menu isAdmin={isAdmin} logoutHandler={logout} />
+                <Switch>
+                  <Route path="/home" exact component={Home} />
+                  <Route path="/profile" exact component={Profile} />
+                  <Route path="/profile/edit" component={EditProfile} />
+                  <Route
+                    path="/trainer-profile"
+                    exact
+                    component={TrainerProfile}
+                  />
+                  <Route path="/trainer-profile/review" component={Review} />
+                </Switch>
+              </>
+            )}
 
-          {isAdmin && (
-            <>
-              <Switch>
-                <Route
-                  path="/admin-dashboard"
-                  render={(props) => <AdminDashboard {...props} />}
-                />
-                <Route
-                  path="/create-user"
-                  render={(props) => <CreateUser {...props} />}
-                />
-                <Route
-                  path="/update-user"
-                  render={(props) => <UpdateUser {...props} />}
-                />
-                <Route
-                  path="/create-trainer"
-                  render={(props) => <CreateTrainer {...props} />}
-                />
-              </Switch>
-            </>
-          )}
-        </main>
-      </Router>
-      <Footer />
+            {isAdmin && (
+              <>
+                <Switch>
+                  <Route path="/admin-dashboard" component={AdminDashboard} />
+                  <Route path="/create-user" component={CreateUser} />
+                  <Route path="/update-user" component={UpdateUser} />
+                  <Route path="/create-trainer" component={CreateTrainer} />
+                </Switch>
+              </>
+            )}
+          </main>
+        </Router>
+        <Footer />
+      </div>
     </>
   );
 }
