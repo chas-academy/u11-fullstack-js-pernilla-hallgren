@@ -5,10 +5,9 @@ const User = require("../models/User.model");
 const getUserById = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");
-    // .populate("reviews")
     res.json(user);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ msg: "Server issues" });
   }
 };
 
@@ -19,12 +18,11 @@ const editUser = (req, res) => {
     .then((data) => {
       if (!data) {
         return res.status(404).send({
-          message: "Cannot update user",
+          msg: "Cannot update user",
         });
-        // res.json(data);
       } else {
         res.send({
-          message: "User was updated successfully!",
+          msg: "User was updated successfully!",
         });
       }
     })
@@ -35,14 +33,12 @@ const editUser = (req, res) => {
     });
 };
 
-//OBS! Används denna!
-const logout = (req, res) => {
-  // res.clearCookie('token').status(200).json({ message: "Success!"})
-  res.cookie(token, "", { maxAge: 1 });
-};
+// const logout = (req, res) => {
+//   res.cookie(token, "", { maxAge: 1 });
+// };
 
 module.exports = {
   getUserById,
-  logout,
+  // logout,
   editUser,
 };

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Review = require("./Review.model");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
@@ -43,6 +44,12 @@ UserSchema.method("toJSON", function () {
   const { __v, _id, ...object } = this.toObject();
   object.id = _id;
   return object;
+});
+
+UserSchema.pre("remove", function (next) {
+  Review.remove({ user: this.id }).exec();
+
+  return next();
 });
 
 module.exports = User = mongoose.model("User", UserSchema);

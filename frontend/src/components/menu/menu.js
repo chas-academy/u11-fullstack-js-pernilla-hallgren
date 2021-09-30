@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { Navbar, Nav } from "react-bootstrap";
+import { Link, NavLink } from "react-router-dom";
+import { Navbar, Nav, Image } from "react-bootstrap";
+import logo from "../../shared/assets/icons/logo.svg";
 
 const Menu = ({ isAdmin, logoutHandler }) => {
   const [expanded, setExpanded] = useState(false);
@@ -11,7 +12,6 @@ const Menu = ({ isAdmin, logoutHandler }) => {
     fontWeight: "300",
     color: "#CECFD3",
     background: "#283041",
-    textDecoration: "none",
   };
 
   const toggler = {
@@ -22,8 +22,17 @@ const Menu = ({ isAdmin, logoutHandler }) => {
   return (
     <>
       <Navbar style={color} expand="lg" variant="dark" expanded={expanded}>
-        <Navbar.Brand style={color} href="#home">
-          LOGO
+        <Navbar.Brand style={color}>
+          <Link to="/home">
+            <Image
+              src={logo}
+              alt="logo"
+              style={{
+                width: "8rem",
+                background: "#283041",
+              }}
+            />
+          </Link>
         </Navbar.Brand>
         <Navbar.Toggle
           style={toggler}
@@ -31,22 +40,18 @@ const Menu = ({ isAdmin, logoutHandler }) => {
           onClick={() => setExpanded(expanded ? false : "expanded")}
         />
         <Navbar.Collapse style={color} id="navbar-toggle">
-          <Nav className="me-auto">
+          <Nav className="mr-auto">
             <NavLink
+              className="link"
               style={color}
               to="/home"
               onClick={() => setExpanded(false)}
+              id="home"
             >
               Home
             </NavLink>
             <NavLink
-              style={color}
-              to="/messages"
-              onClick={() => setExpanded(false)}
-            >
-              Messages
-            </NavLink>
-            <NavLink
+              className="link"
               style={color}
               to="/profile"
               onClick={() => setExpanded(false)}
@@ -55,6 +60,7 @@ const Menu = ({ isAdmin, logoutHandler }) => {
             </NavLink>
             {isAdmin && (
               <NavLink
+                className="link"
                 style={color}
                 to="/admin-dashboard"
                 onClick={() => setExpanded(false)}
@@ -62,19 +68,17 @@ const Menu = ({ isAdmin, logoutHandler }) => {
                 Admin Dashboard
               </NavLink>
             )}
-            <NavLink style={color} onClick={logoutHandler} to="/login">
+            <NavLink
+              className="link"
+              style={color}
+              onClick={logoutHandler}
+              to="/"
+            >
               Logout
             </NavLink>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      {/* <div style={navStyle.nav}>
-        <div style={navStyle.logo}>
-          Navbar
-        </div>
-        
-        <RightNav />
-      </div> */}
     </>
   );
 };

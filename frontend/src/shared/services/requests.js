@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "https://u11-fullstack-app.herokuapp.com/api";
+// const API_URL = "https://u11-fullstack-app.herokuapp.com/api";
+const API_URL = "http://localhost:5000/api";
 
 export const GET = (url) => {
   return axios.get(`${API_URL}/${url}`, {
