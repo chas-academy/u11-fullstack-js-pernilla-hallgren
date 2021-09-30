@@ -22,7 +22,6 @@ const UpdateUser = () => {
     PATCH("admin/users", id, { ...user })
       .then((response) => {
         setLoading(false);
-        // console.log(response.data);
         setRedirect(true);
       })
       .catch((error) => {

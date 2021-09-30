@@ -31,7 +31,6 @@ const CreateUser = () => {
         setLoading(false);
         setRedirect(true);
         setNewUser(data.data);
-        console.log(data.data);
       })
       .catch((error) => {
         setLoading(false);

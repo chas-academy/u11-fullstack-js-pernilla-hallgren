@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import { Card, Button } from "react-bootstrap";
 import ButtonSmall from "../../../shared/components/button-small";
-import ButtonSubmit from "../../../shared/components/button-submit";
 import { ArrowLeft } from "react-bootstrap-icons";
 import userImg from "../../../shared/assets/images/user-img.png";
 import { Link } from "react-router-dom";
@@ -38,8 +37,6 @@ const TrainerProfile = () => {
     border: "0",
     cursor: "auto",
   };
-
-  console.log(trainer);
 
   return (
     <>

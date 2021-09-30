@@ -29,7 +29,6 @@ const Review = () => {
         setReviews((currentState) => [...currentState.concat(data.data)]); // concat return the new array (.push the lenght of the array)
         setLoading(false);
         setNewReview(data.data);
-        console.log(data.data);
       })
       .catch((error) => {
         setLoading(false);
@@ -40,7 +39,6 @@ const Review = () => {
   useEffect(() => {
     GET(`trainers/${trainer.id}`)
       .then((response) => {
-        console.log(response.data);
         setReviews(response.data);
       })
       .catch((error) => {
