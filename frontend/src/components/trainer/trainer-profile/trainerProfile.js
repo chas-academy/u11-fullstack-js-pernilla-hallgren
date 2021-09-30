@@ -111,11 +111,14 @@ const TrainerProfile = () => {
 
                 <Card.Title>Skills</Card.Title>
                 {trainer.skills.map((skill) => (
-                  <Button className="xsmall-btn m-2" style={btnStyle}>
+                  <Button
+                    key={skill.id}
+                    className="xsmall-btn m-2"
+                    style={btnStyle}
+                  >
                     {skill}
                   </Button>
                 ))}
-                {/* <ButtonSubmit name="Send a message to..." id="login-btn" /> */}
               </Card.Body>
             </Card>
           </div>
