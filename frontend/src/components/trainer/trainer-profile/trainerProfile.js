@@ -112,7 +112,7 @@ const TrainerProfile = () => {
                 <Card.Title>Skills</Card.Title>
                 {trainer.skills.map((skill) => (
                   <Button
-                    key={skill.id}
+                    key={trainer.id_skill}
                     className="xsmall-btn m-2"
                     style={btnStyle}
                   >

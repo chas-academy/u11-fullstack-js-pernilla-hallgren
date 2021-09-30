@@ -33,5 +33,3 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
-//                                       <a href="mailto:mailadress@gmail.com"
-// a href={"mailto:" + this.props.email}>email</a>

@@ -39,7 +39,6 @@ const SearchBar = ({ setIsSearching }) => {
           className="input-field"
           type="text"
           placeholder="Search by skill"
-          // value={searchResult}
           onChange={(e) => setQuery(e.target.value)}
           id={query}
         />
@@ -54,21 +53,6 @@ const SearchBar = ({ setIsSearching }) => {
 
         {error && <ErrorMessage message={error} />}
         <div className="row">
-          {/* {searchResult && (
-            <ul>
-              {searchResult.map((trainer) => (
-                <li key={trainer.id}>{trainer.username}</li>
-              ))}
-            </ul>
-          )} */}
-          {/* {searchResult.length && (
-            <div>
-              <h1 className="header-one mb-5 mt-2 text-center">
-                Search Result
-              </h1>
-            </div>
-          )} */}
-
           {searchResult.length && (
             <div className="row">
               {searchResult.map((trainer) => (

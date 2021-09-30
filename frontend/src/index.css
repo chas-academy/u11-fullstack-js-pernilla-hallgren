@@ -17,7 +17,6 @@
   --background-nav: #283041;
   --text-color-primary: #cecfd3;
   --text-color: #e4e5e7;
-
   --box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -30,13 +29,12 @@
   color: var(--text-color);
 }
 
-/* main {
-  height: 90%;
+#app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
 }
-
-body {
-  height: 100%;
-} */
 
 /* HEADER STYLES */
 .header-one {
@@ -199,20 +197,9 @@ li {
   background: var(--background-nav);
 }
 
-#app-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  overflow: hidden;
-}
-
+/* FOOTER STYLES */
 .footer {
   margin-top: auto;
   text-align: center;
   padding: 1em 0;
-  /* margin-top: auto;
-  height: 10%;
-  bottom: 0;
-  padding-bottom: 10px;
-  text-align: center; */
 }

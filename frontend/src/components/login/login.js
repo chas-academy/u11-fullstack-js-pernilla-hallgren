@@ -5,7 +5,7 @@ import ErrorMessage from "../../shared/components/error-message";
 import ButtonSubmit from "../../shared/components/button-submit";
 import { Col, Row } from "react-bootstrap";
 
-const Login = ({ getToken, setAdmin, setAuthUser }) => {
+const Login = ({ getToken, setAdmin }) => {
   const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [error, setError] = useState(null),
