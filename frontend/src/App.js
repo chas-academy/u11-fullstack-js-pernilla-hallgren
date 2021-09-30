@@ -53,62 +53,64 @@ function App() {
 
   return (
     <>
-      <Router>
-        <main>
-          <Route path="/" exact component={LandingPage} />
-          {!userToken && (
-            <>
-              <Switch>
-                <Route
-                  path="/register"
-                  render={(props) => (
-                    <Register {...props} getToken={setUserToken} />
-                  )}
-                />
-                <Route
-                  path="/login"
-                  render={(props) => (
-                    <Login
-                      {...props}
-                      getToken={setUserToken}
-                      setAdmin={setIsAdmin}
-                    />
-                  )}
-                />
-              </Switch>
-            </>
-          )}
+      <div id="app-wrapper">
+        <Router>
+          <main>
+            <Route path="/" exact component={LandingPage} />
+            {!userToken && (
+              <>
+                <Switch>
+                  <Route
+                    path="/register"
+                    render={(props) => (
+                      <Register {...props} getToken={setUserToken} />
+                    )}
+                  />
+                  <Route
+                    path="/login"
+                    render={(props) => (
+                      <Login
+                        {...props}
+                        getToken={setUserToken}
+                        setAdmin={setIsAdmin}
+                      />
+                    )}
+                  />
+                </Switch>
+              </>
+            )}
 
-          {userToken && (
-            <>
-              <Menu isAdmin={isAdmin} logoutHandler={logout} />
-              <Switch>
-                <Route path="/home" exact component={Home} />
-                <Route path="/profile" exact component={Profile} />
-                <Route path="/profile/edit" component={EditProfile} />
-                <Route
-                  path="/trainer-profile"
-                  exact
-                  component={TrainerProfile}
-                />
-                <Route path="/trainer-profile/review" component={Review} />
-              </Switch>
-            </>
-          )}
+            {userToken && (
+              <>
+                <Menu isAdmin={isAdmin} logoutHandler={logout} />
+                <Switch>
+                  <Route path="/home" exact component={Home} />
+                  <Route path="/profile" exact component={Profile} />
+                  <Route path="/profile/edit" component={EditProfile} />
+                  <Route
+                    path="/trainer-profile"
+                    exact
+                    component={TrainerProfile}
+                  />
+                  <Route path="/trainer-profile/review" component={Review} />
+                </Switch>
+              </>
+            )}
 
-          {isAdmin && (
-            <>
-              <Switch>
-                <Route path="/admin-dashboard" component={AdminDashboard} />
-                <Route path="/create-user" component={CreateUser} />
-                <Route path="/update-user" component={UpdateUser} />
-                <Route path="/create-trainer" component={CreateTrainer} />
-              </Switch>
-            </>
-          )}
-        </main>
-      </Router>
-      <Footer />
+            {isAdmin && (
+              <>
+                <Switch>
+                  <Route path="/admin-dashboard" component={AdminDashboard} />
+                  <Route path="/create-user" component={CreateUser} />
+                  <Route path="/update-user" component={UpdateUser} />
+                  <Route path="/create-trainer" component={CreateTrainer} />
+                </Switch>
+              </>
+            )}
+          </main>
+        </Router>
+        <Footer />
+      </div>
     </>
   );
 }
