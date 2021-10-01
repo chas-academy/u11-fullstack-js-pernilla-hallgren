@@ -1,12 +1,12 @@
 import axios from "axios";
 
 // const API_URL = "https://u11-fullstack-app.herokuapp.com/api";
-const API_URL = "http://localhost:5000/api";
+// const API_URL = "http://localhost:5000/api"
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const GET = (url) => {
   return axios.get(`${API_URL}/${url}`, {
     headers: {
-      // "Access-Control-Allow-Origin": "*",
       "Content-Type": "application/json",
       "x-auth-token": localStorage.getItem("token"),
     },

@@ -10,7 +10,6 @@ const CreateUser = () => {
     [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [role, setRole] = useState(""),
-    [newUser, setNewUser] = useState({}),
     [error, setError] = useState(null),
     [redirect, setRedirect] = useState(false),
     [loading, setLoading] = useState(false);
@@ -30,7 +29,6 @@ const CreateUser = () => {
       .then((data) => {
         setLoading(false);
         setRedirect(true);
-        setNewUser(data.data);
       })
       .catch((error) => {
         setLoading(false);
@@ -47,7 +45,7 @@ const CreateUser = () => {
   return (
     <>
       <div className="container justify-content-center text-center">
-        <div className="mb-5">
+        <div className="mb-2 mt-5">
           <h1 className="header-one">CREATE NEW USER</h1>
         </div>
         {loading && !error && <p>User is being created...</p>}

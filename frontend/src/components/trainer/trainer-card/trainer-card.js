@@ -4,8 +4,6 @@ import { Card } from "react-bootstrap";
 const TrainerCard = ({ name, image }) => {
   const cardStyle = {
     background: "#5D6475",
-    // width: "15rem",
-    // height: "15rem",
     padding: "0.5rem",
     margin: "15px",
     borderRadius: "20px",
@@ -31,7 +29,6 @@ const TrainerCard = ({ name, image }) => {
 
   return (
     <>
-      {/* <div className="col justify-content-center m-2"> */}
       <Card className="text-white mx-auto text-center" style={cardStyle}>
         <div style={cardImgStyle}>
           <Card.Img
@@ -41,12 +38,10 @@ const TrainerCard = ({ name, image }) => {
             variant="top"
           />
         </div>
-
         <Card.ImgOverlay style={{ background: "none" }}>
           <Card.Title style={cardTitleStyle}>{name}</Card.Title>
         </Card.ImgOverlay>
       </Card>
-      {/* </div> */}
     </>
   );
 };

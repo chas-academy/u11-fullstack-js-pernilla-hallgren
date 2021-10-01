@@ -5,7 +5,7 @@ import ErrorMessage from "../../shared/components/error-message";
 import ButtonSubmit from "../../shared/components/button-submit";
 import { Col, Row } from "react-bootstrap";
 
-const Login = ({ getToken, setAdmin, setAuthUser }) => {
+const Login = ({ getToken, setAdmin }) => {
   const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [error, setError] = useState(null),
@@ -46,7 +46,7 @@ const Login = ({ getToken, setAdmin, setAuthUser }) => {
   return (
     <>
       <div className="container justify-content-center text-center">
-        <div className="mb-5">
+        <div className="mb-5 mt-5">
           <h1 className="header-one">LOGIN NOW</h1>
           <h3 className="header-three">Please login to continue</h3>
         </div>

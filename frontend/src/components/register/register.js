@@ -10,7 +10,6 @@ const Register = ({ getToken }) => {
   const [username, setUsername] = useState(""),
     [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
-    [newUser, setNewUser] = useState({}),
     [redirect, setRedirect] = useState(false),
     [error, setError] = useState(null),
     [loading, setLoading] = useState(false);
@@ -28,7 +27,6 @@ const Register = ({ getToken }) => {
       .then((data) => {
         setLoading(true);
         setRedirect(true);
-        setNewUser(data.data);
         localStorage.setItem("token", data.data.token);
         getToken(localStorage.getItem("token"));
       })
@@ -47,7 +45,7 @@ const Register = ({ getToken }) => {
   return (
     <>
       <div className="container justify-content-center text-center">
-        <div className="mb-5">
+        <div className="mb-5 mt-5">
           <h1 className="header-one">REGISTER HERE</h1>
           <h3 className="header-three">
             Please fill in your details to register an account

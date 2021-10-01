@@ -26,8 +26,8 @@ const Profile = () => {
 
   const imgCardStyle = {
     border: "none",
-    height: "20rem",
-    width: "20rem",
+    minHeight: "20rem",
+    minWidth: "20rem",
     overflow: "hidden",
     background: "none",
     borderRadius: "50%",
@@ -107,9 +107,8 @@ const Profile = () => {
             </div>
 
             <div className="col d-flex justify-content-center m-3">
-              <Card style={{ border: "none", width: "30rem" }}>
+              <Card style={{ border: "none", minWidth: "20rem" }}>
                 <Card.Body>
-                  <Card.Title></Card.Title>
                   <Card.Text as="div" className="text-align-left">
                     <p className="header-six">Firstname</p>
                     <span style={{ color: "#848383" }}>

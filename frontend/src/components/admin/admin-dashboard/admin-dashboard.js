@@ -12,16 +12,14 @@ const AdminDashboard = () => {
     [error, setError] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
     GET("auth/profile")
       .then((response) => {
         setAdminUser(response.data);
-        setLoading(false);
       })
       .catch((error) => {
         setError(error.response.data.msg);
       });
-
+    setLoading(true);
     GET("admin")
       .then((response) => {
         setAllUsers(response.data);
@@ -34,19 +32,18 @@ const AdminDashboard = () => {
   }, []);
 
   const deleteUserHandler = (id) => {
-    DELETE("admin/users", id)
-      .then((response) => {
-        setLoading(false);
-        setSuccess(response.data.msg);
-        setAllUsers((currentState) => [
-          ...currentState.filter((user) => user.id !== id),
-        ]);
-      })
-      .catch((error) => {
-        setError(error.response.data.msg);
-        setLoading(false);
-        setSuccess(null);
-      });
+    if (window.confirm("Are you sure you wish to delete this user?"))
+      DELETE("admin/users", id)
+        .then((response) => {
+          setSuccess(response.data.msg);
+          setAllUsers((currentState) => [
+            ...currentState.filter((user) => user.id !== id),
+          ]);
+        })
+        .catch((error) => {
+          setError(error.response.data.msg);
+          setSuccess(null);
+        });
   };
 
   const cardStyle = {
