@@ -19,7 +19,6 @@ import Footer from "./components/footer/footer";
 function App() {
   const [userToken, setUserToken] = useState(localStorage.getItem("token")),
     [isAdmin, setIsAdmin] = useState(localStorage.getItem("admin"));
-  // [loading, setLoading] = useState(false);
 
   const logout = () => {
     setUserToken(null);
@@ -28,27 +27,6 @@ function App() {
     localStorage.removeItem("token");
     localStorage.removeItem("admin");
     localStorage.removeItem("user");
-    // setLoading(true);
-
-    // GET("auth/logout")
-    //   .then((data) => {
-    //     // setLoading(false);
-    //     setUserToken(null);
-    //     setIsAdmin(null);
-
-    //     localStorage.removeItem("token");
-    //     localStorage.removeItem("admin");
-    //     localStorage.removeItem("user");
-    //   })
-    //   .catch((err) => {
-    //     // setLoading(false);
-    //     setUserToken(null);
-    //     setIsAdmin(null);
-
-    //     localStorage.removeItem("token");
-    //     localStorage.removeItem("admin");
-    //     localStorage.removeItem("user");
-    //   });
   };
 
   return (

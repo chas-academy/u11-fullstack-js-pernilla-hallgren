@@ -42,7 +42,7 @@ const CreateTrainer = () => {
   return (
     <>
       <div className="container justify-content-center text-center">
-        <div>
+        <div className="mb-2 mt-5">
           <h1 className="header-one">CREATE NEW TRAINER</h1>
         </div>
 

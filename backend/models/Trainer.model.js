@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// Create schema
 const TrainerSchema = new Schema({
   username: {
     type: String,
@@ -33,18 +32,6 @@ const TrainerSchema = new Schema({
       type: String,
     },
   ],
-  // reviews: [
-  //   {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: "Review",
-  //   },
-  // ],
-  // skills: [
-  //   {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: "Skill",
-  //   },
-  // ],
   register_date: {
     type: Date,
     default: Date.now,

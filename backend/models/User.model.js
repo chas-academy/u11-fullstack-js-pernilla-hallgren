@@ -39,7 +39,7 @@ const UserSchema = new Schema({
     default: Date.now,
   },
 });
-// Will delete the _id which is automatically generated
+
 UserSchema.method("toJSON", function () {
   const { __v, _id, ...object } = this.toObject();
   object.id = _id;

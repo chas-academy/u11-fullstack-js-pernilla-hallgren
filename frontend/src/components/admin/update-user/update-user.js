@@ -35,7 +35,7 @@ const UpdateUser = () => {
   return (
     <>
       <div className="container justify-content-center text-center">
-        <div className="mb-5">
+        <div className="mb-2 mt-5">
           <h1 className="header-one">UPDATE USER</h1>
         </div>
 
@@ -51,7 +51,7 @@ const UpdateUser = () => {
               className="input-field"
               type="text"
               autoComplete="off"
-              // placeholder={user.username}
+              placeholder="Update Username"
               value={user.username}
               onChange={(e) => handleFormData(e, setUser)}
               id="username"
@@ -63,7 +63,7 @@ const UpdateUser = () => {
             <input
               className="input-field"
               type="email"
-              // placeholder={user.email}
+              placeholder="Update Email"
               value={user.email}
               onChange={(e) => handleFormData(e, setUser)}
               id="email"
@@ -75,7 +75,7 @@ const UpdateUser = () => {
             <input
               className="input-field"
               type="text"
-              // placeholder={user.role}
+              placeholder="Update Role"
               value={user.role}
               onChange={(e) => handleFormData(e, setUser)}
               id="role"

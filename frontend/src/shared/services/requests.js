@@ -6,7 +6,6 @@ const API_URL = "http://localhost:5000/api";
 export const GET = (url) => {
   return axios.get(`${API_URL}/${url}`, {
     headers: {
-      // "Access-Control-Allow-Origin": "*",
       "Content-Type": "application/json",
       "x-auth-token": localStorage.getItem("token"),
     },

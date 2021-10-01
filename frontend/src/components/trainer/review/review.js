@@ -26,7 +26,7 @@ const Review = () => {
     setLoading(true);
     POST(`trainers/${trainer.id}/reviews`, newReview)
       .then((data) => {
-        setReviews((currentState) => [...currentState.concat(data.data)]); // concat return the new array (.push the lenght of the array)
+        setReviews((currentState) => [...currentState.concat(data.data)]);
         setLoading(false);
         setNewReview(data.data);
       })
@@ -110,7 +110,7 @@ const Review = () => {
                 {[...Array(5)].map((star, i) => {
                   const ratingValue = i + 1;
                   return (
-                    <label>
+                    <label key={i}>
                       <input
                         style={{ display: "none" }}
                         type="radio"
