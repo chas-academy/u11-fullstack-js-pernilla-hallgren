@@ -32,17 +32,18 @@ const AdminDashboard = () => {
   }, []);
 
   const deleteUserHandler = (id) => {
-    DELETE("admin/users", id)
-      .then((response) => {
-        setSuccess(response.data.msg);
-        setAllUsers((currentState) => [
-          ...currentState.filter((user) => user.id !== id),
-        ]);
-      })
-      .catch((error) => {
-        setError(error.response.data.msg);
-        setSuccess(null);
-      });
+    if (window.confirm("Are you sure you wish to delete this user?"))
+      DELETE("admin/users", id)
+        .then((response) => {
+          setSuccess(response.data.msg);
+          setAllUsers((currentState) => [
+            ...currentState.filter((user) => user.id !== id),
+          ]);
+        })
+        .catch((error) => {
+          setError(error.response.data.msg);
+          setSuccess(null);
+        });
   };
 
   const cardStyle = {
