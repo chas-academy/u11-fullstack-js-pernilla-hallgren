@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const API_URL = "https://u11-fullstack-app.herokuapp.com/api";
-const API_URL = "http://localhost:5000/api";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const GET = (url) => {
   return axios.get(`${API_URL}/${url}`, {
@@ -13,6 +13,7 @@ export const GET = (url) => {
 };
 
 export const POST = async (url, data) => {
+  console.log(API_URL, url);
   return axios(`${API_URL}/${url}`, {
     method: "POST",
     data,
