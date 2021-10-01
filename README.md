@@ -1,4 +1,4 @@
-![LOGO](/frontend/shared/assets/icons/logo.svg?raw=true)
+<!-- ![LOGO](/frontend/shared/assets/icons/logo.svg?raw=true) -->
 
 <!-- TABLE OF CONTENTS -->
 
