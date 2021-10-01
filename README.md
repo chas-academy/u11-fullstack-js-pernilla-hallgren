@@ -1,8 +1,8 @@
+#### u11-fullstack-js-pernilla-hallgren
+
 ![LOGO](/frontend/src/shared/assets/icons/logo.svg?raw=true)
 
 <!-- TABLE OF CONTENTS -->
-
-# u11-fullstack-js-pernilla-hallgren
 
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
@@ -21,6 +21,7 @@
    </li>
     <li><a href="#technical-requirements">Technical Requirements</a></li>
     <li><a href="#design-prototype">Desgin Prototype</a></li>
+    <li><a href="#future-development-ideas">Future Development Ideas</a></li>
     <li><a href="#deployed-to">Deployed To</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -88,6 +89,12 @@ Please refer to this [documentation](https://docs.google.com/document/d/1Yia3GxW
 - [Sitemap](https://www.figma.com/file/gu1lLqSXZxbSkjRiVE4AHA/u11-SiteMap?node-id=0%3A1)
 - [Wireframe](https://www.figma.com/file/CMba44Hbckqv930MCiGxnJ/u11-Wireframe?node-id=0%3A1)
 - [Design](https://www.figma.com/file/0Pty7ovWJN5jza8wLmwOsJ/u11-Design?node-id=0%3A1)
+
+## Future Development Ideas
+
+- As an admin user be able to do CRUD operations on trainers.
+- Register a trainer through the register view.
+- Ability to send messages between admin, trainers and users within the application.
 
 ## Deployed To
 
