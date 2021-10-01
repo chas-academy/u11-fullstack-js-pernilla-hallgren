@@ -13,7 +13,6 @@ export const GET = (url) => {
 };
 
 export const POST = async (url, data) => {
-  console.log(API_URL, url);
   return axios(`${API_URL}/${url}`, {
     method: "POST",
     data,
