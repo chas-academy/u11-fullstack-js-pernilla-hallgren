@@ -1,4 +1,4 @@
-![LOGO](/frontend/shared/assets/icons/logo.svg)
+![LOGO](/frontend/shared/assets/icons/logo.svg?raw=true)
 
 <!-- TABLE OF CONTENTS -->
 
@@ -62,9 +62,7 @@ npm install
 
 3. Install MongoDB
 
-```
 [MongoDB](https://www.mongodb.com/)
-```
 
 4. Create an .env file in the backend folder and add your database connection and jwt secret
 
