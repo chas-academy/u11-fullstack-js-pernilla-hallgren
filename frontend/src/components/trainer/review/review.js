@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import { DELETE, GET, POST } from "../../../shared/services/requests";
 import { handleFormData } from "../../../shared/helpers/formData";
 import ErrorMessage from "../../../shared/components/error-message";
-import { SkipEndFill, StarFill } from "react-bootstrap-icons";
+import { StarFill } from "react-bootstrap-icons";
 
 const Review = () => {
   const location = useLocation();
