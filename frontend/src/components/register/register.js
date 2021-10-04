@@ -28,6 +28,7 @@ const Register = ({ getToken }) => {
         setLoading(true);
         setRedirect(true);
         localStorage.setItem("token", data.data.token);
+        localStorage.setItem("user", JSON.stringify(data.data.user));
         getToken(localStorage.getItem("token"));
       })
       .catch((error) => {

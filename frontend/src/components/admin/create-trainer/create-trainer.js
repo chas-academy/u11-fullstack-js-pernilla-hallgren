@@ -105,7 +105,7 @@ const CreateTrainer = () => {
             <input
               className="input-field-small"
               type="text"
-              placeholder="Add Image"
+              placeholder="Add Image Url"
               value={newTrainer.image}
               onChange={(e) => handleFormData(e, setNewTrainer)}
               id="image"

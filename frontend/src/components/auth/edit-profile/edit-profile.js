@@ -88,7 +88,7 @@ const EditProfile = () => {
             <input
               className="input-field"
               type="text"
-              placeholder="Add Image"
+              placeholder="Add Image Url"
               value={user.image}
               onChange={(e) => handleFormData(e, setUser)}
               id="image"

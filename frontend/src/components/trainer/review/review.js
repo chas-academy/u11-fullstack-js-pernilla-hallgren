@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import { DELETE, GET, POST } from "../../../shared/services/requests";
 import { handleFormData } from "../../../shared/helpers/formData";
 import ErrorMessage from "../../../shared/components/error-message";
-import { StarFill } from "react-bootstrap-icons";
+import { SkipEndFill, StarFill } from "react-bootstrap-icons";
 
 const Review = () => {
   const location = useLocation();
@@ -110,7 +110,7 @@ const Review = () => {
                 {[...Array(5)].map((star, i) => {
                   const ratingValue = i + 1;
                   return (
-                    <label key={i}>
+                    <label key={`${trainer.id}_${i}`}>
                       <input
                         style={{ display: "none" }}
                         type="radio"
