@@ -34,22 +34,19 @@ const SearchBar = ({ setIsSearching }) => {
     <>
       <div className="text-center mt-4">
         {loading && !error && <p>Searching...</p>}
+        <form onSubmit={handleSearch}>
+          <input
+            className="input-field"
+            type="text"
+            placeholder="Search by skill"
+            onChange={(e) => setQuery(e.target.value)}
+            id={query}
+          />
 
-        <input
-          className="input-field"
-          type="text"
-          placeholder="Search by skill"
-          onChange={(e) => setQuery(e.target.value)}
-          id={query}
-        />
-
-        <button
-          onClick={handleSearch}
-          style={{ border: "none" }}
-          name="search btn"
-        >
-          <Search />
-        </button>
+          <button style={{ border: "none" }} name="search btn">
+            <Search />
+          </button>
+        </form>
 
         {error && <ErrorMessage message={error} />}
         <div className="row">

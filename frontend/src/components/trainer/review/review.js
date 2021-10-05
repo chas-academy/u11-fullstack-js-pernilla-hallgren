@@ -110,7 +110,7 @@ const Review = () => {
                 {[...Array(5)].map((star, i) => {
                   const ratingValue = i + 1;
                   return (
-                    <label key={i}>
+                    <label key={`${trainer.id}_${i}`}>
                       <input
                         style={{ display: "none" }}
                         type="radio"
