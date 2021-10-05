@@ -13,12 +13,12 @@ const register = (req, res) => {
     return res.status(400).json({ msg: "Please enter all fields" });
   }
 
-  User.findOne({ email }).then((user) => {
+  User.findOne({ email: email.toLowerCase() }).then((user) => {
     if (user) return res.status(400).json({ msg: "User already exists" });
 
     const newUser = new User({
       username,
-      email,
+      email: email.toLowerCase(),
       password,
       role,
     });
@@ -57,7 +57,7 @@ const login = (req, res) => {
     return res.status(400).json({ msg: "Please enter all fields" });
   }
 
-  User.findOne({ email }).then((user) => {
+  User.findOne({ email: email.toLowerCase() }).then((user) => {
     if (!user) return res.status(400).json({ msg: "User does not exist" });
 
     bcrypt.compare(password, user.password).then((isMatch) => {
